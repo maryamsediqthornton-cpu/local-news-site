@@ -1,18 +1,28 @@
-import {getArticles, card, formatDate, label} from './utils.js';
-
-const today = document.getElementById('today');
-if(today) today.textContent = new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());
-
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt', event => {event.preventDefault(); deferredPrompt = event; installBtn.hidden = false;});
-installBtn?.addEventListener('click', async()=>{if(!deferredPrompt) return; deferredPrompt.prompt(); deferredPrompt = null; installBtn.hidden = true;});
-
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
-
-const articles = await getArticles();
-const hero = articles.find(a=>a.featured) || articles[0];
-document.getElementById('hero').classList.remove('skeleton');
-document.getElementById('hero').innerHTML = `<img src="${hero.image}" alt=""><div class="hero-content"><span class="tag">${label(hero.category)}</span><h1><a href="/article.html?id=${hero.id}">${hero.title}</a></h1><p>${hero.summary}</p><div class="meta">${hero.author} · ${formatDate(hero.date)}</div></div>`;
-document.getElementById('latestGrid').innerHTML = articles.filter(a=>a.id!==hero.id).map(card).join('');
-document.getElementById('trendingList').innerHTML = articles.filter(a=>a.trending).slice(0,5).map(a=>`<li><a href="/article.html?id=${a.id}">${a.title}</a></li>`).join('');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+<title>Article | Witney Wire</title>
+</head>
+<body>
+<header class="masthead wrap simple">
+  <a class="brand" href="index.html">Witney Wire</a>
+</header>
+<nav class="section-nav">
+  <div class="wrap nav-scroll">
+    <a href="index.html">News</a>
+    <a href="category.html?category=sport">Sport</a>
+    <a href="category.html?category=whats-on">What's On</a>
+    <a href="category.html?category=traffic">Traffic</a>
+    <a href="category.html?category=community">Community</a>
+  </div>
+</nav>
+<main class="wrap article-page">
+  <article id="article-view"></article>
+</main>
+</body>
+</html>

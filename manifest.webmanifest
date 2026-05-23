@@ -1,4 +1,9 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#10233f"><title>Article | Local News Hub</title><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/css/styles.css"></head><body>
-<header class="site-header"><div class="brand-row container"><a class="brand" href="/">Local News Hub</a></div><nav class="nav container"><a href="/">Home</a><a href="/category.html?cat=news">News</a><a href="/category.html?cat=sport">Sport</a><a href="/category.html?cat=whats-on">What's On</a><a href="/category.html?cat=traffic">Traffic</a><a href="/category.html?cat=community">Community</a></nav></header>
-<main class="container article-layout"><article id="article" class="article"></article><aside class="sidebar"><section class="panel"><h2>More local stories</h2><div id="related"></div></section></aside></main>
-<footer class="site-footer"><div class="container">Local News Hub</div></footer><script src="/js/article.js" type="module"></script></body></html>
+{
+  "name": "Witney Wire",
+  "short_name": "Witney Wire",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#b11217",
+  "description": "Local news for Witney and the surrounding area"
+}

@@ -1,6 +1,32 @@
-import {getArticles, card, label, qs} from './utils.js';
-const cat = qs('cat') || 'news';
-document.title = `${label(cat)} | Local News Hub`;
-document.getElementById('categoryTitle').textContent = label(cat);
-const articles = (await getArticles()).filter(a=>a.category===cat);
-document.getElementById('categoryGrid').innerHTML = articles.length ? articles.map(card).join('') : '<p>No stories in this category yet. Add some to data/articles.json.</p>';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<script defer src="app.js"></script>
+<title>Category | Witney Wire</title>
+</head>
+<body>
+<header class="masthead wrap simple">
+  <a class="brand" href="index.html">Witney Wire</a>
+</header>
+<nav class="section-nav">
+  <div class="wrap nav-scroll">
+    <a href="index.html">News</a>
+    <a href="category.html?category=sport">Sport</a>
+    <a href="category.html?category=whats-on">What's On</a>
+    <a href="category.html?category=traffic">Traffic</a>
+    <a href="category.html?category=community">Community</a>
+    <a href="category.html?category=business">Business</a>
+  </div>
+</nav>
+<main class="wrap page">
+  <div class="section-title">
+    <h1 id="category-title">Category</h1>
+  </div>
+  <div id="category-stories" class="card-grid"></div>
+</main>
+</body>
+</html>

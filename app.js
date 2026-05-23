@@ -1,1 +1,94 @@
-:root{--ink:#10233f;--muted:#667085;--line:#d9dee7;--paper:#fff;--wash:#f3f6fa;--accent:#d71920;--accent-dark:#ad1117;--radius:14px;--shadow:0 10px 30px rgba(16,35,63,.08)}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--wash);line-height:1.55}a{color:inherit;text-decoration:none}.container{width:min(1180px,92vw);margin:auto}.topbar{background:#07152a;color:#fff;font-size:.86rem;padding:.35rem 4vw;display:flex;justify-content:space-between}.topbar a{color:#fff;text-decoration:underline}.site-header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.brand-row{display:flex;align-items:center;justify-content:space-between;padding:1.15rem 0}.brand{font-weight:900;font-size:clamp(1.7rem,4vw,3rem);letter-spacing:-.06em}.install-btn,button{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:.75rem 1rem;font-weight:700;cursor:pointer}.install-btn:hover,button:hover{background:var(--accent-dark)}.nav{display:flex;gap:.35rem;overflow:auto;padding-bottom:.75rem}.nav a{font-weight:700;padding:.55rem .8rem;border-radius:999px;background:#edf1f6;white-space:nowrap}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:1.5rem;padding:1.5rem 0}.hero-card,.story-card,.panel,.article{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.hero-card{display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;margin-bottom:1.4rem}.hero-card img,.story-card img{width:100%;height:100%;object-fit:cover;background:#d6dce6}.hero-content{padding:1.3rem}.tag{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border-radius:999px;padding:.22rem .55rem}.hero-card h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.03;margin:.7rem 0}.meta{color:var(--muted);font-size:.9rem}.story-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.story-grid.wide{grid-template-columns:repeat(3,minmax(0,1fr));padding-bottom:2rem}.story-card{overflow:hidden}.story-card img{height:170px}.story-body{padding:1rem}.story-body h3{margin:.4rem 0;font-size:1.12rem;line-height:1.2}.sidebar{display:flex;flex-direction:column;gap:1rem}.panel{padding:1rem}.panel h2{margin-top:0}.trending-list{padding-left:1.2rem}.trending-list li{margin:.75rem 0;font-weight:700}.newsletter input{width:100%;padding:.8rem;border:1px solid var(--line);border-radius:10px;margin-bottom:.6rem}.ad-slot{min-height:220px;display:grid;place-items:center;color:var(--muted);border-style:dashed}.site-footer{background:#07152a;color:#fff;margin-top:2rem;padding:2rem 0}.footer-grid{display:flex;justify-content:space-between;gap:1rem}.footer-grid a{display:block;margin:.25rem 0}.article-layout{display:grid;grid-template-columns:minmax(0,760px) 330px;gap:1.5rem;padding:1.5rem 0}.article{padding:clamp(1rem,3vw,2.2rem)}.article h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;margin:.5rem 0}.article img{width:100%;border-radius:12px;margin:1rem 0}.article .body{font-size:1.1rem}.article .body p{margin:1.1rem 0}.editor{padding:2rem 0}.editor textarea{width:100%;height:65vh;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95rem;padding:1rem;border:1px solid var(--line);border-radius:12px}.editor-actions{display:flex;gap:.75rem;margin:1rem 0}.hint{color:var(--muted)}.page,.offline{padding:3rem 0}.skeleton{min-height:300px}@media(max-width:850px){.layout,.article-layout{grid-template-columns:1fr}.hero-card{grid-template-columns:1fr}.story-grid,.story-grid.wide{grid-template-columns:1fr}.footer-grid{display:block}.site-header{position:static}}
+
+const params = new URLSearchParams(window.location.search);
+
+async function getArticles() {
+  const res = await fetch('data/articles.json', { cache: 'no-store' });
+  return (await res.json()).sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(date));
+}
+
+function label(category) {
+  return String(category || '').replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+function card(article) {
+  return `<a class="story-card" href="article.html?id=${encodeURIComponent(article.id)}">
+    <img src="${article.image}" alt="">
+    <div class="story-body">
+      <span class="label">${label(article.category)}</span>
+      <h3>${article.title}</h3>
+      <p>${article.summary}</p>
+      <div class="meta">${formatDate(article.date)} · ${article.author}</div>
+    </div>
+  </a>`;
+}
+
+async function initHome() {
+  const top = document.querySelector('#top-stories');
+  if (!top) return;
+
+  const articles = await getArticles();
+  const lead = articles[0];
+  top.innerHTML = `<a class="lead-card" href="article.html?id=${encodeURIComponent(lead.id)}">
+    <div>
+      <span class="label">${label(lead.category)}</span>
+      <h2>${lead.title}</h2>
+      <p>${lead.summary}</p>
+      <div class="meta">${formatDate(lead.date)} · ${lead.author}</div>
+    </div>
+    <img src="${lead.image}" alt="">
+  </a>`;
+
+  const latest = document.querySelector('#latest-list');
+  if (latest) {
+    latest.innerHTML = articles.slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+  }
+
+  const more = document.querySelector('#more-stories');
+  if (more) {
+    more.innerHTML = articles.slice(1).map(card).join('');
+  }
+}
+
+async function initCategory() {
+  const holder = document.querySelector('#category-stories');
+  if (!holder) return;
+
+  const category = params.get('category') || 'news';
+  document.querySelector('#category-title').textContent = label(category);
+  const articles = (await getArticles()).filter(a => a.category === category);
+  holder.innerHTML = articles.length ? articles.map(card).join('') : '<p>No stories in this section yet.</p>';
+}
+
+async function initArticle() {
+  const view = document.querySelector('#article-view');
+  if (!view) return;
+
+  const id = params.get('id');
+  const article = (await getArticles()).find(a => a.id === id);
+  if (!article) {
+    view.innerHTML = '<h1>Story not found</h1><p>Please return to the homepage.</p>';
+    return;
+  }
+
+  document.title = `${article.title} | Witney Wire`;
+  view.innerHTML = `
+    <span class="label">${label(article.category)}</span>
+    <h1>${article.title}</h1>
+    <p class="article-summary">${article.summary}</p>
+    <div class="meta">${formatDate(article.date)} · ${article.author}</div>
+    <img class="article-hero" src="${article.image}" alt="">
+    <div class="article-body"><p>${article.body}</p></div>
+  `;
+}
+
+initHome();
+initCategory();
+initArticle();
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
