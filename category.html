@@ -1,0 +1,6 @@
+import {getArticles, card, label, qs} from './utils.js';
+const cat = qs('cat') || 'news';
+document.title = `${label(cat)} | Local News Hub`;
+document.getElementById('categoryTitle').textContent = label(cat);
+const articles = (await getArticles()).filter(a=>a.category===cat);
+document.getElementById('categoryGrid').innerHTML = articles.length ? articles.map(card).join('') : '<p>No stories in this category yet. Add some to data/articles.json.</p>';

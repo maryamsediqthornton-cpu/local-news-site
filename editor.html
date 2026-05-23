@@ -1,0 +1,7 @@
+const textarea = document.getElementById('jsonEditor');
+document.getElementById('loadSample').addEventListener('click', async()=>{const res = await fetch('/data/articles.json',{cache:'no-store'}); textarea.value = JSON.stringify(await res.json(), null, 2);});
+document.getElementById('downloadJson').addEventListener('click', ()=>{
+  try{JSON.parse(textarea.value);}catch(e){alert('JSON is not valid: '+e.message); return;}
+  const blob = new Blob([textarea.value], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'articles.json'; a.click(); URL.revokeObjectURL(a.href);
+});

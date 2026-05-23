@@ -1,0 +1,7 @@
+import {getArticles, card, formatDate, label, qs} from './utils.js';
+const id = qs('id');
+const articles = await getArticles();
+const article = articles.find(a=>a.id===id) || articles[0];
+document.title = `${article.title} | Local News Hub`;
+document.getElementById('article').innerHTML = `<span class="tag">${label(article.category)}</span><h1>${article.title}</h1><p class="standfirst">${article.summary}</p><div class="meta">By ${article.author} · ${formatDate(article.date)}</div><img src="${article.image}" alt=""><div class="body">${article.body.map(p=>`<p>${p}</p>`).join('')}</div>`;
+document.getElementById('related').innerHTML = articles.filter(a=>a.category===article.category && a.id!==article.id).slice(0,3).map(card).join('') || '<p>No related stories yet.</p>';
