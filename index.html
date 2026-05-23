@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,38 +8,69 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <div class="topbar">
+    <span>Local News</span>
+    <span>Sport</span>
+    <span>What's On</span>
+    <span>Business</span>
+  </div>
+
+  <header class="main-header">
     <h1>Witney Wire</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <button class="subscribe-btn">Subscribe</button>
   </header>
 
-  <main>
-    <section class="hero">
-      <h2>Latest Headlines</h2>
-      <p>Your live local news website is now working correctly.</p>
+  <nav class="main-nav">
+    <a href="index.html">News</a>
+    <a href="sport.html">Sport</a>
+    <a href="whats-on.html">What's On</a>
+    <a href="community.html">Community</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <section class="hero-banner">
+    <div class="hero-text">
+      <h2>Top Stories Across Witney & Oxfordshire</h2>
+      <p>Breaking local news, events, traffic and community stories.</p>
+    </div>
+  </section>
+
+  <main class="content-grid">
+    <section class="main-story">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="Main story">
+      <h2>Town Centre Regeneration Approved</h2>
+      <p>Major redevelopment plans move forward following council approval.</p>
     </section>
 
-    <section class="articles">
-      <article>
-        <h3>Town Centre Regeneration Approved</h3>
-        <p>Local council approves a new redevelopment project for the high street.</p>
-      </article>
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>Traffic & Travel</h3>
+        <p>Latest road updates across Witney and Oxfordshire.</p>
+      </div>
 
-      <article>
-        <h3>Community Festival Returns</h3>
-        <p>The annual summer event is expected to attract thousands of visitors.</p>
-      </article>
-
-      <article>
-        <h3>Sports Team Wins Final</h3>
-        <p>A dramatic late goal secured victory in the regional championship.</p>
-      </article>
-    </section>
+      <div class="side-card">
+        <h3>Community Events</h3>
+        <p>Festivals, local meetings, school events and more.</p>
+      </div>
+    </aside>
   </main>
+
+  <section class="story-grid">
+    <article class="story-card">
+      <h3>Community Festival Returns</h3>
+      <p>Thousands expected at this year's summer celebration.</p>
+    </article>
+
+    <article class="story-card">
+      <h3>Local Sports Team Wins Final</h3>
+      <p>A dramatic late winner secured the regional title.</p>
+    </article>
+
+    <article class="story-card">
+      <h3>New Business Opens in Witney</h3>
+      <p>A new independent café has opened in the town centre.</p>
+    </article>
+  </section>
 
   <footer>
     <p>© 2026 Witney Wire</p>

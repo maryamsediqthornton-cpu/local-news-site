@@ -1,46 +1,152 @@
+
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: #f4f4f4;
-  color: #222;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  color: #111;
 }
 
-header {
-  background: #07152d;
-  color: white;
-  padding: 20px;
+.topbar {
+  background: #ececec;
+  padding: 10px 30px;
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
 }
 
-nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-}
-
-.hero {
+.main-header {
   background: white;
-  padding: 40px;
-  margin: 20px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.main-header h1 {
+  font-size: 52px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.subscribe-btn {
+  background: #d4b06a;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.main-nav {
+  background: #b11217;
+  padding: 15px 30px;
+  display: flex;
+  gap: 25px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-banner {
+  background: linear-gradient(90deg,#7c0017,#c3002f);
+  color: white;
+  margin: 30px auto;
+  width: 90%;
+  border-radius: 10px;
+  padding: 60px;
+}
+
+.hero-text h2 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  width: 90%;
+  margin: auto;
+}
+
+.main-story {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main-story img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.main-story h2,
+.main-story p {
+  padding: 0 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.side-card {
+  background: white;
+  padding: 20px;
   border-radius: 10px;
 }
 
-.articles {
+.story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  padding: 20px;
+  width: 90%;
+  margin: 40px auto;
 }
 
-article {
+.story-card {
   background: white;
   padding: 20px;
+  border-radius: 10px;
+}
+
+.page-content {
+  width: 90%;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
   border-radius: 10px;
 }
 
 footer {
-  background: #07152d;
+  background: #081127;
   color: white;
   text-align: center;
-  padding: 15px;
-  margin-top: 30px;
+  padding: 30px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main-header h1 {
+    font-size: 36px;
+  }
+
+  .hero-text h2 {
+    font-size: 28px;
+  }
 }

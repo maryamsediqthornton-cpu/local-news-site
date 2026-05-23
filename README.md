@@ -1,3 +1,3 @@
-# Witney Wire
+# Witney Wire Template
 
-Local news website deployed with GitHub and Cloudflare Pages.
+News-style local publication website inspired by modern regional publishers.
