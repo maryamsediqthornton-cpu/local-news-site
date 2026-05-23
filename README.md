@@ -1,3 +1,3 @@
-# Local News Site
+# Witney Wire
 
-Static local news website for Cloudflare Pages.
+Local news website deployed with GitHub and Cloudflare Pages.
