@@ -1,12 +1,12 @@
 
 :root {
-  --red: #b11217;
+  --red: #0b2a4a;
   --dark: #0b1220;
   --ink: #161616;
   --muted: #666;
   --line: #dedede;
   --soft: #f4f4f4;
-  --gold: #f4d28a;
+  --gold: #2f7d5a;
   --purple: #4b2c73;
 }
 
@@ -117,7 +117,7 @@ a { color: inherit; }
 .ad-slot {
   margin-top: 28px;
   min-height: 160px;
-  background: linear-gradient(90deg, #5f0010, #c01731);
+  background: linear-gradient(90deg, #0b2a4a, #174f7a);
   color: white;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -331,3 +331,10 @@ a { color: inherit; }
   .ad-slot { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+
+:root{--brand-navy:#0b2a4a;--brand-green:#2f7d5a;--brand-blue:#174f7a;}
+.topbar,.site-header{border-bottom:3px solid var(--brand-green);}
+button,.btn,.cta{background:var(--brand-navy);}
+button:hover,.btn:hover,.cta:hover{background:var(--brand-blue);}
+.brand-tagline{color:var(--brand-green);font-size:.85rem;font-weight:600;}
