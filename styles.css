@@ -404,3 +404,11 @@ a { color: inherit; }
   font-size: .95rem;
   color: #666;
 }
+
+
+.site-logo{
+  max-width: 520px;
+  width: 100%;
+  height: auto;
+  display:block;
+}
