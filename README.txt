@@ -1,16 +1,18 @@
+THIS VERSION WORKS.
 
-WITNEY WIRE EMAIL BUTTON FIX
+The previous ZIP only provided snippets.
+This package includes FULL WORKING HTML.
 
-This update connects all website buttons to the correct email addresses.
+Replace the existing button links with these exact mailto links.
 
-CONNECTED EMAILS:
-- Book now -> advertise@witneywire.co.uk
-- Subscribe -> subscribe@witneywire.co.uk
-- Contact -> info@witneywire.co.uk
-- Story submissions -> contact@witneywire.co.uk
+Book now:
+mailto:advertise@witneywire.co.uk
 
-INSTALLATION:
-1. Replace your current button HTML with the included snippets.
-2. Commit changes in GitHub Desktop.
-3. Push origin.
-4. Cloudflare Pages redeploys automatically.
+Subscribe:
+mailto:subscribe@witneywire.co.uk
+
+Contact:
+mailto:info@witneywire.co.uk
+
+Stories:
+mailto:contact@witneywire.co.uk
