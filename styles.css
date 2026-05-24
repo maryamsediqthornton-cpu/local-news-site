@@ -1,13 +1,13 @@
 
 :root {
   --red: #0b2a4a;
-  --dark: #0b1220;
+  --dark: #081421;
   --ink: #161616;
   --muted: #666;
-  --line: #dedede;
-  --soft: #f4f4f4;
+  --line: #d9dee3;
+  --soft: #f4f7f8;
   --gold: #2f7d5a;
-  --purple: #4b2c73;
+  --purple: #174f7a;
 }
 
 * { box-sizing: border-box; }
@@ -140,7 +140,7 @@ a { color: inherit; }
 
 .ad-slot a {
   background: white;
-  color: var(--red);
+  color: var(--brand-navy);
   padding: 14px 22px;
   border-radius: 6px;
   text-decoration: none;
@@ -195,7 +195,7 @@ a { color: inherit; }
 }
 
 .label {
-  color: var(--red);
+  color: var(--brand-navy);
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 900;
@@ -333,8 +333,88 @@ a { color: inherit; }
 }
 
 
-:root{--brand-navy:#0b2a4a;--brand-green:#2f7d5a;--brand-blue:#174f7a;}
-.topbar,.site-header{border-bottom:3px solid var(--brand-green);}
-button,.btn,.cta{background:var(--brand-navy);}
-button:hover,.btn:hover,.cta:hover{background:var(--brand-blue);}
-.brand-tagline{color:var(--brand-green);font-size:.85rem;font-weight:600;}
+/* Witney Wire brand refresh */
+:root {
+  --brand-navy: #0b2a4a;
+  --brand-green: #2f7d5a;
+  --brand-blue: #174f7a;
+}
+
+.utility-bar {
+  border-top: 5px solid rgba(47,125,90,.28);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  max-width: min(760px, 70vw);
+}
+
+.brand img {
+  display: block;
+  width: clamp(300px, 44vw, 560px);
+  height: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.section-nav {
+  background: var(--brand-navy);
+}
+
+.pill {
+  background: var(--brand-navy);
+}
+
+.pill.pale {
+  background: var(--brand-green);
+  color: #07111f;
+}
+
+.ad-slot {
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-blue));
+}
+
+.ad-slot a {
+  color: var(--brand-navy);
+}
+
+.section-title h1,
+.section-title h2 {
+  border-bottom-color: var(--brand-green);
+}
+
+.label {
+  color: var(--brand-navy);
+}
+
+.story-card {
+  border-top-color: var(--brand-green);
+}
+
+.rail-card.accent {
+  background: var(--brand-blue);
+}
+
+a:hover {
+  color: var(--brand-green);
+}
+
+@media (max-width: 850px) {
+  .brand {
+    max-width: 100%;
+  }
+  .brand img {
+    width: min(88vw, 440px);
+  }
+}
