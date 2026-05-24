@@ -1,15 +1,18 @@
 
-/* ARTICLE INLINE ADS */
+/* =========================
+   WITNEY WIRE ARTICLE ADS
+========================= */
 
-.article-inline-ad {
-  margin: 40px 0;
+.ww-inline-article-ad {
+  margin: 42px 0;
   padding: 14px;
-  background: #f7f7f7;
+  background: #f4f4f4;
   border-radius: 14px;
   text-align: center;
+  overflow: hidden;
 }
 
-.article-inline-ad img {
+.ww-inline-article-ad img {
   width: 100%;
   max-width: 728px;
   height: auto;
@@ -18,17 +21,17 @@
   margin: 0 auto;
 }
 
-.ad-label {
-  font-size: 12px;
+.ww-ad-label {
+  font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #666;
-  margin-bottom: 10px;
-  font-weight: 600;
+  margin-bottom: 12px;
 }
 
 @media (max-width: 768px) {
-  .article-inline-ad {
+  .ww-inline-article-ad {
     margin: 28px 0;
     padding: 10px;
   }
