@@ -563,11 +563,15 @@ a:hover {
   margin-bottom: 12px;
   font-size: 18px;
 }
-
-
-/* Duplicate footer legal block fix */
-.site-footer > p,
-.site-footer > div:not(.wrap):not(.footer-bottom) {
+/* Correct duplicate footer fix — hide only the second duplicated legal block */
+.site-footer + .footer-bottom,
+.site-footer ~ .footer-bottom,
+.site-footer + .footer-legal,
+.site-footer ~ .footer-legal {
   display: none !important;
 }
 
+/* Keep the legal block inside the main footer visible */
+.site-footer .footer-bottom {
+  display: block !important;
+}
