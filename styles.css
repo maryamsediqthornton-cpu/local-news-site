@@ -1,12 +1,12 @@
 
 :root {
-  --red: #b11217;
+  --red: #0b2a4a;
   --dark: #0b1220;
   --ink: #161616;
   --muted: #666;
   --line: #dedede;
   --soft: #f4f4f4;
-  --gold: #f4d28a;
+  --gold: #2f7d5a;
   --purple: #4b2c73;
 }
 
@@ -117,7 +117,7 @@ a { color: inherit; }
 .ad-slot {
   margin-top: 28px;
   min-height: 160px;
-  background: linear-gradient(90deg, #5f0010, #c01731);
+  background: linear-gradient(90deg, #0b2a4a, #174f7a);
   color: white;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -330,4 +330,77 @@ a { color: inherit; }
   .card-grid { grid-template-columns: 1fr; }
   .ad-slot { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
+}
+
+
+/* Witney Wire working enquiry forms */
+
+.form-page {
+  max-width: 900px;
+  margin: 44px auto;
+  padding: 0 20px;
+}
+.form-card {
+  background: #fff;
+  border: 1px solid #d9dee3;
+  border-top: 5px solid #2f7d5a;
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(8,20,33,0.08);
+}
+.form-card h1 {
+  margin-top: 0;
+  color: #0b2a4a;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.form-card p {
+  color: #444;
+  line-height: 1.6;
+}
+.form-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.form-grid label {
+  font-weight: 700;
+  color: #0b2a4a;
+}
+.form-grid input,
+.form-grid textarea,
+.form-grid select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cfd6dd;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font: inherit;
+}
+.form-grid textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+.form-submit {
+  display: inline-block;
+  border: 0;
+  border-radius: 8px;
+  padding: 14px 22px;
+  background: #0b2a4a;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.form-submit:hover {
+  background: #174f7a;
+}
+.form-note {
+  font-size: .95rem;
+  color: #666;
 }

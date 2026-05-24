@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe | Witney Wire</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="form-page">
+    <section class="form-card">
+  <h1>Subscribe to Witney Wire</h1>
+  <p>Use this form to subscribe to the latest local news. When submitted, it opens an email addressed to <strong>subscribe@witneywire.co.uk</strong>.</p>
+  <form class="form-grid" action="mailto:subscribe@witneywire.co.uk" method="post" enctype="text/plain">
+    <label for="name">Your name</label>
+    <input id="name" name="Name" required>
+    <label for="email">Email address</label>
+    <input id="email" name="Email" type="email" required>
+    <label for="postcode">Postcode / area</label>
+    <input id="postcode" name="Postcode or area">
+    <label for="preferences">What would you like to receive?</label>
+    <select id="preferences" name="Subscription preference">
+      <option>Latest local news</option>
+      <option>Morning briefing</option>
+      <option>Community updates</option>
+      <option>Advertising/newsletter partnership enquiry</option>
+    </select>
+    <label for="message">Message</label>
+    <textarea id="message" name="Message" placeholder="Optional message"></textarea>
+    <div class="form-actions">
+      <button class="form-submit" type="submit">Email subscription request</button>
+      <span class="form-note">This opens your email app so you can review before sending.</span>
+    </div>
+  </form>
+</section>
+  </main>
+</body>
+</html>

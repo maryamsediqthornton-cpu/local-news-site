@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Us Your Story | Witney Wire</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="form-page">
+    <section class="form-card">
+  <h1>Send Us Your Story</h1>
+  <p>Have a local story, tip, event, photo, or community update? Use this form. When submitted, it opens an email addressed to <strong>contact@witneywire.co.uk</strong>.</p>
+  <form class="form-grid" action="mailto:contact@witneywire.co.uk" method="post" enctype="text/plain">
+    <label for="name">Your name</label>
+    <input id="name" name="Name" required>
+    <label for="email">Your email</label>
+    <input id="email" name="Email" type="email" required>
+    <label for="story">Story headline or topic</label>
+    <input id="story" name="Story topic">
+    <label for="message">Story details</label>
+    <textarea id="message" name="Story details" required></textarea>
+    <div class="form-actions">
+      <button class="form-submit" type="submit">Email your story</button>
+      <span class="form-note">This opens your email app so you can review before sending.</span>
+    </div>
+  </form>
+</section>
+  </main>
+</body>
+</html>
