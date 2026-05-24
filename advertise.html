@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="styles.css">
-<script defer src="app.js"></script>
-<title>Advertise with Witney Wire</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advertise | Witney Wire</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="masthead wrap simple">
-  <a class="brand" href="index.html"><img src="assets/witney-wire-logo.png" alt="Witney Wire — Your Town. Your Stories."><span class="sr-only">Witney Wire</span></a>
-</header>
-<nav class="section-nav">
-  <div class="wrap nav-scroll">
-    <a href="index.html">News</a>
-    <a href="category.html?category=sport">Sport</a>
-    <a href="category.html?category=whats-on">What's On</a>
-    <a href="category.html?category=community">Community</a>
-  </div>
-</nav>
-<main class="wrap page">
+  <main class="form-page">
+    <section class="form-card">
   <h1>Advertise with Witney Wire</h1>
-  <p>Advertising page placeholder for local businesses, sponsorships and featured listings.</p>
-</main>
+  <p>Use this form to enquire about advertising, sponsored placements, local business promotions, or booking an ad. When submitted, it opens an email addressed to <strong>advertise@witneywire.co.uk</strong>.</p>
+  <form class="form-grid" action="mailto:advertise@witneywire.co.uk" method="post" enctype="text/plain">
+    <label for="name">Your name</label>
+    <input id="name" name="Name" required>
+    <label for="business">Business name</label>
+    <input id="business" name="Business">
+    <label for="email">Your email</label>
+    <input id="email" name="Email" type="email" required>
+    <label for="phone">Phone number</label>
+    <input id="phone" name="Phone">
+    <label for="interest">Advertising interest</label>
+    <select id="interest" name="Advertising interest">
+      <option>Website advert</option>
+      <option>Sponsored article</option>
+      <option>Newsletter advert</option>
+      <option>Local campaign</option>
+      <option>Other</option>
+    </select>
+    <label for="message">Message</label>
+    <textarea id="message" name="Message" placeholder="Tell us what you would like to advertise, preferred dates, and any budget or campaign details."></textarea>
+    <div class="form-actions">
+      <button class="form-submit" type="submit">Email advertising team</button>
+      <span class="form-note">This opens your email app so you can review before sending.</span>
+    </div>
+  </form>
+</section>
+  </main>
 </body>
 </html>

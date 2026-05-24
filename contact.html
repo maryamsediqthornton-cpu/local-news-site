@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="styles.css">
-<script defer src="app.js"></script>
-<title>Contact Witney Wire</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Witney Wire</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="masthead wrap simple">
-  <a class="brand" href="index.html"><img src="assets/witney-wire-logo.png" alt="Witney Wire — Your Town. Your Stories."><span class="sr-only">Witney Wire</span></a>
-</header>
-<nav class="section-nav">
-  <div class="wrap nav-scroll">
-    <a href="index.html">News</a>
-    <a href="category.html?category=sport">Sport</a>
-    <a href="category.html?category=whats-on">What's On</a>
-    <a href="category.html?category=community">Community</a>
-  </div>
-</nav>
-<main class="wrap page">
+  <main class="form-page">
+    <section class="form-card">
   <h1>Contact Witney Wire</h1>
-  <p>For news tips, corrections or community stories, contact the newsroom at newsroom@witneywire.co.uk.</p>
-</main>
+  <p>For general company enquiries, use this form. When submitted, it opens an email addressed to <strong>info@witneywire.co.uk</strong>.</p>
+  <form class="form-grid" action="mailto:info@witneywire.co.uk" method="post" enctype="text/plain">
+    <label for="name">Your name</label>
+    <input id="name" name="Name" required>
+    <label for="email">Your email</label>
+    <input id="email" name="Email" type="email" required>
+    <label for="subject">Subject</label>
+    <input id="subject" name="Subject">
+    <label for="message">Message</label>
+    <textarea id="message" name="Message" required></textarea>
+    <div class="form-actions">
+      <button class="form-submit" type="submit">Email Witney Wire</button>
+      <span class="form-note">This opens your email app so you can review before sending.</span>
+    </div>
+  </form>
+</section>
+  </main>
 </body>
 </html>
