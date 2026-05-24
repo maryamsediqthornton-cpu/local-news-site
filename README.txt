@@ -1,18 +1,14 @@
-THIS VERSION WORKS.
+Witney Wire — Article Ad Placement Patch
 
-The previous ZIP only provided snippets.
-This package includes FULL WORKING HTML.
+This patch adds:
+- 2 clean inline article advertisement blocks
+- responsive spacing
+- sponsor labels
+- non-intrusive article placements
 
-Replace the existing button links with these exact mailto links.
+Recommended placement logic:
+- Ad 1: after paragraph 4
+- Ad 2: before related stories/end content
 
-Book now:
-mailto:advertise@witneywire.co.uk
-
-Subscribe:
-mailto:subscribe@witneywire.co.uk
-
-Contact:
-mailto:info@witneywire.co.uk
-
-Stories:
-mailto:contact@witneywire.co.uk
+Files are patch-only and safe for GitHub Desktop workflows.
+Do NOT replace .git files.

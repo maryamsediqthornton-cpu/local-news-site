@@ -1,0 +1,35 @@
+
+/* ARTICLE INLINE ADS */
+
+.article-inline-ad {
+  margin: 40px 0;
+  padding: 14px;
+  background: #f7f7f7;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.article-inline-ad img {
+  width: 100%;
+  max-width: 728px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.ad-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .article-inline-ad {
+    margin: 28px 0;
+    padding: 10px;
+  }
+}
