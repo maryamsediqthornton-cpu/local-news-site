@@ -1,19 +1,16 @@
 
-WITNEY WIRE LEGAL + EMAIL PACK
+WITNEY WIRE EMAIL BUTTON FIX
 
-Included:
-- Privacy policy page
-- Terms & conditions page
-- Updated email contact snippets
+This update connects all website buttons to the correct email addresses.
 
-EMAILS:
-contact@witneywire.co.uk
-info@witneywire.co.uk
-advertise@witneywire.co.uk
-subscribe@witneywire.co.uk
+CONNECTED EMAILS:
+- Book now -> advertise@witneywire.co.uk
+- Subscribe -> subscribe@witneywire.co.uk
+- Contact -> info@witneywire.co.uk
+- Story submissions -> contact@witneywire.co.uk
 
-DEPLOYMENT:
-1. Replace/add the included files.
+INSTALLATION:
+1. Replace your current button HTML with the included snippets.
 2. Commit changes in GitHub Desktop.
 3. Push origin.
 4. Cloudflare Pages redeploys automatically.
