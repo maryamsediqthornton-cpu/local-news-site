@@ -1,20 +1,17 @@
 
-IMPORTANT:
-The previous patch only provided reusable components and did not inject them directly into the article template.
+Witney Wire — Global Article Ad Update
 
-THIS PATCH FIXES THAT.
+THIS PATCH:
+- reduces oversized article image height
+- adds clean advertisement banner below article image
+- adds mid-article advertisement banner
+- applies globally to ALL article pages
+- improves article spacing and readability
 
-WHAT TO DO:
+FILES INCLUDED (PATCH ONLY):
+- app.js
+- styles.css
 
-1. Open article.html
-2. Find the main article content area
-3. Paste the FIRST ad block after paragraph 4
-4. Paste the SECOND ad block near the end of the article
-5. Open styles.css
-6. Paste the supplied CSS at the bottom of the file
-7. Commit and push through GitHub Desktop
-
-This approach keeps the site stable and avoids breaking layouts.
-
-No .git files included.
-Patch-only workflow.
+NO .git FILES INCLUDED
+NO FULL SITE REPLACEMENT
+SAFE FOR GITHUB DESKTOP WORKFLOW
