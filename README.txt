@@ -1,26 +1,20 @@
-Witney Wire — Article Ad Fix Patch
 
-WHY IT DIDN'T SHOW:
-The original article templates were too short for the previous ad insertion logic.
+IMPORTANT:
+The previous patch only provided reusable components and did not inject them directly into the article template.
 
-The old logic only showed ads:
-- after paragraph 2
-- after paragraph 7
+THIS PATCH FIXES THAT.
 
-Most current articles only contain 1–3 paragraphs.
+WHAT TO DO:
 
-THIS FIX:
-- inserts first article ad after the FIRST paragraph
-- inserts second article ad near the end of longer stories
-- works immediately with current article lengths
+1. Open article.html
+2. Find the main article content area
+3. Paste the FIRST ad block after paragraph 4
+4. Paste the SECOND ad block near the end of the article
+5. Open styles.css
+6. Paste the supplied CSS at the bottom of the file
+7. Commit and push through GitHub Desktop
 
-FILES INCLUDED:
-- app.js patch only
+This approach keeps the site stable and avoids breaking layouts.
 
-HOW TO APPLY:
-1. Open your existing app.js
-2. Find the current renderArticleBody() function
-3. Replace ONLY that function with the new one
-4. Commit + Push via GitHub Desktop
-
-No other files changed.
+No .git files included.
+Patch-only workflow.
