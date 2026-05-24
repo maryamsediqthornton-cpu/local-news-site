@@ -30,12 +30,11 @@ function adBlock(kind = 'inline') {
 
 function renderArticleBody(body = []) {
   const paragraphs = Array.isArray(body) ? body : [body];
-  return paragraphs.map((text, index) => {
-    const paragraph = `<p>${text}</p>`;
-    if (index === 1 && paragraphs.length > 1) return paragraph + adBlock('article');
-    if (index === 6 && paragraphs.length > 8) return paragraph + adBlock('article');
-    return paragraph;
-  }).join('');
+
+  return paragraphs
+    .filter(Boolean)
+    .map(text => `<p>${text}</p>`)
+    .join('');
 }
 
 function card(article) {
@@ -105,7 +104,9 @@ async function initArticle() {
     <p class="article-summary">${article.summary}</p>
     <div class="meta">${formatDate(article.date)} · ${article.author}</div>
     <img class="article-hero" src="${article.image}" alt="">
+    ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
+    ${adBlock('article')}
   `;
 }
 
