@@ -491,3 +491,75 @@ a:hover {
   font-size: .95rem;
   color: #666;
 }
+
+
+
+.site-footer {
+  background: #001428;
+  color: #ffffff;
+  padding: 55px 40px 35px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.site-footer h2 {
+  font-size: 54px;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.site-footer h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.site-footer p,
+.site-footer a {
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.8;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #2ecc71;
+}
+
+.footer-grid div a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.social-icons span {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.footer-bottom {
+  margin-top: 35px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-bottom p {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
