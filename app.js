@@ -14,6 +14,30 @@ function label(category) {
   return String(category || '').replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
+function adBlock(kind = 'inline') {
+  const labels = {
+    inline: 'Advertisement',
+    article: 'Article sponsor',
+    print: 'Print sponsor'
+  };
+  return `<aside class="content-ad content-ad-${kind}" aria-label="${labels[kind] || 'Advertisement'}">
+    <span>${labels[kind] || 'Advertisement'}</span>
+    <strong>Promote your local business with Witney Wire</strong>
+    <p>Clean, clearly labelled advertising space designed to protect the reading experience.</p>
+    <a href="advertise.html">Book this space</a>
+  </aside>`;
+}
+
+function renderArticleBody(body = []) {
+  const paragraphs = Array.isArray(body) ? body : [body];
+  return paragraphs.map((text, index) => {
+    const paragraph = `<p>${text}</p>`;
+    if (index === 1 && paragraphs.length > 1) return paragraph + adBlock('article');
+    if (index === 6 && paragraphs.length > 8) return paragraph + adBlock('article');
+    return paragraph;
+  }).join('');
+}
+
 function card(article) {
   return `<a class="story-card" href="article.html?id=${encodeURIComponent(article.id)}">
     <img src="${article.image}" alt="">
@@ -81,7 +105,7 @@ async function initArticle() {
     <p class="article-summary">${article.summary}</p>
     <div class="meta">${formatDate(article.date)} · ${article.author}</div>
     <img class="article-hero" src="${article.image}" alt="">
-    <div class="article-body"><p>${article.body}</p></div>
+    <div class="article-body">${renderArticleBody(article.body)}</div>
   `;
 }
 

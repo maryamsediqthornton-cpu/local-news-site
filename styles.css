@@ -646,3 +646,225 @@ a:hover {
   font-size: 18px;
   line-height: 1.6;
 }
+
+/* Witney Wire advertising framework */
+.ad-slot,
+.ad-strip,
+.content-ad,
+.sponsor-card,
+.print-sponsor {
+  border: 1px solid var(--line);
+  background: #f7faf9;
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(8,20,33,0.04);
+}
+
+.ad-slot span,
+.ad-strip span,
+.content-ad span,
+.sponsor-card span,
+.print-sponsor span {
+  display: inline-block;
+  color: var(--brand-green);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ad-slot-leaderboard {
+  min-height: 140px;
+  background: linear-gradient(90deg, var(--brand-navy), var(--brand-blue));
+  color: #fff;
+  border: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.ad-slot-leaderboard span,
+.ad-slot-leaderboard p {
+  color: rgba(255,255,255,.82);
+}
+
+.ad-slot-leaderboard p {
+  margin: 0;
+  max-width: 640px;
+  font-size: 16px;
+}
+
+.ad-strip {
+  margin: 34px auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 18px;
+  align-items: center;
+  border-left: 5px solid var(--brand-green);
+}
+
+.ad-strip strong,
+.content-ad strong,
+.sponsor-card strong,
+.print-sponsor strong {
+  color: var(--brand-navy);
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.ad-strip p,
+.content-ad p,
+.sponsor-card p,
+.print-sponsor p {
+  margin: 0;
+  color: #3f4b53;
+  line-height: 1.55;
+}
+
+.ad-strip a,
+.content-ad a,
+.sponsor-card a {
+  background: var(--brand-navy);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 800;
+  justify-self: end;
+}
+
+.content-ad {
+  margin: 34px 0;
+  padding: 22px;
+  border-radius: 10px;
+  border-left: 5px solid var(--brand-green);
+}
+
+.content-ad a {
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.sponsor-card {
+  padding: 20px;
+  border-top: 5px solid var(--brand-green);
+}
+
+.sponsor-card h2 {
+  margin: 0 0 10px;
+  color: var(--brand-navy);
+}
+
+.sponsor-card a {
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.print-sponsor {
+  display: none;
+}
+
+.ad-media-kit {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f7faf9;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--brand-green);
+  border-radius: 8px;
+}
+
+.ad-media-kit h2 {
+  margin-top: 0;
+  color: var(--brand-navy);
+}
+
+.ad-package-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ad-package-grid div {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.ad-package-grid strong,
+.ad-package-grid span {
+  display: block;
+}
+
+.ad-package-grid span {
+  margin-top: 6px;
+  color: #555;
+  line-height: 1.4;
+}
+
+@media (max-width: 850px) {
+  .ad-slot-leaderboard,
+  .ad-strip {
+    grid-template-columns: 1fr;
+  }
+  .ad-strip a {
+    justify-self: start;
+  }
+  .ad-package-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .utility-bar,
+  .masthead,
+  .section-nav,
+  .subnav,
+  .site-footer,
+  .content-ad a {
+    display: none !important;
+  }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #000;
+    background: #fff;
+  }
+  .article-page {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+  .article-page h1 {
+    font-size: 34pt;
+    letter-spacing: 0;
+  }
+  .article-summary,
+  .article-body {
+    font-size: 13pt;
+    line-height: 1.55;
+  }
+  .article-hero {
+    max-height: 340px;
+    page-break-after: avoid;
+  }
+  .content-ad,
+  .print-sponsor {
+    display: block;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 18pt 0;
+    padding: 12pt;
+    border: 1pt solid #777;
+    border-left: 4pt solid #000;
+    background: #fff;
+    box-shadow: none;
+  }
+  .content-ad span,
+  .print-sponsor span {
+    color: #000;
+  }
+  .content-ad strong,
+  .print-sponsor strong {
+    color: #000;
+    font-size: 15pt;
+  }
+}
