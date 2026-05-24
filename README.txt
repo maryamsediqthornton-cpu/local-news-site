@@ -1,18 +1,9 @@
-THIS VERSION WORKS.
+Witney Wire Updated Favicon Package
 
-The previous ZIP only provided snippets.
-This package includes FULL WORKING HTML.
+This package includes the approved WW favicon.
 
-Replace the existing button links with these exact mailto links.
-
-Book now:
-mailto:advertise@witneywire.co.uk
-
-Subscribe:
-mailto:subscribe@witneywire.co.uk
-
-Contact:
-mailto:info@witneywire.co.uk
-
-Stories:
-mailto:contact@witneywire.co.uk
+Deployment:
+1. Replace your current favicon with favicon.png
+2. Commit changes in GitHub Desktop
+3. Push origin
+4. Cloudflare Pages redeploys automatically
