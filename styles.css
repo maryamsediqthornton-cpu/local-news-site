@@ -1038,3 +1038,11 @@ a:hover {
 .article-ad {
     margin-top: 0 !important;
 }
+
+
+.ai-disclaimer{
+  font-size:0.78rem;
+  color:#666;
+  margin-top:8px;
+  margin-bottom:18px;
+}

@@ -117,3 +117,17 @@ initArticle();
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
+
+
+/* AI disclaimer render order fix */
+document.querySelectorAll('.article-image').forEach(img => {
+    const disclaimer = document.createElement('div');
+    disclaimer.className = 'ai-disclaimer';
+    disclaimer.innerText = 'The image used with this story is an AI-generated illustration of Witney town centre in hot weather.';
+
+    const sponsor = document.querySelector('.article-sponsor');
+
+    if (sponsor && sponsor.parentNode) {
+        sponsor.parentNode.insertBefore(disclaimer, sponsor);
+    }
+});
