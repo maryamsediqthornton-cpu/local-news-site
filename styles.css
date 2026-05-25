@@ -1046,3 +1046,10 @@ a:hover {
   margin-top:8px;
   margin-bottom:18px;
 }
+
+
+.ai-disclaimer{
+  font-size:0.78rem;
+  color:#666;
+  margin:8px 0 18px;
+}
