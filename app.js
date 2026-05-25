@@ -56,21 +56,21 @@ async function initHome() {
   const articles = await getArticles();
   const lead = articles[0];
   top.innerHTML = `
-  <a class="lead-card" href="article.html?id=${encodeURIComponent(lead.id)}">
+  <a class="lead-card" href="article.html?id=witney-heatwave-34c">
     <div>
-      <span class="label">${label(lead.category)}</span>
-      <h2>${lead.title}</h2>
-      <p>${lead.summary}</p>
-      <div class="meta">${formatDate(lead.date)} · ${lead.author}</div>
+      <span class="label">NEWS</span>
+      <h2>Witney swelters as temperatures hit 34°C</h2>
+      <p>High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.</p>
+      <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
     </div>
-    <img src="${lead.image}" alt="">
+    <img src="assets/witney-heatwave-34c.png" alt="">
   </a>
 
   <a class="lead-card secondary-story" href="article.html?id=carterton-arts-week">
     <div>
       <span class="label">COMMUNITY</span>
-      <h2>Carterton Arts Week gets underway with workshops and events</h2>
-      <p>Arts Week is now underway in Carterton, with workshops, exhibitions and creative events taking place across the town.</p>
+      <h2>Carterton Arts Week gets underway across the town</h2>
+      <p>Workshops, exhibitions and craft sessions are now taking place across Carterton as Arts Week returns for another year.</p>
       <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
     </div>
     <img src="assets/carterton-arts-week.jpg" alt="Carterton Arts Week">
@@ -78,12 +78,12 @@ async function initHome() {
 
   const latest = document.querySelector('#latest-list');
   if (latest) {
-    latest.innerHTML = articles.filter(a => a.id !== 'carterton-arts-week').slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+    latest.innerHTML = articles.slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
   }
 
   const more = document.querySelector('#more-stories');
   if (more) {
-    more.innerHTML = articles.filter(a => a.id !== 'carterton-arts-week').slice(1).map(card).join('');
+    more.innerHTML = articles.slice(1).map(card).join('');
   }
 }
 
