@@ -1,0 +1,17 @@
+.policy-topbar{
+  margin-bottom:20px;
+}
+
+.home-button{
+  display:inline-block;
+  background:#0c2340;
+  color:white;
+  text-decoration:none;
+  padding:12px 18px;
+  font-weight:700;
+  border-radius:4px;
+}
+
+.home-button:hover{
+  opacity:.9;
+}

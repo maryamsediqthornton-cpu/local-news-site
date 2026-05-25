@@ -1,17 +1,10 @@
-UPDATED BRANDED PATCH
+Corrections Policy Copy Fix
 
-This version has been rebuilt to visually match the existing Witney Wire styling system.
+Replace the existing corrections-policy.html with this version.
 
-Branding references used from the live project:
-- navy/red gradient masthead tones
-- gold accent borders
-- large publisher typography
-- wide editorial spacing
-- newspaper-style side navigation
-- responsive layout structure
-- existing CSS variable palette
-
-Recommended:
-- integrate policy-theme.css into styles.css
-- reuse existing header/footer templates
-- connect pages into the existing section navigation
+This update:
+- adds contact@witneywire.co.uk clearly
+- improves the tone and wording
+- adds a visible contact box
+- keeps the existing branded policy page styling
+- preserves the working sidebar navigation
