@@ -1,0 +1,12 @@
+
+.centered-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+}
+
+.centered-social a {
+    margin: 0 auto;
+}
