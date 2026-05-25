@@ -56,14 +56,14 @@ async function initHome() {
   const articles = await getArticles();
   const lead = articles[0];
   top.innerHTML = `
-  <a class="lead-card" href="article.html?id=${encodeURIComponent(lead.id)}">
+  <a class="lead-card" href="article.html?id=witney-heatwave-34c">
     <div>
-      <span class="label">${label(lead.category)}</span>
-      <h2>${lead.title}</h2>
-      <p>${lead.summary}</p>
-      <div class="meta">${formatDate(lead.date)} · ${lead.author}</div>
+      <span class="label">NEWS</span>
+      <h2>Witney swelters as temperatures hit 34°C</h2>
+      <p>High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.</p>
+      <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
     </div>
-    <img src="${lead.image}" alt="">
+    <img src="assets/witney-heatwave-34c.png" alt="">
   </a>
 
   <a class="lead-card secondary-story" href="article.html?id=carterton-arts-week">
