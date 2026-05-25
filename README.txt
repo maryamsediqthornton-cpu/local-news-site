@@ -1,22 +1,17 @@
-Witney Wire - About & Policy Pages Patch
+UPDATED BRANDED PATCH
 
-This patch contains publisher-style legal and editorial page templates
-for integration into the Witney Wire website.
+This version has been rebuilt to visually match the existing Witney Wire styling system.
 
-Suggested routes:
-/about/
-/editorial-policy/
-/corrections-policy/
-/privacy-policy/
-/cookie-policy/
-/terms-of-use/
-/advertising-policy/
-/contact/
+Branding references used from the live project:
+- navy/red gradient masthead tones
+- gold accent borders
+- large publisher typography
+- wide editorial spacing
+- newspaper-style side navigation
+- responsive layout structure
+- existing CSS variable palette
 
-Public contact email used:
-contact@witneywire.co.uk
-
-Notes:
-- Wording is written for a pre-launch/local publisher environment.
-- Policies are future-proofed for newsletters, accounts, comments, and advertising.
-- Styling is intended to support a polished publisher-style presentation.
+Recommended:
+- integrate policy-theme.css into styles.css
+- reuse existing header/footer templates
+- connect pages into the existing section navigation
