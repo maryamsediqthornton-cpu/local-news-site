@@ -66,7 +66,7 @@ async function initHome() {
     <img src="${lead.image}" alt="">
   </a>
 
-  <a class="lead-card secondary-story" href="#">
+  <a class="lead-card secondary-story" href="article.html?id=carterton-arts-week">
     <div>
       <span class="label">COMMUNITY</span>
       <h2>Carterton Arts Week gets underway with workshops and events</h2>
@@ -78,12 +78,12 @@ async function initHome() {
 
   const latest = document.querySelector('#latest-list');
   if (latest) {
-    latest.innerHTML = articles.slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+    latest.innerHTML = articles.filter(a => a.id !== 'carterton-arts-week').slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
   }
 
   const more = document.querySelector('#more-stories');
   if (more) {
-    more.innerHTML = articles.slice(1).map(card).join('');
+    more.innerHTML = articles.filter(a => a.id !== 'carterton-arts-week').slice(1).map(card).join('');
   }
 }
 
