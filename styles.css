@@ -540,6 +540,7 @@ a:hover {
   display: flex;
   gap: 14px;
   margin-top: 10px;
+  justify-content: center;
 }
 
 .social-icons span {
