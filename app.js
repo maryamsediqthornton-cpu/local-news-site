@@ -66,14 +66,14 @@ async function initHome() {
     <img src="${lead.image}" alt="">
   </a>
 
-  <a class="lead-card secondary-story" href="#">
+  <a class="lead-card secondary-story" href="article.html?id=carterton-arts-week">
     <div>
       <span class="label">COMMUNITY</span>
       <h2>Carterton Arts Week gets underway with workshops and events</h2>
       <p>Arts Week is now underway in Carterton, with workshops, exhibitions and creative events taking place across the town.</p>
       <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
     </div>
-    <img src="assets/carterton-arts-week.png" alt="Carterton Arts Week">
+    <img src="assets/carterton-arts-week.jpg" alt="Carterton Arts Week">
   </a>`;
 
   const latest = document.querySelector('#latest-list');
