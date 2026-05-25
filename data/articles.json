@@ -1,12 +1,17 @@
 [
   {
-    "id": "market-square-revival",
-    "title": "Market Square revival plans move forward",
+    "id": "witney-heatwave-34c",
+    "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
-    "summary": "Plans to improve public spaces, shopfronts and pedestrian areas in central Witney have moved to the next stage.",
-    "body": "Witney residents are being invited to comment on a new round of town centre improvement proposals. The plans include better seating, cleaner walking routes, upgraded signage and new spaces for small traders and community events.",
-    "image": "assets/town-centre.svg",
-    "date": "2026-05-23",
+    "summary": "High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.",
+    "body": [
+      "Temperatures across Witney climbed to 34°C this afternoon as intense sunshine gripped the town centre.",
+      "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
+      "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives and friends during the hottest part of the day.",
+      "The image used with this story is an AI-generated illustration of Witney town centre in hot weather."
+    ],
+    "image": "assets/witney-heatwave-34c.png",
+    "date": "2026-05-25T15:30:00Z",
     "author": "Witney Wire Newsdesk"
   },
   {
@@ -51,10 +56,10 @@
   },
   {
     "id": "independent-cafe-opens",
-    "title": "Independent caf\u00e9 opens with focus on local suppliers",
+    "title": "Independent café opens with focus on local suppliers",
     "category": "business",
-    "summary": "A new caf\u00e9 has opened in Witney, offering seasonal food and coffee from regional suppliers.",
-    "body": "The owners say they want the caf\u00e9 to become a friendly meeting place for residents, workers and visitors.",
+    "summary": "A new café has opened in Witney, offering seasonal food and coffee from regional suppliers.",
+    "body": "The owners say they want the café to become a friendly meeting place for residents, workers and visitors.",
     "image": "assets/cafe.svg",
     "date": "2026-05-21",
     "author": "Business Desk"

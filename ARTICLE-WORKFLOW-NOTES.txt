@@ -1,0 +1,26 @@
+Witney Wire article workflow
+
+Current site behaviour:
+1. The homepage Top Stories section is controlled by data/articles.json.
+2. app.js loads data/articles.json and sorts articles by date, newest first.
+3. The first/newest article becomes the big Top Stories lead story.
+4. The next four articles become the Latest list.
+5. The rest appear under More from Witney Wire.
+6. Category pages filter by the category field:
+   - news
+   - sport
+   - whats-on
+   - traffic
+   - community
+   - business
+
+To replace the lead Top Story:
+- Add or update an article in data/articles.json.
+- Give it the newest date/time.
+- Use category: "news" unless it belongs elsewhere.
+- Put the image inside assets/.
+- Set image to assets/your-image-name.png.
+
+Important:
+- The file app.js reads is data/articles.json, not the root articles.json.
+- This package updates both data/articles.json and root articles.json to avoid confusion.
