@@ -1060,3 +1060,12 @@ a:hover {
 .secondary-story{
   margin-top:32px;
 }
+
+
+/* Carterton image sizing fix */
+.secondary-story img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:block;
+}
