@@ -929,3 +929,26 @@ a:hover {
     padding: 14px;
   }
 }
+
+
+/* Follow Us exact centering fix */
+.footer-column:last-child {
+  text-align: center;
+}
+
+.footer-column:last-child h3 {
+  text-align: center;
+}
+
+.footer-column:last-child .social-icons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.footer-column:last-child .social-icons span {
+  margin: 0 auto;
+}
