@@ -2,28 +2,11 @@
   {
     "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34\u00b0C",
-    "category": "breaking-news",
-    "summary": "Residents are being urged to stay hydrated as temperatures soar across Witney during the hottest afternoon of the year.",
-    "body": [
-      "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre.",
-      "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
-      "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives, and friends during the hottest part of the day.",
-      "The soaring temperatures have left many parts of the town centre noticeably quieter as people seek shade and cooler indoor spaces."
-    ],
-    "image": "assets/witney-heatwave-34c.png",
-    "date": "2026-05-25T15:00:00Z",
-    "author": "Witney Wire Newsdesk",
-    "featured": true,
-    "trending": true
-  },
-  {
-    "id": "market-square-revival",
-    "title": "Market Square revival plans move forward",
     "category": "news",
-    "summary": "Plans to improve public spaces, shopfronts and pedestrian areas in central Witney have moved to the next stage.",
-    "body": "Witney residents are being invited to comment on a new round of town centre improvement proposals. The plans include better seating, cleaner walking routes, upgraded signage and new spaces for small traders and community events.",
-    "image": "assets/town-centre.svg",
-    "date": "2026-05-23",
+    "summary": "High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.",
+    "body": "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre. Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire. Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives and friends during the hottest part of the day.",
+    "image": "assets/witney-heatwave-34c.png",
+    "date": "2026-05-25",
     "author": "Witney Wire Newsdesk"
   },
   {
