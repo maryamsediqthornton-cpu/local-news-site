@@ -995,3 +995,22 @@ a:hover {
     margin-bottom: 18px;
     line-height: 1.4;
 }
+
+
+/* Move sponsor box slightly lower so AI disclaimer sits directly under image */
+.article-sponsor,
+.sponsor-box,
+.ad-banner,
+.article-ad {
+    margin-top: 38px !important;
+}
+
+/* AI image disclaimer directly under image */
+.ai-disclaimer {
+    display: block;
+    font-size: 0.78rem;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
