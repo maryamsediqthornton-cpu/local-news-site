@@ -1048,8 +1048,10 @@ a:hover {
 }
 
 
-.ai-disclaimer{
-  font-size:0.78rem;
-  color:#666;
-  margin:8px 0 18px;
+/* AI image disclaimer directly below article image */
+.ai-disclaimer {
+  font-size: 0.78rem;
+  color: #666;
+  margin: 8px 0 18px;
+  line-height: 1.4;
 }
