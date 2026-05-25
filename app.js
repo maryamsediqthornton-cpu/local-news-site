@@ -73,7 +73,7 @@ async function initHome() {
       <p>Workshops, exhibitions and craft sessions are now taking place across Carterton as Arts Week returns for another year.</p>
       <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
     </div>
-    <img src="assets/carterton-arts-week.jpg" alt="Carterton Arts Week">
+    <img src="assets/carterton-arts-week.png" alt="Carterton Arts Week">
   </a>`;
 
   const latest = document.querySelector('#latest-list');

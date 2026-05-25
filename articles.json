@@ -1,11 +1,11 @@
 [
   {
     "id": "witney-heatwave-34c",
-    "title": "Witney swelters as temperatures hit 34°C",
+    "title": "Witney swelters as temperatures hit 34\u00b0C",
     "category": "news",
     "summary": "High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.",
     "body": [
-      "Temperatures across Witney climbed to 34°C this afternoon as intense sunshine gripped the town centre.",
+      "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre.",
       "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
       "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives and friends during the hottest part of the day."
     ],
@@ -55,12 +55,26 @@
   },
   {
     "id": "independent-cafe-opens",
-    "title": "Independent café opens with focus on local suppliers",
+    "title": "Independent caf\u00e9 opens with focus on local suppliers",
     "category": "business",
-    "summary": "A new café has opened in Witney, offering seasonal food and coffee from regional suppliers.",
-    "body": "The owners say they want the café to become a friendly meeting place for residents, workers and visitors.",
+    "summary": "A new caf\u00e9 has opened in Witney, offering seasonal food and coffee from regional suppliers.",
+    "body": "The owners say they want the caf\u00e9 to become a friendly meeting place for residents, workers and visitors.",
     "image": "assets/cafe.svg",
     "date": "2026-05-21",
     "author": "Business Desk"
+  },
+  {
+    "id": "carterton-arts-week",
+    "title": "Carterton Arts Week gets underway across the town",
+    "category": "community",
+    "summary": "Workshops, exhibitions and craft sessions are now taking place across Carterton as Arts Week returns for another year.",
+    "body": [
+      "Workshops, exhibitions and craft sessions are now taking place across Carterton as Arts Week returns for another year.",
+      "The event runs until 7 June and includes painting sessions, sewing workshops and community arts activities across the town.",
+      "Local artists and community groups are taking part throughout the week."
+    ],
+    "image": "assets/carterton-arts-week.png",
+    "date": "2026-05-25T18:00:00Z",
+    "author": "Witney Wire Newsdesk"
   }
 ]
