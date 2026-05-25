@@ -975,3 +975,12 @@ a:hover {
 .site-footer .footer-grid > div:last-child .social-icons span {
   margin: 0;
 }
+
+
+/* Smaller AI disclaimer under article image */
+.article-content p:nth-of-type(2) {
+    font-size: 0.82rem;
+    color: #666;
+    margin-top: -8px;
+    margin-bottom: 18px;
+}
