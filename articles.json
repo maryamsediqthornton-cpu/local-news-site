@@ -1,1 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192"><rect width="192" height="192" rx="42" fill="#10233f"/><path fill="#fff" d="M42 54h108v14H42zm0 30h108v14H42zm0 30h70v14H42z"/><circle cx="140" cy="122" r="18" fill="#d71920"/></svg>
+[
+  {
+    "title": "Witney swelters as temperatures hit 34\u00b0C",
+    "excerpt": "Temperatures across Witney have surged to 34\u00b0C as residents are urged to stay hydrated during the scorching afternoon heat.",
+    "category": "Breaking News",
+    "image": "images/witney-heatwave.jpg",
+    "url": "witney-heatwave.html",
+    "featured": true
+  },
+  {
+    "id": "market-square-revival",
+    "title": "Market Square revival plans move forward",
+    "category": "news",
+    "summary": "Plans to improve public spaces, shopfronts and pedestrian areas in central Witney have moved to the next stage.",
+    "body": "Witney residents are being invited to comment on a new round of town centre improvement proposals. The plans include better seating, cleaner walking routes, upgraded signage and new spaces for small traders and community events.",
+    "image": "assets/town-centre.svg",
+    "date": "2026-05-23",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "festival-weekend",
+    "title": "Community festival weekend expected to draw crowds",
+    "category": "whats-on",
+    "summary": "Music, food stalls, family activities and local performers are planned for a busy weekend of events.",
+    "body": "Organisers say this year's community festival will bring together local businesses, performers, charities and families for a packed programme across the weekend.",
+    "image": "assets/festival.svg",
+    "date": "2026-05-23",
+    "author": "Events Desk"
+  },
+  {
+    "id": "traffic-work-starts",
+    "title": "Roadworks set to affect town centre traffic",
+    "category": "traffic",
+    "summary": "Drivers are being warned to allow extra time as resurfacing and maintenance work begins.",
+    "body": "Temporary traffic management will be in place while essential maintenance is carried out. Residents are advised to check routes before travelling.",
+    "image": "assets/traffic.svg",
+    "date": "2026-05-22",
+    "author": "Travel Reporter"
+  },
+  {
+    "id": "local-club-final",
+    "title": "Local club celebrates dramatic final victory",
+    "category": "sport",
+    "summary": "A late winner secured silverware after a tense final watched by travelling supporters.",
+    "body": "The team lifted the trophy after a hard-fought match that stayed level until the closing minutes. Coaches praised the players' resilience and the support from the community.",
+    "image": "assets/sport.svg",
+    "date": "2026-05-22",
+    "author": "Sports Desk"
+  },
+  {
+    "id": "school-garden-project",
+    "title": "School launches new wildlife garden",
+    "category": "community",
+    "summary": "Pupils helped plant flowers, herbs and small trees as part of a nature and wellbeing project.",
+    "body": "Teachers say the project will help children learn about biodiversity, food growing and outdoor wellbeing throughout the school year.",
+    "image": "assets/community.svg",
+    "date": "2026-05-21",
+    "author": "Community Reporter"
+  },
+  {
+    "id": "independent-cafe-opens",
+    "title": "Independent caf\u00e9 opens with focus on local suppliers",
+    "category": "business",
+    "summary": "A new caf\u00e9 has opened in Witney, offering seasonal food and coffee from regional suppliers.",
+    "body": "The owners say they want the caf\u00e9 to become a friendly meeting place for residents, workers and visitors.",
+    "image": "assets/cafe.svg",
+    "date": "2026-05-21",
+    "author": "Business Desk"
+  }
+]
