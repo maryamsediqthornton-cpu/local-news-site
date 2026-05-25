@@ -1,20 +1,22 @@
+Witney Wire - About & Policy Pages Patch
 
-IMPORTANT:
-The previous patch only provided reusable components and did not inject them directly into the article template.
+This patch contains publisher-style legal and editorial page templates
+for integration into the Witney Wire website.
 
-THIS PATCH FIXES THAT.
+Suggested routes:
+/about/
+/editorial-policy/
+/corrections-policy/
+/privacy-policy/
+/cookie-policy/
+/terms-of-use/
+/advertising-policy/
+/contact/
 
-WHAT TO DO:
+Public contact email used:
+contact@witneywire.co.uk
 
-1. Open article.html
-2. Find the main article content area
-3. Paste the FIRST ad block after paragraph 4
-4. Paste the SECOND ad block near the end of the article
-5. Open styles.css
-6. Paste the supplied CSS at the bottom of the file
-7. Commit and push through GitHub Desktop
-
-This approach keeps the site stable and avoids breaking layouts.
-
-No .git files included.
-Patch-only workflow.
+Notes:
+- Wording is written for a pre-launch/local publisher environment.
+- Policies are future-proofed for newsletters, accounts, comments, and advertising.
+- Styling is intended to support a polished publisher-style presentation.

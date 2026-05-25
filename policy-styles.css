@@ -1,0 +1,51 @@
+.policy-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.policy-hero {
+  border-bottom: 3px solid #d9d9d9;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+}
+
+.policy-hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.policy-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+}
+
+.policy-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.policy-sidebar li {
+  margin-bottom: 14px;
+}
+
+.policy-sidebar a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.policy-content {
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.policy-content h2 {
+  margin-top: 32px;
+}
+
+@media (max-width: 768px) {
+  .policy-layout {
+    grid-template-columns: 1fr;
+  }
+}
