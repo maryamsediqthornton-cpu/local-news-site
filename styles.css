@@ -1014,3 +1014,27 @@ a:hover {
     margin-bottom: 10px;
     line-height: 1.4;
 }
+
+
+/* FORCE disclaimer directly below image and above sponsor box */
+.ai-disclaimer {
+    display: block !important;
+    font-size: 0.78rem !important;
+    color: #666 !important;
+    margin-top: 8px !important;
+    margin-bottom: 28px !important;
+    line-height: 1.4 !important;
+    order: 2;
+}
+
+.article-image,
+.article-content img {
+    margin-bottom: 0 !important;
+}
+
+.article-sponsor,
+.sponsor-box,
+.ad-banner,
+.article-ad {
+    margin-top: 0 !important;
+}
