@@ -1,11 +1,20 @@
 [
   {
+    "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34\u00b0C",
-    "excerpt": "Temperatures across Witney have surged to 34\u00b0C as residents are urged to stay hydrated during the scorching afternoon heat.",
-    "category": "Breaking News",
-    "image": "images/witney-heatwave.jpg",
-    "url": "witney-heatwave.html",
-    "featured": true
+    "category": "breaking-news",
+    "summary": "Residents are being urged to stay hydrated as temperatures soar across Witney during the hottest afternoon of the year.",
+    "body": [
+      "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre.",
+      "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
+      "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives, and friends during the hottest part of the day.",
+      "The soaring temperatures have left many parts of the town centre noticeably quieter as people seek shade and cooler indoor spaces."
+    ],
+    "image": "assets/witney-heatwave-34c.png",
+    "date": "2026-05-25T15:00:00Z",
+    "author": "Witney Wire Newsdesk",
+    "featured": true,
+    "trending": true
   },
   {
     "id": "market-square-revival",
