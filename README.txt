@@ -1,4 +1,5 @@
-Footer-only patch:
-- Removes X and Instagram
-- Keeps Facebook only
-- Centers Facebook icon under Follow Us
+
+Apply the class 'follow-us-column' to the Follow Us footer column container.
+
+Example:
+<div class="footer-column follow-us-column">
