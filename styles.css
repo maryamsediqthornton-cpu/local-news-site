@@ -1191,3 +1191,67 @@ a:hover {
     font-size: 30px;
   }
 }
+
+
+/* Traffic Live Ticker */
+
+.traffic-live-ticker {
+  background: #ffffff;
+  border: 1px solid #d9e0e7;
+  border-left: 5px solid #2d8f5a;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.ticker-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-weight: 700;
+  color: #0b2d4d;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d62828;
+  display: inline-block;
+}
+
+.ticker-time {
+  margin-left: auto;
+  font-size: 12px;
+  color: #6c7783;
+  font-weight: 500;
+}
+
+.ticker-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticker-item {
+  background: #f5f8fb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .ticker-header {
+    align-items: flex-start;
+  }
+
+  .ticker-time {
+    margin-left: 0;
+    width: 100%;
+  }
+}

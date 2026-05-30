@@ -1,21 +1,19 @@
-WITNEY WIRE – LIVE TRAVEL FEED PATCH
+WITNEY WIRE — TRAFFIC LIVE TICKER PATCH
+
+This patch:
+- Keeps the existing Traffic category page
+- Keeps all existing article cards
+- Adds a LIVE newsroom-style traffic ticker above the stories
+- Only appears on:
+  category.html?category=traffic
 
 Files included:
-- index.html
+- category.html
 - styles.css
-- travel-updates.html
-
-What this adds:
-- New Travel Updates page
-- Live-style travel feed layout
-- Auto-refreshing update timestamps
-- Responsive mobile layout
-- Sidebar advert placement
-- Navigation link to Travel Updates
 
 Deployment:
-1. Extract this ZIP
-2. Replace ONLY these files inside your GitHub Desktop project folder
+1. Extract ZIP
+2. Replace ONLY these files in your GitHub Desktop project
 3. Commit changes
 4. Push origin
-5. Cloudflare Pages will auto deploy
+5. Wait for Cloudflare Pages deploy
