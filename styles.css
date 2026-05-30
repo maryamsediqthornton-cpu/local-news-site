@@ -1193,65 +1193,57 @@ a:hover {
 }
 
 
-/* Traffic Live Ticker */
+/* LIVE TRAFFIC TICKER */
 
-.traffic-live-ticker {
+.live-traffic-ticker {
   background: #ffffff;
-  border: 1px solid #d9e0e7;
-  border-left: 5px solid #2d8f5a;
+  border: 1px solid #d8dee6;
+  border-left: 5px solid #d62828;
   border-radius: 12px;
-  padding: 18px 20px;
-  margin-bottom: 28px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 18px;
+  margin: 24px 0 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 .ticker-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d62828;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  font-weight: 700;
-  color: #0b2d4d;
-  margin-bottom: 14px;
-  font-size: 14px;
+  gap: 10px;
+  letter-spacing: 0.5px;
 }
 
 .live-dot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
   background: #d62828;
-  display: inline-block;
-}
-
-.ticker-time {
-  margin-left: auto;
-  font-size: 12px;
-  color: #6c7783;
-  font-weight: 500;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
 }
 
 .ticker-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .ticker-item {
-  background: #f5f8fb;
-  border-radius: 8px;
-  padding: 12px 14px;
   font-size: 15px;
   line-height: 1.5;
+  color: #1f2937;
 }
 
-@media (max-width: 768px) {
-  .ticker-header {
-    align-items: flex-start;
-  }
+.ticker-update {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+}
 
-  .ticker-time {
-    margin-left: 0;
-    width: 100%;
-  }
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
 }

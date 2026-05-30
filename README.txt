@@ -1,11 +1,10 @@
-WITNEY WIRE — TRAFFIC LIVE TICKER PATCH
+WITNEY WIRE – LIVE TRAFFIC TICKER PATCH
 
 This patch:
 - Keeps the existing Traffic category page
-- Keeps all existing article cards
-- Adds a LIVE newsroom-style traffic ticker above the stories
-- Only appears on:
-  category.html?category=traffic
+- Preserves existing article cards/layout
+- Adds a LIVE TRAFFIC UPDATES ticker above the articles
+- Adds subtle newsroom-style styling only
 
 Files included:
 - category.html
@@ -14,6 +13,6 @@ Files included:
 Deployment:
 1. Extract ZIP
 2. Replace ONLY these files in your GitHub Desktop project
-3. Commit changes
+3. Commit
 4. Push origin
-5. Wait for Cloudflare Pages deploy
+5. Cloudflare Pages auto deploys
