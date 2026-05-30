@@ -1069,3 +1069,125 @@ a:hover {
   object-fit:cover;
   display:block;
 }
+
+
+/* Travel Updates */
+
+.travel-page {
+  padding: 32px 0 60px;
+}
+
+.travel-hero {
+  background: linear-gradient(135deg, #0b2a4a, #174f7a);
+  color: white;
+  border-radius: 16px;
+  padding: 36px;
+  margin-bottom: 28px;
+}
+
+.travel-hero h1 {
+  margin: 12px 0;
+  font-size: 42px;
+}
+
+.travel-hero p {
+  max-width: 760px;
+  line-height: 1.6;
+}
+
+.live-badge {
+  display: inline-block;
+  background: #d62828;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.travel-layout {
+  display: grid;
+  grid-template-columns: 2fr 320px;
+  gap: 28px;
+}
+
+.travel-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 18px;
+  background: white;
+}
+
+.travel-card.major {
+  background: #f7fafc;
+}
+
+.travel-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.severity {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.severity.high {
+  background: #ffe2e2;
+}
+
+.severity.medium {
+  background: #fff2cc;
+}
+
+.severity.low {
+  background: #e3f7e8;
+}
+
+.travel-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-ad,
+.travel-info {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.ad-box {
+  height: 250px;
+  border: 2px dashed #c9d2db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  color: var(--muted);
+  background: #fafafa;
+}
+
+.travel-info ul {
+  padding-left: 18px;
+  line-height: 1.9;
+}
+
+@media (max-width: 900px) {
+  .travel-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .travel-hero h1 {
+    font-size: 30px;
+  }
+}

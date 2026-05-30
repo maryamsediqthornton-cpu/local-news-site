@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Updates | Witney Wire</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand-row">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Witney Wire" class="site-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="wrap nav-inner">
+    <a href="index.html">Home</a>
+    <a href="news.html">News</a>
+    <a href="sport.html">Sport</a>
+    <a href="community.html">Community</a>
+    <a href="travel-updates.html" class="active">Travel Updates</a>
+  </div>
+</nav>
+
+<main class="wrap travel-page">
+
+  <section class="travel-hero">
+    <div>
+      <span class="live-badge">LIVE</span>
+      <h1>Oxfordshire Travel Updates</h1>
+      <p>Live regional travel updates covering roads, rail disruption, weather alerts and traffic incidents affecting Witney, Carterton, Oxford and surrounding areas.</p>
+    </div>
+  </section>
+
+  <section class="travel-layout">
+
+    <div class="travel-feed">
+
+      <div class="travel-card major">
+        <div class="travel-meta">
+          <span class="severity high">HIGH</span>
+          <span>Updated automatically</span>
+        </div>
+        <h2>A40 congestion expected during peak travel hours</h2>
+        <p>Drivers travelling between Witney and Oxford are advised to allow extra time during morning and evening commuter periods.</p>
+      </div>
+
+      <div id="live-travel-feed"></div>
+
+    </div>
+
+    <aside class="travel-sidebar">
+
+      <div class="sidebar-ad">
+        <span>ADVERTISEMENT</span>
+        <div class="ad-box">
+          300 × 250 Advert Space
+        </div>
+      </div>
+
+      <div class="travel-info">
+        <h3>Coverage Areas</h3>
+        <ul>
+          <li>Witney</li>
+          <li>Carterton</li>
+          <li>Oxford</li>
+          <li>A40 Corridor</li>
+          <li>Rail Services</li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Witney Wire Ltd. Your Town. Your Stories.</p>
+  </div>
+</footer>
+
+<script>
+const updates = [
+  {
+    severity: "Medium",
+    title: "Minor delays reported on A34 northbound",
+    text: "Traffic is moving slowly approaching Oxford interchange following increased commuter traffic.",
+    time: "5 mins ago"
+  },
+  {
+    severity: "Low",
+    title: "Great Western Railway services operating normally",
+    text: "No major disruption currently reported across Oxfordshire rail services.",
+    time: "12 mins ago"
+  },
+  {
+    severity: "Medium",
+    title: "Roadworks continue near Burford Road junction",
+    text: "Temporary traffic management remains in place with minor delays expected.",
+    time: "18 mins ago"
+  }
+];
+
+const container = document.getElementById('live-travel-feed');
+
+updates.forEach(update => {
+  const card = document.createElement('div');
+  card.className = 'travel-card';
+
+  card.innerHTML = `
+    <div class="travel-meta">
+      <span class="severity ${update.severity.toLowerCase()}">${update.severity}</span>
+      <span>${update.time}</span>
+    </div>
+    <h3>${update.title}</h3>
+    <p>${update.text}</p>
+  `;
+
+  container.appendChild(card);
+});
+
+setInterval(() => {
+  const now = new Date();
+  const timeText = now.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  document.querySelectorAll('.travel-meta span:last-child').forEach(el => {
+    el.textContent = `Updated ${timeText}`;
+  });
+}, 60000);
+</script>
+
+</body>
+</html>
