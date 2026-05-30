@@ -1,0 +1,17 @@
+REPLACE THESE LINES IN index.html
+
+FROM:
+
+<a href="category.html?category=traffic">Traffic</a>
+
+AND
+
+<a href="category.html?category=traffic">Travel updates</a>
+
+TO:
+
+<a href="travel-updates.html">Traffic</a>
+
+AND
+
+<a href="travel-updates.html">Travel updates</a>
