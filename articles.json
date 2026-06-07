@@ -1,5 +1,15 @@
 [
   {
+    "id": "a40-road-works-delays-witney",
+    "title": "A40 Road Works Cause Delays Around Witney",
+    "category": "traffic",
+    "summary": "Drivers are being warned to expect delays on the A40 near Witney due to ongoing road layout construction works and lane closures in both directions.",
+    "body": "Motorists travelling through Witney are being advised to allow extra time for journeys after lane closures were introduced on the A40 as part of ongoing construction work to change the road layout.\n\nThe affected section is between the B4022 Witney East junction and the A40 / A415 / Witney Road junction near the Witney Town Centre and Ducklington turn off.\n\nTraffic is currently moving slowly in both directions, particularly during peak travel periods, with queues expected to build throughout the day.\n\nTraffic management measures remain in place while crews continue work on improvements to the road layout in the area.\n\nDrivers are encouraged to plan ahead, use alternative routes where possible, and expect delays while the works continue.\n\nNo official completion date for the current phase of works has yet been confirmed.",
+    "image": "images/traffic-update.jpg",
+    "date": "2026-06-07",
+    "author": "Traffic Desk"
+  },
+  {
     "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34\u00b0C",
     "category": "news",
@@ -73,7 +83,7 @@
       "The event runs until 7 June and includes painting sessions, sewing workshops and community arts activities across the town.",
       "Local artists and community groups are taking part throughout the week."
     ],
-    "image": "assets/carterton-arts-week.png",
+    "image": "assets/carterton-arts-week.jpg",
     "date": "2026-05-25T18:00:00Z",
     "author": "Witney Wire Newsdesk"
   }
