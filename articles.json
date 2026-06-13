@@ -3,19 +3,25 @@
     "id": "m40-junction-4-slip-road-closures",
     "title": "M40 Junction 4 Slip Road Closures Planned Overnight",
     "category": "traffic",
-    "summary": "Drivers using the M40 northbound at Junction 4 are being warned of overnight lane closures this weekend due to emergency barrier repair works.",
-    "body": "Motorists are being advised to plan ahead this weekend as emergency barrier repairs are scheduled on the M40 northbound entry slip road at Junction 4.\n\nNational Highways has confirmed the work will begin at 10:15pm on Saturday 13 June and continue overnight until 6am on Sunday 14 June.\n\nLane closures will be in place while engineers carry out emergency repair work on safety barriers along the slip road.\n\nDrivers travelling through the area late on Saturday evening and into the early hours of Sunday morning should expect disruption and allow extra time for journeys.\n\nTraffic management measures will remain in place throughout the repair works, with motorists encouraged to follow signed diversions where necessary.\n\nNo further details have yet been released regarding the extent of the repairs.",
-    "image": "images/traffic-update.jpg",
-    "date": "2026-06-13",
-    "author": "Traffic Desk"
+    "summary": "Drivers using the M40 northbound at Junction 4 are being warned of overnight lane closures due to planned emergency barrier repairs.",
+    "body": [
+      "Motorists are being advised to plan ahead as emergency barrier repairs are scheduled on the M40 northbound entry slip road at Junction 4.",
+      "The work is currently listed as pending and is scheduled to begin at 10.15pm on Saturday 13 June, continuing overnight until 6am on Sunday 14 June.",
+      "Lane closures will be in place while crews carry out repairs to the safety barrier on the slip road.",
+      "Drivers travelling through the area late on Saturday evening and into the early hours of Sunday morning should expect disruption and allow extra time for journeys.",
+      "Traffic management measures are expected to remain in place throughout the works. Motorists should follow local signage and signed diversion routes where required."
+    ],
+    "image": "assets/traffic.svg",
+    "date": "2026-06-13T18:00:00Z",
+    "author": "Witney Wire Newsdesk"
   },
   {
     "id": "witney-heatwave-34c",
-    "title": "Witney swelters as temperatures hit 34\u00b0C",
+    "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
     "summary": "High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.",
     "body": [
-      "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre.",
+      "Temperatures across Witney climbed to 34°C this afternoon as intense sunshine gripped the town centre.",
       "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
       "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives and friends during the hottest part of the day."
     ],
@@ -80,10 +86,10 @@
   },
   {
     "id": "independent-cafe-opens",
-    "title": "Independent caf\u00e9 opens with focus on local suppliers",
+    "title": "Independent café opens with focus on local suppliers",
     "category": "business",
-    "summary": "A new caf\u00e9 has opened in Witney, offering seasonal food and coffee from regional suppliers.",
-    "body": "The owners say they want the caf\u00e9 to become a friendly meeting place for residents, workers and visitors.",
+    "summary": "A new café has opened in Witney, offering seasonal food and coffee from regional suppliers.",
+    "body": "The owners say they want the café to become a friendly meeting place for residents, workers and visitors.",
     "image": "assets/cafe.svg",
     "date": "2026-05-21",
     "author": "Business Desk"

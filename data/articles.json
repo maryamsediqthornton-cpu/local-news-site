@@ -1,5 +1,21 @@
 [
   {
+    "id": "m40-junction-4-slip-road-closures",
+    "title": "M40 Junction 4 Slip Road Closures Planned Overnight",
+    "category": "traffic",
+    "summary": "Drivers using the M40 northbound at Junction 4 are being warned of overnight lane closures due to planned emergency barrier repairs.",
+    "body": [
+      "Motorists are being advised to plan ahead as emergency barrier repairs are scheduled on the M40 northbound entry slip road at Junction 4.",
+      "The work is currently listed as pending and is scheduled to begin at 10.15pm on Saturday 13 June, continuing overnight until 6am on Sunday 14 June.",
+      "Lane closures will be in place while crews carry out repairs to the safety barrier on the slip road.",
+      "Drivers travelling through the area late on Saturday evening and into the early hours of Sunday morning should expect disruption and allow extra time for journeys.",
+      "Traffic management measures are expected to remain in place throughout the works. Motorists should follow local signage and signed diversion routes where required."
+    ],
+    "image": "assets/traffic.svg",
+    "date": "2026-06-13T18:00:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
