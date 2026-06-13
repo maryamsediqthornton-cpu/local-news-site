@@ -1,12 +1,21 @@
 [
   {
     "id": "ms-cafe-witney-best-coffee",
-    "title": "Why M&S Caf\u00e9 in Witney Might Be the Best Spot in Town for a Coffee Break",
-    "category": "Community",
-    "summary": "From consistently hot coffee to friendly staff and a relaxed atmosphere, the M&S Caf\u00e9 in Witney has quietly become one of the town\u2019s most reliable places to stop and recharge.",
-    "body": "There are plenty of places to grab a coffee in Witney, but for me, the M&S Caf\u00e9 inside Marks & Spencer continues to stand out for all the right reasons. In a time where service can often feel rushed or inconsistent, the caf\u00e9 manages to keep things simple \u2014 good coffee, friendly staff and a genuinely pleasant atmosphere. One thing that always stands out is that the coffee is actually hot when it arrives \u2014 something that surprisingly isn\u2019t guaranteed these days. Whether stopping in for a quick drink while shopping or taking a short break during the day, the caf\u00e9 consistently delivers a reliable experience. The service is also worth mentioning. Staff are regularly welcoming, polite and patient, even during busier periods, which makes the whole place feel far more relaxed than many chain caf\u00e9s. The caf\u00e9 itself is clean, comfortable and usually calm enough to sit for a while without feeling hurried out the door. While independent caf\u00e9s will always play an important role in Witney\u2019s town centre, the M&S Caf\u00e9 deserves credit for quietly doing the basics very well \u2014 and doing them consistently. Sometimes that\u2019s exactly what people are looking for.",
-    "image": "assets/ms-cafe-witney.jpg",
-    "date": "2026-06-13",
+    "title": "Why M&S Café in Witney Might Be the Best Spot in Town for a Coffee Break",
+    "category": "community",
+    "summary": "From consistently hot coffee to friendly staff and a relaxed atmosphere, the M&S Café in Witney has quietly become one of the town’s most reliable places to stop and recharge.",
+    "body": [
+      "There are plenty of places to grab a coffee in Witney, but the M&S Café inside Marks & Spencer continues to stand out for all the right reasons.",
+      "In a time where service can often feel rushed or inconsistent, the café manages to keep things simple: good coffee, friendly staff and a genuinely pleasant atmosphere.",
+      "One thing that always stands out is that the coffee is actually hot when it arrives — something that surprisingly isn’t guaranteed everywhere these days.",
+      "Whether stopping in for a quick drink while shopping or taking a short break during the day, the café consistently delivers a reliable experience.",
+      "The service is also worth mentioning. Staff are regularly welcoming, polite and patient, even during busier periods, which makes the whole place feel far more relaxed than many chain cafés.",
+      "The café itself is clean, comfortable and usually calm enough to sit for a while without feeling hurried out the door.",
+      "While independent cafés will always play an important role in Witney’s town centre, the M&S Café deserves credit for quietly doing the basics very well — and doing them consistently.",
+      "Sometimes that’s exactly what people are looking for."
+    ],
+    "image": "assets/ms-cafe-witney.png",
+    "date": "2026-06-13T20:00:00Z",
     "author": "Witney Wire"
   },
   {
@@ -27,11 +36,11 @@
   },
   {
     "id": "witney-heatwave-34c",
-    "title": "Witney swelters as temperatures hit 34\u00b0C",
+    "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
     "summary": "High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.",
     "body": [
-      "Temperatures across Witney climbed to 34\u00b0C this afternoon as intense sunshine gripped the town centre.",
+      "Temperatures across Witney climbed to 34°C this afternoon as intense sunshine gripped the town centre.",
       "Despite the unusually hot conditions, the Met Office has not issued any weather warnings for Oxfordshire.",
       "Residents are being advised to drink plenty of water, avoid prolonged sun exposure, and check in on vulnerable neighbours, relatives and friends during the hottest part of the day."
     ],
@@ -96,10 +105,10 @@
   },
   {
     "id": "independent-cafe-opens",
-    "title": "Independent caf\u00e9 opens with focus on local suppliers",
+    "title": "Independent café opens with focus on local suppliers",
     "category": "business",
-    "summary": "A new caf\u00e9 has opened in Witney, offering seasonal food and coffee from regional suppliers.",
-    "body": "The owners say they want the caf\u00e9 to become a friendly meeting place for residents, workers and visitors.",
+    "summary": "A new café has opened in Witney, offering seasonal food and coffee from regional suppliers.",
+    "body": "The owners say they want the café to become a friendly meeting place for residents, workers and visitors.",
     "image": "assets/cafe.svg",
     "date": "2026-05-21",
     "author": "Business Desk"

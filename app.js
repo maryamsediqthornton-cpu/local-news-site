@@ -55,35 +55,28 @@ async function initHome() {
 
   const articles = await getArticles();
   const lead = articles[0];
-  top.innerHTML = `
-  <a class="lead-card" href="article.html?id=witney-heatwave-34c">
-    <div>
-      <span class="label">NEWS</span>
-      <h2>Witney swelters as temperatures hit 34°C</h2>
-      <p>High temperatures have swept across Witney as residents are urged to stay hydrated during the hottest afternoon of the year.</p>
-      <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
-    </div>
-    <img src="assets/witney-heatwave-34c.png" alt="">
-  </a>
+  const secondary = articles[1];
 
-  <a class="lead-card secondary-story" href="article.html?id=carterton-arts-week">
-    <div>
-      <span class="label">COMMUNITY</span>
-      <h2>Carterton Arts Week gets underway across the town</h2>
-      <p>Workshops, exhibitions and craft sessions are now taking place across Carterton as Arts Week returns for another year.</p>
-      <div class="meta">25 May 2026 · Witney Wire Newsdesk</div>
-    </div>
-    <img src="assets/carterton-arts-week.png" alt="Carterton Arts Week">
-  </a>`;
+  top.innerHTML = [lead, secondary].filter(Boolean).map((article, index) => `
+    <a class="lead-card${index === 1 ? ' secondary-story' : ''}" href="article.html?id=${encodeURIComponent(article.id)}">
+      <div>
+        <span class="label">${label(article.category)}</span>
+        <h2>${article.title}</h2>
+        <p>${article.summary}</p>
+        <div class="meta">${formatDate(article.date)} · ${article.author}</div>
+      </div>
+      <img src="${article.image}" alt="">
+    </a>
+  `).join('');
 
   const latest = document.querySelector('#latest-list');
   if (latest) {
-    latest.innerHTML = articles.slice(1, 5).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+    latest.innerHTML = articles.slice(2, 6).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
   }
 
   const more = document.querySelector('#more-stories');
   if (more) {
-    more.innerHTML = articles.slice(1).map(card).join('');
+    more.innerHTML = articles.slice(2).map(card).join('');
   }
 }
 
@@ -115,7 +108,7 @@ async function initArticle() {
     <p class="article-summary">${article.summary}</p>
     <div class="meta">${formatDate(article.date)} · ${article.author}</div>
     <img class="article-hero" src="${article.image}" alt="">
-    <p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>
+    ${article.id === 'witney-heatwave-34c' ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
     ${adBlock('article')}
