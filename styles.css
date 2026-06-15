@@ -1369,3 +1369,20 @@ a:hover {
   color: #64748b;
   line-height: 1.45;
 }
+
+
+/* Footer logo */
+.footer-logo {
+  display: block;
+  width: min(260px, 100%);
+  max-width: 260px;
+  height: auto;
+  margin: 0 0 18px;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .footer-logo {
+    max-width: 220px;
+  }
+}
