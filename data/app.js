@@ -28,6 +28,16 @@ function adBlock(kind = 'inline') {
   </aside>`;
 }
 
+
+function haveYourSayBlock() {
+  return `<section class="have-your-say" aria-label="Have your say">
+    <h2>Have Your Say</h2>
+    <p>What do you think about this story?</p>
+    <p>Email your views to <a href="mailto:contact@witneywire.co.uk">contact@witneywire.co.uk</a>.</p>
+    <small>Please include the article headline in your email. Letters may be edited for length, clarity and legal reasons.</small>
+  </section>`;
+}
+
 function renderArticleBody(body = []) {
   const paragraphs = Array.isArray(body) ? body : [body];
 
@@ -119,6 +129,7 @@ async function initArticle() {
     ${article.id === 'witney-heatwave-34c' ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
+    ${haveYourSayBlock()}
     ${adBlock('article')}
   `;
 }

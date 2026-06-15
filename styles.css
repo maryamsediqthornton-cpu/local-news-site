@@ -1336,3 +1336,36 @@ a:hover {
 .nav a {
   text-decoration: none;
 }
+
+
+/* Have Your Say article engagement box */
+.have-your-say {
+  margin: 28px 0;
+  padding: 22px;
+  border: 1px solid #dbe4ea;
+  border-left: 5px solid #0f3d3e;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.have-your-say h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.have-your-say p {
+  margin: 7px 0;
+}
+
+.have-your-say a {
+  font-weight: 700;
+  color: #0f3d3e;
+}
+
+.have-your-say small {
+  display: block;
+  margin-top: 10px;
+  color: #64748b;
+  line-height: 1.45;
+}
