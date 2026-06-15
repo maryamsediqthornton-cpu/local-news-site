@@ -1290,3 +1290,42 @@ a:hover {
     flex-basis: 52px;
   }
 }
+
+
+/* GDPR consent checkbox for subscription and newsletter forms */
+.gdpr-consent {
+  margin: 8px 0 4px;
+  padding: 14px;
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.gdpr-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #0f172a;
+}
+
+.gdpr-checkbox input {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.gdpr-note {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #475569;
+}
+
+.gdpr-note a {
+  color: #0f4c81;
+  font-weight: 700;
+  text-decoration: underline;
+}
