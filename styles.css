@@ -1329,3 +1329,10 @@ a:hover {
   font-weight: 700;
   text-decoration: underline;
 }
+
+/* Consistent navigation for standalone form and policy pages */
+.site-header a,
+.main-nav a,
+.nav a {
+  text-decoration: none;
+}
