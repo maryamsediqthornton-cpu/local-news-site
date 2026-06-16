@@ -1386,3 +1386,136 @@ a:hover {
     max-width: 220px;
   }
 }
+
+
+/* Jobs board page */
+.jobs-page {
+  padding: 34px 0 60px;
+}
+
+.jobs-hero {
+  background: linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
+  color: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  margin-bottom: 30px;
+}
+
+.jobs-hero .label {
+  color: rgba(255,255,255,.82);
+}
+
+.jobs-hero h1 {
+  margin: 12px 0;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1;
+}
+
+.jobs-hero p {
+  max-width: 760px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.jobs-hero-button,
+.job-card a,
+.jobs-info-card a {
+  display: inline-block;
+  background: var(--brand-green);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.jobs-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) 330px;
+  gap: 30px;
+  align-items: start;
+}
+
+.jobs-list {
+  display: grid;
+  gap: 18px;
+}
+
+.job-card,
+.jobs-info-card {
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--brand-green);
+  border-radius: 12px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(8,20,33,0.04);
+}
+
+.job-card.muted-job {
+  background: #f7faf9;
+}
+
+.job-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.job-type,
+.job-location {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.job-type {
+  background: rgba(47,125,90,.12);
+  color: var(--brand-green);
+}
+
+.job-location {
+  background: rgba(11,42,74,.1);
+  color: var(--brand-navy);
+}
+
+.job-card h2,
+.jobs-info-card h2 {
+  color: var(--brand-navy);
+  margin: 0 0 8px;
+}
+
+.job-company {
+  font-weight: 800;
+  color: #3f4b53;
+}
+
+.job-card p,
+.jobs-info-card p {
+  line-height: 1.6;
+  color: #3f4b53;
+}
+
+.jobs-sidebar {
+  display: grid;
+  gap: 18px;
+}
+
+.jobs-note {
+  border-top-color: var(--brand-navy);
+  background: #f7fafc;
+}
+
+@media (max-width: 900px) {
+  .jobs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .jobs-hero {
+    padding: 28px 22px;
+  }
+}
