@@ -95,5 +95,15 @@
   </div>
 </footer>
 
+
+<script>
+  // Keep the thank-you redirect on whichever domain is being tested/live.
+  document.addEventListener('DOMContentLoaded', function () {
+    var nextField = document.querySelector('input[name="_next"]');
+    if (nextField) {
+      nextField.value = window.location.origin + '/thanks.html';
+    }
+  });
+</script>
 </body>
 </html>
