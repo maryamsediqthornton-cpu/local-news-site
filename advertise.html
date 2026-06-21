@@ -16,7 +16,7 @@
   <main class="form-page">
     <section class="form-card">
   <h1>Advertise with Witney Wire</h1>
-  <p>Use this form to enquire about advertising, sponsored placements, local business promotions, print-ready article sponsorship, or booking an ad. When submitted, it opens an email addressed to <strong>advertise@witneywire.co.uk</strong>.</p>
+  <p>Use this form to enquire about advertising, sponsored placements, local business promotions, print-ready article sponsorship, or booking an ad. Your enquiry will be sent securely to <strong>advertise@witneywire.co.uk</strong>.</p>
 
   <div class="ad-media-kit">
     <h2>Available advertising options</h2>
@@ -27,7 +27,12 @@
       <div><strong>Print-ready article ad</strong><span>Clean sponsor block for printed articles</span></div>
     </div>
   </div>
-  <form class="form-grid" action="mailto:advertise@witneywire.co.uk" method="post" enctype="text/plain">
+  <form class="form-grid" action="https://formsubmit.co/advertise@witneywire.co.uk" method="POST">
+    <input type="hidden" name="_subject" value="New advertising enquiry - Witney Wire">
+    <input type="hidden" name="_next" value="https://witneywire.co.uk/thanks.html">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
     <label for="name">Your name</label>
     <input id="name" name="Name" required>
     <label for="business">Business name</label>
@@ -48,8 +53,8 @@
     <label for="message">Message</label>
     <textarea id="message" name="Message" placeholder="Tell us what you would like to advertise, preferred dates, and any budget or campaign details."></textarea>
     <div class="form-actions">
-      <button class="form-submit" type="submit">Email advertising team</button>
-      <span class="form-note">This opens your email app so you can review before sending.</span>
+      <button class="form-submit" type="submit">Submit advertising enquiry securely</button>
+      <span class="form-note">Your enquiry will be sent securely to the Witney Wire advertising inbox.</span>
     </div>
   </form>
 </section>

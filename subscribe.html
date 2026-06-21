@@ -16,8 +16,13 @@
   <main class="form-page">
     <section class="form-card">
   <h1>Subscribe to Witney Wire</h1>
-  <p>Use this form to subscribe to the latest local news. When submitted, it opens an email addressed to <strong>subscribe@witneywire.co.uk</strong>.</p>
-  <form class="form-grid" action="mailto:subscribe@witneywire.co.uk" method="post" enctype="text/plain">
+  <p>Use this form to subscribe to the latest local news. Your request will be sent securely to <strong>subscribe@witneywire.co.uk</strong>.</p>
+  <form class="form-grid" action="https://formsubmit.co/subscribe@witneywire.co.uk" method="POST">
+    <input type="hidden" name="_subject" value="New subscription request - Witney Wire">
+    <input type="hidden" name="_next" value="https://witneywire.co.uk/thanks.html">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
     <label for="name">Your name</label>
     <input id="name" name="Name" required>
     <label for="email">Email address</label>
@@ -41,8 +46,8 @@
       <p class="gdpr-note">By submitting this form, you consent to Witney Wire storing and processing your information in accordance with our <a href="privacy-policy.html">Privacy Policy</a>.</p>
     </div>
     <div class="form-actions">
-      <button class="form-submit" type="submit">Email subscription request</button>
-      <span class="form-note">This opens your email app so you can review before sending.</span>
+      <button class="form-submit" type="submit">Submit subscription request securely</button>
+      <span class="form-note">Your request will be sent securely to the Witney Wire subscription inbox.</span>
     </div>
   </form>
 </section>
