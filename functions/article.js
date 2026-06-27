@@ -280,7 +280,7 @@ function authorProfile(article) {
     return { name: 'Robert', role: 'Business Journalist', image: 'assets/robert-author.png' };
   }
 
-  return { name: 'Maryam Sediq-Thornton', role: 'Journalist', image: 'assets/maryam-author.jpg' };
+  return { name: 'Mary', role: 'Journalist', image: 'assets/maryam-author.jpg' };
 }
 
 function renderArticleBody(body = []) {

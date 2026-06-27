@@ -34,7 +34,7 @@ function authorProfile(article) {
   }
 
   return {
-    name: 'Maryam Sediq-Thornton',
+    name: 'Mary',
     role: 'Journalist',
     image: 'assets/maryam-author.jpg'
   };
