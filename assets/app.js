@@ -74,7 +74,7 @@ function renderArticleBody(body = []) {
 }
 
 function card(article) {
-  return `<a class="story-card" href="article.html?id=${encodeURIComponent(article.id)}">
+  return `<a class="story-card" href="article?id=${encodeURIComponent(article.id)}">
     <img src="${article.image}" alt="">
     <div class="story-body">
       <span class="label">${label(article.category)}</span>
@@ -94,7 +94,7 @@ async function initHome() {
   const secondary = articles[1];
 
   top.innerHTML = [lead, secondary].filter(Boolean).map((article, index) => `
-    <a class="lead-card${index === 1 ? ' secondary-story' : ''}" href="article.html?id=${encodeURIComponent(article.id)}">
+    <a class="lead-card${index === 1 ? ' secondary-story' : ''}" href="article?id=${encodeURIComponent(article.id)}">
       <div>
         <span class="label">${label(article.category)}</span>
         <h2>${article.title}</h2>
@@ -107,7 +107,7 @@ async function initHome() {
 
   const latest = document.querySelector('#latest-list');
   if (latest) {
-    latest.innerHTML = articles.slice(2, 6).map(a => `<a class="latest-item" href="article.html?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+    latest.innerHTML = articles.slice(2, 6).map(a => `<a class="latest-item" href="article?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
   }
 
   const more = document.querySelector('#more-stories');

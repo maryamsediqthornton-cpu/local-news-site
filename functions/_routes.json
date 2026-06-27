@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "include": [
+    "/article"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/data/*",
+    "/*.css",
+    "/*.js",
+    "/*.png",
+    "/*.jpg",
+    "/*.jpeg",
+    "/*.svg",
+    "/favicon.*",
+    "/manifest.webmanifest",
+    "/sw.js"
+  ]
+}
