@@ -14,6 +14,32 @@ function label(category) {
   return String(category || '').replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
 
+function authorProfile(article) {
+  const category = String(article.category || '').toLowerCase();
+
+  if (category === 'sport') {
+    return {
+      name: 'Mark',
+      role: 'Sports Journalist',
+      image: 'assets/mark-author.png'
+    };
+  }
+
+  if (category === 'business') {
+    return {
+      name: 'Robert',
+      role: 'Business Journalist',
+      image: 'assets/robert-author.png'
+    };
+  }
+
+  return {
+    name: 'Maryam Sediq-Thornton',
+    role: 'Journalist',
+    image: 'assets/maryam-author.jpg'
+  };
+}
+
 function adBlock(kind = 'inline') {
   const labels = {
     inline: 'Advertisement',
@@ -112,15 +138,16 @@ async function initArticle() {
   }
 
   document.title = `${article.title} | Witney Wire`;
+  const author = authorProfile(article);
   view.innerHTML = `
     <span class="label">${label(article.category)}</span>
     <h1>${article.title}</h1>
     <p class="article-summary">${article.summary}</p>
         <div class="article-author-box">
-          <img class="article-author-photo" src="assets/maryam-author.jpg" alt="Maryam Sediq-Thornton">
+          <img class="article-author-photo" src="${author.image}" alt="${author.name}">
           <div class="article-author-details">
-            <div class="article-author-name">By Maryam Sediq-Thornton</div>
-            <div class="article-author-role">Journalist</div>
+            <div class="article-author-name">By ${author.name}</div>
+            <div class="article-author-role">${author.role}</div>
           </div>
         </div>
 
