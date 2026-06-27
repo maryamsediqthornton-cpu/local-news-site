@@ -120,7 +120,7 @@ async function initArticle() {
           <img class="article-author-photo" src="assets/maryam-author.jpg" alt="Maryam Sediq-Thornton">
           <div class="article-author-details">
             <div class="article-author-name">By Maryam Sediq-Thornton</div>
-            <div class="article-author-role">Aspiring Journalist</div>
+            <div class="article-author-role">Journalist</div>
           </div>
         </div>
 
