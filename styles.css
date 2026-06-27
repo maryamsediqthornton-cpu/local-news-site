@@ -1519,3 +1519,17 @@ a:hover {
     padding: 28px 22px;
   }
 }
+
+/* Facebook footer link */
+.site-footer .social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-footer .social-icons a:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
