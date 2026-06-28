@@ -105,8 +105,10 @@ async function initHome() {
   if (!top) return;
 
   const articles = await getArticles();
-  const lead = articles[0];
-  const secondary = articles[1];
+  const travelOnlyIds = ['m40-roadworks-update-28-june-2026'];
+  const homeArticles = articles.filter(a => !travelOnlyIds.includes(a.id));
+  const lead = homeArticles[0];
+  const secondary = homeArticles[1];
 
   top.innerHTML = [lead, secondary].filter(Boolean).map((article, index) => `
     <a class="lead-card${index === 1 ? ' secondary-story' : ''}" href="article?id=${encodeURIComponent(article.id)}">
@@ -122,12 +124,12 @@ async function initHome() {
 
   const latest = document.querySelector('#latest-list');
   if (latest) {
-    latest.innerHTML = articles.slice(2, 6).map(a => `<a class="latest-item" href="article?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
+    latest.innerHTML = homeArticles.slice(2, 6).map(a => `<a class="latest-item" href="article?id=${encodeURIComponent(a.id)}">${a.title}</a>`).join('');
   }
 
   const more = document.querySelector('#more-stories');
   if (more) {
-    more.innerHTML = articles.slice(2).map(card).join('');
+    more.innerHTML = homeArticles.slice(2).map(card).join('');
   }
 }
 
