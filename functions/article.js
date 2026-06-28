@@ -48,7 +48,7 @@ const FALLBACK_ARTICLES = [
     "id": "summer-days-out-children-witney-oxfordshire",
     "title": "Summer days out for children near Witney: four local ideas for the holidays",
     "category": "whats-on",
-    "summary": "From Oxford’s museums to Blenheim Palace, Millets Farm and the ruins at Minster Lovell, here are four family days out within reach of Witney this summer.",
+    "summary": "From Oxford’s museums to Blenheim Palace, Millets Farm and the ruins at Minster Lovell, here are family days out within reach of Witney this summer.",
     "body": [
       "Families looking for things to do with children over the summer do not have to travel far from Witney to find a good day out.",
       "From Oxford’s museums to palace gardens, farm attractions and riverside ruins, there are several places within easy reach that offer a mix of learning, fresh air and family-friendly exploring.",
@@ -66,6 +66,7 @@ const FALLBACK_ARTICLES = [
       "Oxford is one of the easiest places to turn a wet or uncertain summer day into something memorable.",
       "The city’s museums offer plenty for children, especially families who want something educational without it feeling too much like school. The Oxford University Museum of Natural History runs family-friendly events and activities, while the Pitt Rivers Museum offers family trails, crafts and activities for children.",
       "The Ashmolean Museum is another option for families, with art, archaeology, family trails, Explorer packs and interactive resources designed to help younger visitors explore the collections.",
+      "Families could also consider The Story Museum in Oxford, which is built around books, storytelling and imaginative play. Its spaces include the Galleries, recommended for ages five and over, and Small Worlds, a story-play area aimed at younger children. The museum is also listing Great British Summer Savings prices for this summer, including reduced child ticket prices, so families should check the official booking page before travelling.",
       "For Witney families, Oxford’s museums are a useful summer option because they work well in different weather and can be combined with lunch, a walk through the city or a short visit to the Covered Market.",
       {
         "type": "image",
@@ -114,9 +115,9 @@ const FALLBACK_ARTICLES = [
         "text": "Plan ahead before travelling"
       },
       "Opening times, ticket prices and activities can change during the summer, so families should check official websites before setting off.",
-      "For many parents, the best summer days out are the ones that balance cost, travel time and flexibility. Oxford’s museums, Blenheim Palace, Millets Farm and Minster Lovell all offer something different — whether families want learning, play, animals, history or simply a reason to get out of the house.",
+      "For many parents, the best summer days out are the ones that balance cost, travel time and flexibility. Oxford’s museums, The Story Museum, Blenheim Palace, Millets Farm and Minster Lovell all offer something different — whether families want learning, play, animals, history or simply a reason to get out of the house.",
       "And for children growing up around Witney, these local trips can become the kind of summer memories that last long after the holidays are over.",
-      "Sources: Oxford University Museum of Natural History, Pitt Rivers Museum, Ashmolean Museum, Blenheim Palace, Millets Farm Centre and English Heritage."
+      "Sources: Oxford University Museum of Natural History, Pitt Rivers Museum, Ashmolean Museum, The Story Museum, Blenheim Palace, Millets Farm Centre and English Heritage."
     ],
     "image": "assets/summer-days-out-oxford-museums.png",
     "hideHero": true,
@@ -245,7 +246,7 @@ const FALLBACK_ARTICLES = [
       "As with all planned roadworks, timings can change at short notice, so drivers are encouraged to check the latest travel information before setting off."
     ],
     "image": "assets/m40-roadworks-update-28-june-2026.png",
-    "date": "2026-06-26T12:06:00Z",
+    "date": "2026-06-28T08:00:00Z",
     "author": "Witney Wire Newsdesk"
   },
   {
