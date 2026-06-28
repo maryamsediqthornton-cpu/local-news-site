@@ -155,6 +155,7 @@ async function initArticle() {
     <img class="article-hero" src="${article.image}" alt="">
     ${article.id === 'witney-heatwave-34c' ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>' : ''}
     ${article.id === 'phone-free-schools-thames-valley-fund' ? '<p class="ai-disclaimer">AI-generated illustration: Students storing mobile phones before lessons.</p>' : ''}
+    ${article.id === 'mod-bicester-asylum-accommodation-concerns' ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
     ${haveYourSayBlock()}

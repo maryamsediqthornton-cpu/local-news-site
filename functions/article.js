@@ -22,6 +22,29 @@ const FALLBACK_ARTICLES = [
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "mod-bicester-asylum-accommodation-concerns",
+    "title": "Concerns raised over plans for asylum accommodation at MOD Bicester",
+    "category": "news",
+    "summary": "Plans to seek permission for asylum seeker accommodation at MOD Bicester have prompted calls for clearer information about policing, local services and community impact.",
+    "body": [
+      "Plans to seek permission for asylum seeker accommodation at MOD Bicester have prompted calls for clearer information from national government about policing, community impact and local services.",
+      "The proposal follows a Home Office announcement that it is exploring the use of three Ministry of Defence sites, including one near Bicester, as part of wider plans to reduce the use of hotels for asylum accommodation.",
+      "Thames Valley Police and Crime Commissioner Matthew Barber said he had concerns about the possible impact on local policing, particularly if additional demand is placed on officers in and around the site.",
+      "In a statement, Mr Barber said he had not had direct communication from the Home Office about the plans before the announcement was made. He said he had written to the Home Secretary requesting a meeting to discuss what additional resources may be needed if the proposal goes ahead.",
+      "The site identified near Bicester is understood to be part of Bicester Garrison, located between Piddington and Upper Arncott. Local representatives have said they want more detail about the potential impact on residents, public services and community safety before any plans move forward.",
+      "The Home Office has said the use of former or existing military sites is part of its effort to reduce reliance on hotels. In the Thames Valley area, the PCC statement also referred to the expected closure of the Oxford Witney Hotel and the Mercure George Hotel in Reading as asylum hotels.",
+      "Supporters of moving away from hotel accommodation argue that the current system is expensive and has placed pressure on communities where hotels have been used for long periods. However, local representatives have said that any alternative sites must be properly planned, with clear information about security, safeguarding, healthcare, transport and policing.",
+      "The issue is likely to remain sensitive locally, with concerns about community impact needing to be balanced against the national challenge of providing accommodation for people while their asylum claims are processed.",
+      "No final decision has yet been reported, and the proposal would still need to go through the relevant planning and approval processes.",
+      "For residents in Bicester and the wider Oxfordshire area, the key questions are now likely to focus on how many people could be accommodated, when any site might open, what services would be required, and whether additional funding would be provided to support local policing and public services.",
+      "Local councils, police representatives and residents are expected to seek further information from the Home Office before the plans move forward.",
+      "Source: Thames Valley Police and Crime Commissioner statement on planned asylum accommodation at MOD Bicester."
+    ],
+    "image": "assets/bicester-village-illustration.png",
+    "date": "2026-06-27T09:30:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "m40-j10-j12-overnight-roadworks",
     "title": "M40 drivers warned as five sets of roadworks planned over busy weekend",
     "category": "traffic",
@@ -328,7 +351,9 @@ function renderPage(article) {
     ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>'
     : article.id === 'phone-free-schools-thames-valley-fund'
       ? '<p class="ai-disclaimer">AI-generated illustration: Students storing mobile phones before lessons.</p>'
-      : '';
+      : article.id === 'mod-bicester-asylum-accommodation-concerns'
+        ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>'
+        : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
