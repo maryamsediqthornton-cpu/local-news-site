@@ -149,6 +149,27 @@ const FALLBACK_ARTICLES = [
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "m40-roadworks-update-28-june-2026",
+    "title": "M40 roadworks update as multiple lane closures planned for 28 June and beyond",
+    "category": "traffic",
+    "summary": "Drivers are being advised to plan ahead, with several M40 lane closures, slip-road works and horticultural works scheduled from 28 June into early July.",
+    "body": [
+      "Drivers using the M40 are being advised to plan ahead, with a series of planned roadworks, barrier repairs and lane closures affecting several stretches of the motorway from Sunday 28 June.",
+      "The earliest listed works affect the M40 northbound between junctions 1A and 2, where horticultural works are scheduled from 7am on Sunday 28 June until 11.59pm on Monday 29 June.",
+      "A separate notice has also been issued for the same northbound stretch between junctions 1A and 2, again for horticultural works, with a later schedule running from 7pm on Sunday 28 June until 11.59pm on Friday 3 July. Drivers are advised to check live traffic information before travelling, as multiple notices are currently listed for this section.",
+      "From 9pm on Sunday 28 June until 6am on Monday 29 June, lane three is due to close on the M40 northbound between junctions 10 and 11 for planned barrier repairs.",
+      "During the same overnight period, lanes two and three are scheduled to close on the M40 southbound between junctions 11 and 10, also for barrier repairs. Two of the three lanes are expected to be closed.",
+      "Later that evening, further disruption is planned around junction 4 northbound. The northbound exit slip at junction 4 is scheduled to close from 10.15pm on Sunday 28 June until 6am on Monday 29 June, with all lanes closed while roadworks take place.",
+      "Also from 10.15pm to 6am, lanes one and two are due to close on the M40 northbound between junctions 3 and 4, while a separate notice for the M40 northbound within junction 4 states that lanes one and two will be closed and all lanes at the junction will be affected during the same overnight works.",
+      "In date order, the main listed works are: J1A to J2 northbound horticultural works from 7am on 28 June to 11.59pm on 29 June; J1A to J2 northbound horticultural works from 7pm on 28 June to 11.59pm on 3 July; J10 to J11 northbound lane three closure for barrier repairs from 9pm on 28 June to 6am on 29 June; J11 to J10 southbound lanes two and three closed for barrier repairs from 9pm on 28 June to 6am on 29 June; J4 northbound exit slip closed from 10.15pm on 28 June to 6am on 29 June; J3 to J4 northbound lanes one and two closed from 10.15pm on 28 June to 6am on 29 June; and northbound works within junction 4 from 10.15pm on 28 June to 6am on 29 June.",
+      "Motorists travelling through Oxfordshire, Buckinghamshire and towards London or Birmingham should allow extra time, particularly on Sunday evening and overnight into Monday morning when several closures are scheduled at once.",
+      "As with all planned roadworks, timings can change at short notice, so drivers are encouraged to check the latest travel information before setting off."
+    ],
+    "image": "assets/m40-roadworks-update-28-june-2026.png",
+    "date": "2026-06-26T12:06:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
@@ -353,7 +374,9 @@ function renderPage(article) {
       ? '<p class="ai-disclaimer">AI-generated illustration: Students storing mobile phones before lessons.</p>'
       : article.id === 'mod-bicester-asylum-accommodation-concerns'
         ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>'
-        : '';
+        : article.id === 'm40-roadworks-update-28-june-2026'
+          ? '<p class="ai-disclaimer">AI-generated illustration: M40 roadworks scene used for illustrative purposes.</p>'
+          : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
