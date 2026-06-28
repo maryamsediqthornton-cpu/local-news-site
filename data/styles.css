@@ -1340,12 +1340,13 @@ a:hover {
 
 /* Inline article section images */
 .article-inline-figure {
-  margin: 28px 0 18px;
+  width: min(100%, 620px);
+  margin: 24px auto 18px;
 }
 
 .article-inline-figure img {
   width: 100%;
-  max-height: 460px;
+  max-height: 310px;
   object-fit: cover;
   border-radius: 12px;
   display: block;
@@ -1353,7 +1354,8 @@ a:hover {
 
 .article-inline-figure figcaption {
   margin-top: 7px;
-  font-size: 0.82rem;
-  line-height: 1.4;
+  font-size: 0.78rem;
+  line-height: 1.35;
   color: #667085;
+  text-align: center;
 }
