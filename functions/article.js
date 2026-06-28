@@ -45,6 +45,85 @@ const FALLBACK_ARTICLES = [
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "summer-days-out-children-witney-oxfordshire",
+    "title": "Summer days out for children near Witney: four local ideas for the holidays",
+    "category": "whats-on",
+    "summary": "From Oxford’s museums to Blenheim Palace, Millets Farm and the ruins at Minster Lovell, here are four family days out within reach of Witney this summer.",
+    "body": [
+      "Families looking for things to do with children over the summer do not have to travel far from Witney to find a good day out.",
+      "From Oxford’s museums to palace gardens, farm attractions and riverside ruins, there are several places within easy reach that offer a mix of learning, fresh air and family-friendly exploring.",
+      "Here are four ideas for summer days out in and around Oxfordshire.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-oxford-museums.png",
+        "alt": "Families walking towards Oxford museum buildings on a sunny day",
+        "caption": "AI-generated illustration: Families visiting Oxford’s museums during the summer holidays."
+      },
+      {
+        "type": "heading",
+        "text": "Explore Oxford’s museums"
+      },
+      "Oxford is one of the easiest places to turn a wet or uncertain summer day into something memorable.",
+      "The city’s museums offer plenty for children, especially families who want something educational without it feeling too much like school. The Oxford University Museum of Natural History runs family-friendly events and activities, while the Pitt Rivers Museum offers family trails, crafts and activities for children.",
+      "The Ashmolean Museum is another option for families, with art, archaeology, family trails, Explorer packs and interactive resources designed to help younger visitors explore the collections.",
+      "For Witney families, Oxford’s museums are a useful summer option because they work well in different weather and can be combined with lunch, a walk through the city or a short visit to the Covered Market.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-blenheim-palace.png",
+        "alt": "Families enjoying outdoor play near Blenheim Palace",
+        "caption": "AI-generated illustration: Families enjoying a summer day out at Blenheim Palace."
+      },
+      {
+        "type": "heading",
+        "text": "Make a day of it at Blenheim Palace"
+      },
+      "Blenheim Palace remains one of Oxfordshire’s biggest family days out, particularly during the school holidays.",
+      "The palace grounds offer space to walk, explore and picnic, while Adventure Play gives children a dedicated area to climb, slide, splash and burn off energy. Blenheim describes the play area as a place where children can explore tunnels, bridges, cargo nets, hidden chambers, slides and water play.",
+      "Blenheim is also a useful option for mixed-age groups, as adults can enjoy the gardens, views and palace setting while children have space to play and explore.",
+      "As with many larger attractions, it is worth checking ticket options and opening times before travelling, particularly during busy summer dates.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-millets-farm.png",
+        "alt": "Families at an outdoor farm play area on a sunny day",
+        "caption": "AI-generated illustration: A family summer day out at a farm attraction."
+      },
+      {
+        "type": "heading",
+        "text": "Head to Millets Farm"
+      },
+      "Millets Farm, near Frilford, is another reliable family option within reach of Witney.",
+      "The site promotes a mix of things to do, including family attractions, shopping, places to eat and seasonal events. Its outdoor play area is free to enter, while Sprouts Play Barn offers an indoor soft play option, including a dedicated area for under-fives.",
+      "For younger children, the appeal is often simple: animals, space to move around, food, treats and things to explore. For parents, the benefit is that there is enough on site to make the trip feel easy and flexible.",
+      "Families should check ahead for which activities are free, which need booking and whether any special summer events are running.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-minster-lovell.png",
+        "alt": "Family walking beside riverside ruins at Minster Lovell",
+        "caption": "AI-generated illustration: Families exploring the ruins at Minster Lovell."
+      },
+      {
+        "type": "heading",
+        "text": "Discover Minster Lovell ruins"
+      },
+      "For a quieter and more local option, Minster Lovell Hall and Dovecote offers a very different kind of day out.",
+      "The ruins sit beside the River Windrush and give children the chance to explore a piece of local history in the open air. English Heritage describes the site as the picturesque ruins of a 15th-century Oxfordshire manor house, including a hall, tower and nearby dovecote.",
+      "For families who enjoy walks, picnics, history or photography, Minster Lovell can make a gentle summer outing close to Witney. Children can imagine what the old manor house might once have looked like, while adults can enjoy the peaceful riverside setting.",
+      "It is a good reminder that not every summer day out needs to be expensive or heavily planned. Sometimes a short local trip, a packed lunch and a bit of imagination are enough.",
+      {
+        "type": "heading",
+        "text": "Plan ahead before travelling"
+      },
+      "Opening times, ticket prices and activities can change during the summer, so families should check official websites before setting off.",
+      "For many parents, the best summer days out are the ones that balance cost, travel time and flexibility. Oxford’s museums, Blenheim Palace, Millets Farm and Minster Lovell all offer something different — whether families want learning, play, animals, history or simply a reason to get out of the house.",
+      "And for children growing up around Witney, these local trips can become the kind of summer memories that last long after the holidays are over.",
+      "Sources: Oxford University Museum of Natural History, Pitt Rivers Museum, Ashmolean Museum, Blenheim Palace, Millets Farm Centre and English Heritage."
+    ],
+    "image": "assets/summer-days-out-oxford-museums.png",
+    "hideHero": true,
+    "date": "2026-06-28T11:00:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "m40-j10-j12-overnight-roadworks",
     "title": "M40 drivers warned as five sets of roadworks planned over busy weekend",
     "category": "traffic",
@@ -328,10 +407,25 @@ function authorProfile(article) {
 }
 
 function renderArticleBody(body = []) {
-  const paragraphs = Array.isArray(body) ? body : [body];
-  return paragraphs
+  const blocks = Array.isArray(body) ? body : [body];
+  return blocks
     .filter(Boolean)
-    .map(text => `<p>${escapeHtml(text)}</p>`)
+    .map(block => {
+      if (typeof block === 'object') {
+        if (block.type === 'heading') {
+          return `<h2>${escapeHtml(block.text || '')}</h2>`;
+        }
+
+        if (block.type === 'image') {
+          return `<figure class="article-inline-figure">
+            <img src="${escapeHtml(block.src || '')}" alt="${escapeHtml(block.alt || '')}">
+            ${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ''}
+          </figure>`;
+        }
+      }
+
+      return `<p>${escapeHtml(block)}</p>`;
+    })
     .join('');
 }
 

@@ -65,11 +65,26 @@ function haveYourSayBlock() {
 }
 
 function renderArticleBody(body = []) {
-  const paragraphs = Array.isArray(body) ? body : [body];
+  const blocks = Array.isArray(body) ? body : [body];
 
-  return paragraphs
+  return blocks
     .filter(Boolean)
-    .map(text => `<p>${text}</p>`)
+    .map(block => {
+      if (typeof block === 'object') {
+        if (block.type === 'heading') {
+          return `<h2>${block.text || ''}</h2>`;
+        }
+
+        if (block.type === 'image') {
+          return `<figure class="article-inline-figure">
+            <img src="${block.src || ''}" alt="${block.alt || ''}">
+            ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}
+          </figure>`;
+        }
+      }
+
+      return `<p>${block}</p>`;
+    })
     .join('');
 }
 
@@ -152,7 +167,7 @@ async function initArticle() {
         </div>
 
     <div class="meta">${formatDate(article.date)} · ${article.author}</div>
-    <img class="article-hero" src="${article.image}" alt="">
+    ${article.hideHero ? '' : `<img class="article-hero" src="${article.image}" alt="">`}
     ${article.id === 'witney-heatwave-34c' ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>' : ''}
     ${article.id === 'phone-free-schools-thames-valley-fund' ? '<p class="ai-disclaimer">AI-generated illustration: Students storing mobile phones before lessons.</p>' : ''}
     ${article.id === 'mod-bicester-asylum-accommodation-concerns' ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>' : ''}
