@@ -395,9 +395,9 @@ const FALLBACK_ARTICLES = [
       "There was no reopening time given in the update shown in the alert. Motorists are being urged to allow extra time, consider alternative routes where possible, and check the latest travel information before setting off.",
       "For drivers in and around Witney, the disruption may also have a knock-on effect on connecting routes including parts of the A40 and surrounding local roads if traffic begins diverting away from the motorway.",
       "Witney Wire will update this story if National Highways issues a further update on the closure or confirms when the road has reopened.",
-      "Source: National Highways travel alert. Image: screenshot supplied for publication showing the National Highways alert."
+      "Source: National Highways travel alert. Image: Witney Wire traffic update graphic."
     ],
-    "image": "assets/m40-oxfordshire-j9-j8a-closure-4-july-2026.png",
+    "image": "assets/traffic.svg",
     "date": "2026-07-04T12:00:00Z",
     "author": "Witney Wire Newsdesk",
     "excludeFromHomepage": true
@@ -426,11 +426,10 @@ const FALLBACK_ARTICLES = [
       "He said the swift arrest and conviction demonstrated the force’s continued commitment to tackling drug-related crime and protecting communities from repeat offending.",
       "Source and image: Thames Valley Police."
     ],
-    "image": "assets/craig-ballantyne-thames-valley-police-landscape.jpeg",
+    "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
     "date": "2026-07-04T16:15:00Z",
     "author": "Witney Wire Newsdesk",
-    "excludeFromHomepage": true,
-    "heroContain": true
+    "excludeFromHomepage": true
   }
 ];
 
