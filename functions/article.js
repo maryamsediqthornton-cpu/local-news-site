@@ -428,9 +428,7 @@ const FALLBACK_ARTICLES = [
     ],
     "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
     "date": "2026-07-04T16:15:00Z",
-    "author": "Witney Wire Newsdesk",
-    "excludeFromHomepage": true
-  }
+    "author": "Witney Wire Newsdesk"}
 ];
 
 async function loadArticles(context) {
