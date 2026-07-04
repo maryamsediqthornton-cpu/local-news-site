@@ -400,5 +400,34 @@
     "date": "2026-07-04T12:00:00Z",
     "author": "Witney Wire Newsdesk",
     "excludeFromHomepage": true
+  },
+  {
+    "id": "man-jailed-drug-supply-oxford-craig-ballantyne",
+    "title": "Oxford man jailed after police witness drug deal in city park",
+    "category": "news",
+    "summary": "Craig Ballantyne has been jailed after Thames Valley Police officers saw a drug deal in Oxford and later found him in possession of crack cocaine.",
+    "body": [
+      "An Oxford man has been jailed after police officers witnessed a drug deal in the city and later found him in possession of crack cocaine.",
+      "Craig Ballantyne, 38, of Burton Place, Oxford, was sentenced at Oxford Crown Court on Thursday 25 June to two years and six months in prison.",
+      "Thames Valley Police said Ballantyne had previously pleaded guilty to one count of possession with intent to supply class A drugs, namely crack cocaine, at a hearing on 29 May.",
+      {
+        "type": "heading",
+        "text": "Plain-clothed officers saw drug deal"
+      },
+      "The case followed an incident in Frys Hill Park, Oxford, on 28 April this year. Police said Ballantyne was stopped by plain-clothed officers after they witnessed a drug deal taking place.",
+      "Following the stop, Ballantyne was found in possession of crack cocaine. Thames Valley Police said testing later confirmed the substance.",
+      "For readers across Oxfordshire, the case is part of the force’s continued work targeting class A drug supply and the harm linked to drug-related crime in local communities.",
+      {
+        "type": "heading",
+        "text": "Police: ‘continued commitment’"
+      },
+      "Investigating officer PC Daniel Cook said Ballantyne had shown a blatant disregard for the law by returning to class A drug supply shortly after being released from prison.",
+      "He said the swift arrest and conviction demonstrated the force’s continued commitment to tackling drug-related crime and protecting communities from repeat offending.",
+      "Source and image: Thames Valley Police."
+    ],
+    "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
+    "date": "2026-07-04T16:15:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
   }
 ]

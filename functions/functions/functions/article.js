@@ -58,6 +58,109 @@ const FALLBACK_ARTICLES = [
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "mod-bicester-asylum-accommodation-concerns",
+    "title": "Concerns raised over plans for asylum accommodation at MOD Bicester",
+    "category": "news",
+    "summary": "Plans to seek permission for asylum seeker accommodation at MOD Bicester have prompted calls for clearer information about policing, local services and community impact.",
+    "body": [
+      "Plans to seek permission for asylum seeker accommodation at MOD Bicester have prompted calls for clearer information from national government about policing, community impact and local services.",
+      "The proposal follows a Home Office announcement that it is exploring the use of three Ministry of Defence sites, including one near Bicester, as part of wider plans to reduce the use of hotels for asylum accommodation.",
+      "Thames Valley Police and Crime Commissioner Matthew Barber said he had concerns about the possible impact on local policing, particularly if additional demand is placed on officers in and around the site.",
+      "In a statement, Mr Barber said he had not had direct communication from the Home Office about the plans before the announcement was made. He said he had written to the Home Secretary requesting a meeting to discuss what additional resources may be needed if the proposal goes ahead.",
+      "The site identified near Bicester is understood to be part of Bicester Garrison, located between Piddington and Upper Arncott. Local representatives have said they want more detail about the potential impact on residents, public services and community safety before any plans move forward.",
+      "The Home Office has said the use of former or existing military sites is part of its effort to reduce reliance on hotels. In the Thames Valley area, the PCC statement also referred to the expected closure of the Oxford Witney Hotel and the Mercure George Hotel in Reading as asylum hotels.",
+      "Supporters of moving away from hotel accommodation argue that the current system is expensive and has placed pressure on communities where hotels have been used for long periods. However, local representatives have said that any alternative sites must be properly planned, with clear information about security, safeguarding, healthcare, transport and policing.",
+      "The issue is likely to remain sensitive locally, with concerns about community impact needing to be balanced against the national challenge of providing accommodation for people while their asylum claims are processed.",
+      "No final decision has yet been reported, and the proposal would still need to go through the relevant planning and approval processes.",
+      "For residents in Bicester and the wider Oxfordshire area, the key questions are now likely to focus on how many people could be accommodated, when any site might open, what services would be required, and whether additional funding would be provided to support local policing and public services.",
+      "Local councils, police representatives and residents are expected to seek further information from the Home Office before the plans move forward.",
+      "Source: Thames Valley Police and Crime Commissioner statement on planned asylum accommodation at MOD Bicester."
+    ],
+    "image": "assets/bicester-village-illustration.png",
+    "date": "2026-06-27T09:30:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "summer-days-out-children-witney-oxfordshire",
+    "title": "Summer days out for children near Witney: four local ideas for the holidays",
+    "category": "whats-on",
+    "summary": "From Oxford’s museums to Blenheim Palace, Millets Farm and the ruins at Minster Lovell, here are family days out within reach of Witney this summer.",
+    "body": [
+      "Families looking for things to do with children over the summer do not have to travel far from Witney to find a good day out.",
+      "From Oxford’s museums to palace gardens, farm attractions and riverside ruins, there are several places within easy reach that offer a mix of learning, fresh air and family-friendly exploring.",
+      "Here are four ideas for summer days out in and around Oxfordshire.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-oxford-museums.png",
+        "alt": "Families walking towards Oxford museum buildings on a sunny day",
+        "caption": "AI-generated illustration: Families visiting Oxford’s museums during the summer holidays."
+      },
+      {
+        "type": "heading",
+        "text": "Explore Oxford’s museums"
+      },
+      "Oxford is one of the easiest places to turn a wet or uncertain summer day into something memorable.",
+      "The city’s museums offer plenty for children, especially families who want something educational without it feeling too much like school. The Oxford University Museum of Natural History runs family-friendly events and activities, while the Pitt Rivers Museum offers family trails, crafts and activities for children.",
+      "The Ashmolean Museum is another option for families, with art, archaeology, family trails, Explorer packs and interactive resources designed to help younger visitors explore the collections.",
+      "Families could also consider The Story Museum in Oxford, which is built around books, storytelling and imaginative play. Its spaces include the Galleries, recommended for ages five and over, and Small Worlds, a story-play area aimed at younger children. The museum is also listing Great British Summer Savings prices for this summer, including reduced child ticket prices, so families should check the official booking page before travelling.",
+      "For Witney families, Oxford’s museums are a useful summer option because they work well in different weather and can be combined with lunch, a walk through the city or a short visit to the Covered Market.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-blenheim-palace.png",
+        "alt": "Families enjoying outdoor play near Blenheim Palace",
+        "caption": "AI-generated illustration: Families enjoying a summer day out at Blenheim Palace."
+      },
+      {
+        "type": "heading",
+        "text": "Make a day of it at Blenheim Palace"
+      },
+      "Blenheim Palace remains one of Oxfordshire’s biggest family days out, particularly during the school holidays.",
+      "The palace grounds offer space to walk, explore and picnic, while Adventure Play gives children a dedicated area to climb, slide, splash and burn off energy. Blenheim describes the play area as a place where children can explore tunnels, bridges, cargo nets, hidden chambers, slides and water play.",
+      "Blenheim is also a useful option for mixed-age groups, as adults can enjoy the gardens, views and palace setting while children have space to play and explore.",
+      "As with many larger attractions, it is worth checking ticket options and opening times before travelling, particularly during busy summer dates.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-millets-farm.png",
+        "alt": "Families at an outdoor farm play area on a sunny day",
+        "caption": "AI-generated illustration: A family summer day out at a farm attraction."
+      },
+      {
+        "type": "heading",
+        "text": "Head to Millets Farm"
+      },
+      "Millets Farm, near Frilford, is another reliable family option within reach of Witney.",
+      "The site promotes a mix of things to do, including family attractions, shopping, places to eat and seasonal events. Its outdoor play area is free to enter, while Sprouts Play Barn offers an indoor soft play option, including a dedicated area for under-fives.",
+      "For younger children, the appeal is often simple: animals, space to move around, food, treats and things to explore. For parents, the benefit is that there is enough on site to make the trip feel easy and flexible.",
+      "Families should check ahead for which activities are free, which need booking and whether any special summer events are running.",
+      {
+        "type": "image",
+        "src": "assets/summer-days-out-minster-lovell.png",
+        "alt": "Family walking beside riverside ruins at Minster Lovell",
+        "caption": "AI-generated illustration: Families exploring the ruins at Minster Lovell."
+      },
+      {
+        "type": "heading",
+        "text": "Discover Minster Lovell ruins"
+      },
+      "For a quieter and more local option, Minster Lovell Hall and Dovecote offers a very different kind of day out.",
+      "The ruins sit beside the River Windrush and give children the chance to explore a piece of local history in the open air. English Heritage describes the site as the picturesque ruins of a 15th-century Oxfordshire manor house, including a hall, tower and nearby dovecote.",
+      "For families who enjoy walks, picnics, history or photography, Minster Lovell can make a gentle summer outing close to Witney. Children can imagine what the old manor house might once have looked like, while adults can enjoy the peaceful riverside setting.",
+      "It is a good reminder that not every summer day out needs to be expensive or heavily planned. Sometimes a short local trip, a packed lunch and a bit of imagination are enough.",
+      {
+        "type": "heading",
+        "text": "Plan ahead before travelling"
+      },
+      "Opening times, ticket prices and activities can change during the summer, so families should check official websites before setting off.",
+      "For many parents, the best summer days out are the ones that balance cost, travel time and flexibility. Oxford’s museums, The Story Museum, Blenheim Palace, Millets Farm and Minster Lovell all offer something different — whether families want learning, play, animals, history or simply a reason to get out of the house.",
+      "And for children growing up around Witney, these local trips can become the kind of summer memories that last long after the holidays are over.",
+      "Sources: Oxford University Museum of Natural History, Pitt Rivers Museum, Ashmolean Museum, The Story Museum, Blenheim Palace, Millets Farm Centre and English Heritage."
+    ],
+    "image": "assets/summer-days-out-oxford-museums.png",
+    "hideHero": true,
+    "date": "2026-06-28T11:00:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "m40-j10-j12-overnight-roadworks",
     "title": "M40 drivers warned as five sets of roadworks planned over busy weekend",
     "category": "traffic",
@@ -162,6 +265,27 @@ const FALLBACK_ARTICLES = [
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "m40-roadworks-update-28-june-2026",
+    "title": "M40 roadworks update as multiple lane closures planned for 28 June and beyond",
+    "category": "traffic",
+    "summary": "Drivers are being advised to plan ahead, with several M40 lane closures, slip-road works and horticultural works scheduled from 28 June into early July.",
+    "body": [
+      "Drivers using the M40 are being advised to plan ahead, with a series of planned roadworks, barrier repairs and lane closures affecting several stretches of the motorway from Sunday 28 June.",
+      "The earliest listed works affect the M40 northbound between junctions 1A and 2, where horticultural works are scheduled from 7am on Sunday 28 June until 11.59pm on Monday 29 June.",
+      "A separate notice has also been issued for the same northbound stretch between junctions 1A and 2, again for horticultural works, with a later schedule running from 7pm on Sunday 28 June until 11.59pm on Friday 3 July. Drivers are advised to check live traffic information before travelling, as multiple notices are currently listed for this section.",
+      "From 9pm on Sunday 28 June until 6am on Monday 29 June, lane three is due to close on the M40 northbound between junctions 10 and 11 for planned barrier repairs.",
+      "During the same overnight period, lanes two and three are scheduled to close on the M40 southbound between junctions 11 and 10, also for barrier repairs. Two of the three lanes are expected to be closed.",
+      "Later that evening, further disruption is planned around junction 4 northbound. The northbound exit slip at junction 4 is scheduled to close from 10.15pm on Sunday 28 June until 6am on Monday 29 June, with all lanes closed while roadworks take place.",
+      "Also from 10.15pm to 6am, lanes one and two are due to close on the M40 northbound between junctions 3 and 4, while a separate notice for the M40 northbound within junction 4 states that lanes one and two will be closed and all lanes at the junction will be affected during the same overnight works.",
+      "In date order, the main listed works are: J1A to J2 northbound horticultural works from 7am on 28 June to 11.59pm on 29 June; J1A to J2 northbound horticultural works from 7pm on 28 June to 11.59pm on 3 July; J10 to J11 northbound lane three closure for barrier repairs from 9pm on 28 June to 6am on 29 June; J11 to J10 southbound lanes two and three closed for barrier repairs from 9pm on 28 June to 6am on 29 June; J4 northbound exit slip closed from 10.15pm on 28 June to 6am on 29 June; J3 to J4 northbound lanes one and two closed from 10.15pm on 28 June to 6am on 29 June; and northbound works within junction 4 from 10.15pm on 28 June to 6am on 29 June.",
+      "Motorists travelling through Oxfordshire, Buckinghamshire and towards London or Birmingham should allow extra time, particularly on Sunday evening and overnight into Monday morning when several closures are scheduled at once.",
+      "As with all planned roadworks, timings can change at short notice, so drivers are encouraged to check the latest travel information before setting off."
+    ],
+    "image": "assets/m40-roadworks-update-28-june-2026.png",
+    "date": "2026-06-28T08:00:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "witney-heatwave-34c",
     "title": "Witney swelters as temperatures hit 34°C",
     "category": "news",
@@ -253,6 +377,59 @@ const FALLBACK_ARTICLES = [
     "image": "assets/carterton-arts-week.png",
     "date": "2026-05-25T18:00:00Z",
     "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "m40-oxfordshire-j9-j8a-closure-4-july-2026",
+    "title": "M40 southbound closed between J9 and J8A after lorry leaves carriageway",
+    "category": "traffic",
+    "summary": "Drivers are facing delays after the M40 was closed southbound in Oxfordshire between J9 at Bicester and J8A for Wheatley and Thame.",
+    "body": [
+      "Drivers are being warned to expect disruption on the M40 in Oxfordshire after the motorway was closed southbound between junction 9 at Bicester and junction 8A for Wheatley and Thame.",
+      "According to the latest National Highways travel alert, the closure remains in place after a lorry left the carriageway shortly before 5am on Friday morning.",
+      "National Highways said its bulletin was sent at 11.15am, with the latest update on the alert issued at 12pm BST.",
+      {
+        "type": "heading",
+        "text": "What drivers need to know"
+      },
+      "The affected stretch is likely to cause delays for drivers travelling south towards Oxford, the M40 junction for the A40, and onward routes towards London and the south east.",
+      "There was no reopening time given in the update shown in the alert. Motorists are being urged to allow extra time, consider alternative routes where possible, and check the latest travel information before setting off.",
+      "For drivers in and around Witney, the disruption may also have a knock-on effect on connecting routes including parts of the A40 and surrounding local roads if traffic begins diverting away from the motorway.",
+      "Witney Wire will update this story if National Highways issues a further update on the closure or confirms when the road has reopened.",
+      "Source: National Highways travel alert. Image: screenshot supplied for publication showing the National Highways alert."
+    ],
+    "image": "assets/m40-oxfordshire-j9-j8a-closure-4-july-2026.png",
+    "date": "2026-07-04T12:00:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
+  },
+  {
+    "id": "man-jailed-drug-supply-oxford-craig-ballantyne",
+    "title": "Oxford man jailed after police witness drug deal in city park",
+    "category": "news",
+    "summary": "Craig Ballantyne has been jailed after Thames Valley Police officers saw a drug deal in Oxford and later found him in possession of crack cocaine.",
+    "body": [
+      "An Oxford man has been jailed after police officers witnessed a drug deal in the city and later found him in possession of crack cocaine.",
+      "Craig Ballantyne, 38, of Burton Place, Oxford, was sentenced at Oxford Crown Court on Thursday 25 June to two years and six months in prison.",
+      "Thames Valley Police said Ballantyne had previously pleaded guilty to one count of possession with intent to supply class A drugs, namely crack cocaine, at a hearing on 29 May.",
+      {
+        "type": "heading",
+        "text": "Plain-clothed officers saw drug deal"
+      },
+      "The case followed an incident in Frys Hill Park, Oxford, on 28 April this year. Police said Ballantyne was stopped by plain-clothed officers after they witnessed a drug deal taking place.",
+      "Following the stop, Ballantyne was found in possession of crack cocaine. Thames Valley Police said testing later confirmed the substance.",
+      "For readers across Oxfordshire, the case is part of the force’s continued work targeting class A drug supply and the harm linked to drug-related crime in local communities.",
+      {
+        "type": "heading",
+        "text": "Police: ‘continued commitment’"
+      },
+      "Investigating officer PC Daniel Cook said Ballantyne had shown a blatant disregard for the law by returning to class A drug supply shortly after being released from prison.",
+      "He said the swift arrest and conviction demonstrated the force’s continued commitment to tackling drug-related crime and protecting communities from repeat offending.",
+      "Source and image: Thames Valley Police."
+    ],
+    "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
+    "date": "2026-07-04T16:15:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
   }
 ];
 

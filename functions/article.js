@@ -377,6 +377,59 @@ const FALLBACK_ARTICLES = [
     "image": "assets/carterton-arts-week.png",
     "date": "2026-05-25T18:00:00Z",
     "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "m40-oxfordshire-j9-j8a-closure-4-july-2026",
+    "title": "M40 southbound closed between J9 and J8A after lorry leaves carriageway",
+    "category": "traffic",
+    "summary": "Drivers are facing delays after the M40 was closed southbound in Oxfordshire between J9 at Bicester and J8A for Wheatley and Thame.",
+    "body": [
+      "Drivers are being warned to expect disruption on the M40 in Oxfordshire after the motorway was closed southbound between junction 9 at Bicester and junction 8A for Wheatley and Thame.",
+      "According to the latest National Highways travel alert, the closure remains in place after a lorry left the carriageway shortly before 5am on Friday morning.",
+      "National Highways said its bulletin was sent at 11.15am, with the latest update on the alert issued at 12pm BST.",
+      {
+        "type": "heading",
+        "text": "What drivers need to know"
+      },
+      "The affected stretch is likely to cause delays for drivers travelling south towards Oxford, the M40 junction for the A40, and onward routes towards London and the south east.",
+      "There was no reopening time given in the update shown in the alert. Motorists are being urged to allow extra time, consider alternative routes where possible, and check the latest travel information before setting off.",
+      "For drivers in and around Witney, the disruption may also have a knock-on effect on connecting routes including parts of the A40 and surrounding local roads if traffic begins diverting away from the motorway.",
+      "Witney Wire will update this story if National Highways issues a further update on the closure or confirms when the road has reopened.",
+      "Source: National Highways travel alert. Image: screenshot supplied for publication showing the National Highways alert."
+    ],
+    "image": "assets/m40-oxfordshire-j9-j8a-closure-4-july-2026.png",
+    "date": "2026-07-04T12:00:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
+  },
+  {
+    "id": "man-jailed-drug-supply-oxford-craig-ballantyne",
+    "title": "Oxford man jailed after police witness drug deal in city park",
+    "category": "news",
+    "summary": "Craig Ballantyne has been jailed after Thames Valley Police officers saw a drug deal in Oxford and later found him in possession of crack cocaine.",
+    "body": [
+      "An Oxford man has been jailed after police officers witnessed a drug deal in the city and later found him in possession of crack cocaine.",
+      "Craig Ballantyne, 38, of Burton Place, Oxford, was sentenced at Oxford Crown Court on Thursday 25 June to two years and six months in prison.",
+      "Thames Valley Police said Ballantyne had previously pleaded guilty to one count of possession with intent to supply class A drugs, namely crack cocaine, at a hearing on 29 May.",
+      {
+        "type": "heading",
+        "text": "Plain-clothed officers saw drug deal"
+      },
+      "The case followed an incident in Frys Hill Park, Oxford, on 28 April this year. Police said Ballantyne was stopped by plain-clothed officers after they witnessed a drug deal taking place.",
+      "Following the stop, Ballantyne was found in possession of crack cocaine. Thames Valley Police said testing later confirmed the substance.",
+      "For readers across Oxfordshire, the case is part of the force’s continued work targeting class A drug supply and the harm linked to drug-related crime in local communities.",
+      {
+        "type": "heading",
+        "text": "Police: ‘continued commitment’"
+      },
+      "Investigating officer PC Daniel Cook said Ballantyne had shown a blatant disregard for the law by returning to class A drug supply shortly after being released from prison.",
+      "He said the swift arrest and conviction demonstrated the force’s continued commitment to tackling drug-related crime and protecting communities from repeat offending.",
+      "Source and image: Thames Valley Police."
+    ],
+    "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
+    "date": "2026-07-04T16:15:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
   }
 ];
 
