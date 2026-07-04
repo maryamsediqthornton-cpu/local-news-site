@@ -539,6 +539,8 @@ function renderPage(article) {
     ? '<p class="ai-disclaimer">The image used with this story is an AI-generated illustration of Witney town centre in hot weather.</p>'
     : article.id === 'phone-free-schools-thames-valley-fund'
       ? '<p class="ai-disclaimer">AI-generated illustration: Students storing mobile phones before lessons.</p>'
+      : article.id === 'bobbi-ai-community-access-policing'
+        ? '<p class="ai-disclaimer">AI-generated illustration: community members using an AI police support assistant, shown for illustrative purposes.</p>'
       : '';
 
   return `<!DOCTYPE html>

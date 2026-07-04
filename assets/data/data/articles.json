@@ -429,5 +429,36 @@
     "date": "2026-07-04T16:15:00Z",
     "author": "Witney Wire Newsdesk",
     "heroContain": true
+  },
+  {
+    "id": "bobbi-ai-community-access-policing",
+    "title": "Police AI assistant Bobbi helps thousands access support in first six months",
+    "category": "news",
+    "summary": "Thames Valley Police says its AI assistant Bobbi is helping people get advice and support more quickly while freeing staff to focus on urgent and complex cases.",
+    "body": [
+      "An AI virtual assistant used by Thames Valley Police is helping thousands of people access support more quickly, six months after it was launched.",
+      "Bobbi, which is used by Thames Valley Police and Hampshire & Isle of Wight Constabulary, was introduced in November 2025 as an extra way for the public to ask questions, seek advice and get help with non-emergency enquiries.",
+      "The force says Bobbi is not there to replace officers or staff. Instead, it works alongside online forms and telephone lines, giving people another option when they need guidance or want to report a concern.",
+      {
+        "type": "heading",
+        "text": "How Bobbi is being used"
+      },
+      "According to Thames Valley Police, Bobbi has handled around 200 non-emergency conversations a day in its first six months, with about 45 per cent fully resolved without staff intervention.",
+      "The force says that is the equivalent of supporting around 14,000 public contacts a year while freeing more than 3,200 hours for contact centre staff, allowing them to spend more time on emergencies and sensitive cases.",
+      "Police also say the assistant is helping to identify risk earlier. Since launch, Bobbi has identified at least one high-harm offence every day requiring escalation to a Digital Desk operator, with an average of two cases involving violence against women and girls detected daily for immediate intervention.",
+      {
+        "type": "heading",
+        "text": "A wider positive role for AI"
+      },
+      "For communities across Oxfordshire, including Witney and West Oxfordshire, the development is another example of how AI can have a positive impact when it is used carefully and responsibly. It can make public services easier to access, reduce delays for routine enquiries and help human staff focus on the situations where they are needed most.",
+      "Thames Valley Police says one of Bobbi's biggest strengths is accessibility. The service is available 24 hours a day, provides a discreet way to seek help when speaking on the phone may not be possible, and can support multiple languages.",
+      "In one case highlighted by the force, a young person was able to discreetly seek advice about a high-risk domestic incident via Bobbi when it was not safe to speak aloud. The assistant detected the risk, escalated the case and enabled a handover to a live operator who dispatched officers.",
+      "The force says Bobbi is built using information supplied by Thames Valley Police and Hampshire & Isle of Wight Constabulary, and that data shared during chats remains confidential and is not used outside the two forces.",
+      "Further development is already under way, with contact centre supervisors continuing to train the system so it stays up to date with legislation and policies.",
+      "Source: Thames Valley Police. Image: AI-generated illustration for Witney Wire."
+    ],
+    "image": "assets/bobbi-ai-community-policing.png",
+    "date": "2026-07-04T20:10:00Z",
+    "author": "Witney Wire Newsdesk"
   }
 ]

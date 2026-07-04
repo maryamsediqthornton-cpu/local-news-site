@@ -543,6 +543,8 @@ function renderPage(article) {
         ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>'
         : article.id === 'm40-roadworks-update-28-june-2026'
           ? '<p class="ai-disclaimer">AI-generated illustration: M40 roadworks scene used for illustrative purposes.</p>'
+        : article.id === 'bobbi-ai-community-access-policing'
+          ? '<p class="ai-disclaimer">AI-generated illustration: community members using an AI police support assistant, shown for illustrative purposes.</p>'
           : '';
 
   return `<!DOCTYPE html>
