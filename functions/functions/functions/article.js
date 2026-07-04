@@ -428,7 +428,8 @@ const FALLBACK_ARTICLES = [
     ],
     "image": "assets/craig-ballantyne-thames-valley-police.jpeg",
     "date": "2026-07-04T16:15:00Z",
-    "author": "Witney Wire Newsdesk"
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
   }
 ];
 
@@ -595,7 +596,7 @@ function renderPage(article) {
       </div>
     </div>
     <div class="meta">${escapeHtml(formatDate(article.date))} · ${escapeHtml(article.author)}</div>
-    <img class="article-hero" src="/${escapeHtml(String(article.image || '').replace(/^\/+/, ''))}" alt="">
+    <img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}" src="/${escapeHtml(String(article.image || '').replace(/^\/+/, ''))}" alt="">
     ${disclaimer}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>

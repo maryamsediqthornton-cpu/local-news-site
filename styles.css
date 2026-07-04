@@ -1555,3 +1555,17 @@ a:hover {
   color: #667085;
   text-align: center;
 }
+
+
+.article-hero.article-hero-contain {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  background: #f4f4f4;
+}
+
+@media (max-width: 850px) {
+  .article-hero.article-hero-contain {
+    max-height: none;
+  }
+}
