@@ -1,5 +1,41 @@
 const FALLBACK_ARTICLES = [
   {
+    "id": "thames-valley-safety-camera-motorcyclist-team",
+    "title": "New police motorcycle camera team to target speeding across Thames Valley",
+    "category": "news",
+    "summary": "Thames Valley Police says a new motorcycle safety camera team will help officers reach speeding hotspots near schools, rural communities and roads where camera vans are harder to deploy.",
+    "body": [
+      "A new police motorcycle camera team is being launched across Thames Valley as part of a wider push to reduce serious collisions and deaths on the region’s roads.",
+      "Thames Valley Police says the new Safety Camera Motorcyclist capability will allow trained camera operators to reach places where a traditional safety camera van may not be suitable, including areas near schools, rural communities and roads with limited space or access.",
+      "For residents in Witney and across West Oxfordshire, the change could be relevant where speeding concerns are raised on local routes, village roads and school-run approaches. The force says deployments will be guided by collision data, community concerns and local policing priorities.",
+      {
+        "type": "heading",
+        "text": "How the new team will work"
+      },
+      "The motorcycles will be equipped with handheld laser and video speed detection technology. Police say this should make enforcement more flexible and allow officers to respond more quickly to areas where speeding or dangerous driving has been identified as a concern.",
+      "Local policing teams will also be able to raise issues reported in their communities. Where a genuine concern is identified, deployments can be made to provide targeted enforcement and reassurance.",
+      "The force says offences detected by the new team will be processed through existing procedures, with Notices of Intended Prosecution issued where appropriate.",
+      {
+        "type": "heading",
+        "text": "Focus on the ‘Fatal Five’"
+      },
+      "The launch supports the force’s continued focus on the so-called Fatal Five offences: speeding, drink and drug driving, not wearing a seatbelt, using a mobile phone while driving, and careless or dangerous driving.",
+      "Those offences are treated as priorities because they are among the main behaviours linked to serious collisions. Thames Valley Police says the new team is intended to sit alongside education and engagement work, not replace it.",
+      "Superintendent Euan Livingstone, head of the Roads Policing Unit, said the force hears clear and consistent concern from communities about speeding and wants the new capability to show that those concerns are being acted on.",
+      "Thames Valley Police and Crime Commissioner Matthew Barber said the team would help officers reach areas where traditional camera vans cannot, strengthening enforcement against dangerous and illegal behaviour on the roads.",
+      {
+        "type": "heading",
+        "text": "What it means locally"
+      },
+      "The announcement does not list specific Witney deployment sites. However, the ability to use smaller, mobile camera teams could matter in towns and villages where residents have long-standing concerns about speeding but where larger enforcement vehicles are difficult to position safely.",
+      "The capability is funded through the TVP Road Safety Fund, with joint oversight from Thames Valley Police and the Police and Crime Commissioner.",
+      "Source: Thames Valley Police. Image note: Witney Wire has not copied Thames Valley Police photographs without separate permission; this story uses an existing road-safety graphic from the Witney Wire site."
+    ],
+    "image": "assets/traffic.svg",
+    "date": "2026-07-04T15:45:00Z",
+    "author": "Witney Wire Newsdesk"
+  },
+  {
     "id": "phone-free-schools-thames-valley-fund",
     "title": "Criminal cash to fund phone-free schools as Oxford head’s approach gains backing",
     "category": "news",
