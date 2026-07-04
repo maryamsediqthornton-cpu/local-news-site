@@ -1569,3 +1569,18 @@ a:hover {
     max-height: none;
   }
 }
+
+
+/* Article-specific full-face image fix */
+.article-hero.article-hero-contain {
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: #f4f4f4;
+}
+
+@media (max-width: 850px) {
+  .article-hero.article-hero-contain {
+    max-height: none !important;
+  }
+}
