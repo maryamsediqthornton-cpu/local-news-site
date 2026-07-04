@@ -104,7 +104,7 @@ async function initHome() {
   const top = document.querySelector('#top-stories');
   if (!top) return;
 
-  const articles = await getArticles();
+  const articles = (await getArticles()).filter(article => article.excludeFromHomepage !== true);
   const lead = articles[0];
   const secondary = articles[1];
 

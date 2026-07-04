@@ -104,7 +104,7 @@ async function initHome() {
   const top = document.querySelector('#top-stories');
   if (!top) return;
 
-  const articles = await getArticles();
+  const articles = (await getArticles()).filter(article => article.excludeFromHomepage !== true);
   const travelOnlyIds = ['m40-roadworks-update-28-june-2026'];
   const homeArticles = articles.filter(a => !travelOnlyIds.includes(a.id));
   const lead = homeArticles[0];

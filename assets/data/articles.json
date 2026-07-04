@@ -377,5 +377,29 @@
     "image": "assets/carterton-arts-week.png",
     "date": "2026-05-25T18:00:00Z",
     "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "m40-oxfordshire-j9-j8a-closure-4-july-2026",
+    "title": "M40 southbound closed between J9 and J8A after lorry leaves carriageway",
+    "category": "traffic",
+    "summary": "Drivers are facing delays after the M40 was closed southbound in Oxfordshire between J9 at Bicester and J8A for Wheatley and Thame.",
+    "body": [
+      "Drivers are being warned to expect disruption on the M40 in Oxfordshire after the motorway was closed southbound between junction 9 at Bicester and junction 8A for Wheatley and Thame.",
+      "According to the latest National Highways travel alert, the closure remains in place after a lorry left the carriageway shortly before 5am on Friday morning.",
+      "National Highways said its bulletin was sent at 11.15am, with the latest update on the alert issued at 12pm BST.",
+      {
+        "type": "heading",
+        "text": "What drivers need to know"
+      },
+      "The affected stretch is likely to cause delays for drivers travelling south towards Oxford, the M40 junction for the A40, and onward routes towards London and the south east.",
+      "There was no reopening time given in the update shown in the alert. Motorists are being urged to allow extra time, consider alternative routes where possible, and check the latest travel information before setting off.",
+      "For drivers in and around Witney, the disruption may also have a knock-on effect on connecting routes including parts of the A40 and surrounding local roads if traffic begins diverting away from the motorway.",
+      "Witney Wire will update this story if National Highways issues a further update on the closure or confirms when the road has reopened.",
+      "Source: National Highways travel alert. Image: screenshot supplied for publication showing the National Highways alert."
+    ],
+    "image": "assets/m40-oxfordshire-j9-j8a-closure-4-july-2026.png",
+    "date": "2026-07-04T12:00:00Z",
+    "author": "Witney Wire Newsdesk",
+    "excludeFromHomepage": true
   }
 ]
