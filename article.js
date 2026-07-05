@@ -25,7 +25,10 @@
     "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=80",
     "featured": false,
     "trending": true,
-    "body": ["Write the full article text here as separate paragraphs.", "Keep paragraphs short for mobile readers."]
+    "body": [
+      "Write the full article text here as separate paragraphs.",
+      "Keep paragraphs short for mobile readers."
+    ]
   },
   {
     "id": "sport-result-template",
@@ -37,7 +40,9 @@
     "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=80",
     "featured": false,
     "trending": false,
-    "body": ["Add match details, quotes, scores and upcoming fixtures here."]
+    "body": [
+      "Add match details, quotes, scores and upcoming fixtures here."
+    ]
   },
   {
     "id": "whats-on-template",
@@ -49,7 +54,9 @@
     "image": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=1000&q=80",
     "featured": false,
     "trending": true,
-    "body": ["Add event times, ticket links, venue details and accessibility notes here."]
+    "body": [
+      "Add event times, ticket links, venue details and accessibility notes here."
+    ]
   },
   {
     "id": "traffic-update-template",
@@ -61,6 +68,37 @@
     "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
     "featured": false,
     "trending": false,
-    "body": ["Add live update text, affected roads, alternative routes and official source links here."]
+    "body": [
+      "Add live update text, affected roads, alternative routes and official source links here."
+    ]
+  },
+  {
+    "id": "witney-tractor-road-run-antics-charity",
+    "title": "Tractors took to roads near Witney for charity road run",
+    "category": "news",
+    "summary": "Vintage, classic and modern tractors set off from Hartsop Farm in Ramsden for a community road run raising money for Antics Charity, which supports children affected by cancer.",
+    "body": [
+      "Tractors took to the roads around Witney for a charity road run in support of children affected by cancer.",
+      "The Witney Tractor Road Run set off from Hartsop Farm, Ramsden, on Witney Road, with tractor owners, supporters and local residents coming together for a day of community fundraising.",
+      "The event was held in aid of Antics Charity, which helps children affected by cancer, and welcomed a mix of vintage, classic and modern tractors.",
+      {
+        "type": "heading",
+        "text": "Tractors spotted around Witney"
+      },
+      "Photos taken locally showed tractors travelling through the area, with large agricultural vehicles drawing attention from passing motorists and residents as they made their way along roads around Witney.",
+      "The route began from Hartsop Farm, Ramsden, Witney Road, Oxon OX7 3AS, on the B4022.",
+      "Gates opened at 8.30am, with tractors departing at 10.30am. The entry fee was £20 per tractor.",
+      {
+        "type": "heading",
+        "text": "Community support"
+      },
+      "Organisers had encouraged anyone with a vintage, classic or modern tractor to take part, while spectators and families were also welcomed along to support the cause.",
+      "A BBQ and refreshments were available during the day, giving people the chance to enjoy the atmosphere while supporting a local charity event.",
+      "The road run brought together countryside tradition, local community spirit and fundraising, helping to raise awareness and support for Antics Charity.",
+      "Images: Witney Wire."
+    ],
+    "image": "assets/witney-tractor-road-run-charity-hero.jpg",
+    "date": "2026-07-05T12:00:00Z",
+    "author": "Witney Wire Newsdesk"
   }
 ]
