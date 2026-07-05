@@ -602,6 +602,9 @@ function renderPage(article) {
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="stylesheet" href="/styles.css">
+<!-- Google AdSense site verification -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9678324763933867"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 <header class="masthead wrap simple">
