@@ -477,7 +477,7 @@ const FALLBACK_ARTICLES = [
       "An HSE spokesperson said it was now leading the investigation.",
       "Image: Witney Wire."
     ],
-    "image": "assets/bicester-motion-investigation-update.svg",
+    "image": "assets/bicester-motion-investigation-update.png",
     "date": "2026-07-06T10:05:00Z",
     "author": "Witney Wire Newsdesk"
   }
