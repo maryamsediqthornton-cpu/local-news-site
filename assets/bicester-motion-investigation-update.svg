@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="788" viewBox="0 0 1400 788" role="img" aria-label="Investigation update graphic">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#151326"/>
+      <stop offset="55%" stop-color="#1D1A35"/>
+      <stop offset="100%" stop-color="#0B3458"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="58%" stop-color="#5D76FF"/>
+      <stop offset="100%" stop-color="#2F7D4D"/>
+    </linearGradient>
+    <radialGradient id="dot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1400" height="788" fill="url(#bg)"/>
+
+  <!-- subtle dotted circular pattern -->
+  <g opacity="0.32">
+    <circle cx="235" cy="390" r="285" fill="none" stroke="#FFFFFF" stroke-width="22" stroke-dasharray="1 42" stroke-linecap="round"/>
+    <circle cx="235" cy="390" r="220" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-dasharray="1 36" stroke-linecap="round"/>
+    <circle cx="235" cy="390" r="160" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="1 29" stroke-linecap="round"/>
+    <circle cx="235" cy="390" r="105" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-dasharray="1 23" stroke-linecap="round"/>
+  </g>
+
+  <circle cx="1160" cy="140" r="210" fill="url(#dot)" opacity="0.45"/>
+  <circle cx="1070" cy="685" r="260" fill="url(#dot)" opacity="0.18"/>
+
+  <g transform="translate(415 250)">
+    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="108" font-weight="800" fill="#FFFFFF">Update</text>
+    <rect x="2" y="40" width="475" height="7" rx="3.5" fill="url(#line)"/>
+    <text x="0" y="100" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">Investigation handed to HSE</text>
+    <text x="0" y="152" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="500" fill="#DCE4EE">Bicester Motion fire deaths</text>
+  </g>
+
+  <g transform="translate(415 515)">
+    <rect x="0" y="0" width="420" height="58" rx="29" fill="#FFFFFF" opacity="0.09"/>
+    <text x="32" y="38" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#FFFFFF">Witney Wire News</text>
+  </g>
+
+  <rect x="0" y="0" width="1400" height="14" fill="#2F7D4D"/>
+  <rect x="0" y="774" width="1400" height="14" fill="#2F7D4D" opacity="0.9"/>
+</svg>
