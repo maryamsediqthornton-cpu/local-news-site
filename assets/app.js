@@ -173,6 +173,7 @@ async function initArticle() {
     ${article.id === 'mod-bicester-asylum-accommodation-concerns' ? '<p class="ai-disclaimer">AI-generated illustration: Bicester Village-style shopping area used for illustrative purposes.</p>' : ''}
     ${article.id === 'm40-roadworks-update-28-june-2026' ? '<p class="ai-disclaimer">AI-generated illustration: M40 roadworks scene used for illustrative purposes.</p>' : ''}
     ${article.id === 'bobbi-ai-community-access-policing' ? '<p class="ai-disclaimer">AI-generated illustration: community members using an AI police support assistant, shown for illustrative purposes.</p>' : ''}
+    ${article.id === 'two-sentenced-drug-supply-oxford' ? '<p class="ai-disclaimer">AI-generated illustration: drugs evidence, mobile phones and scales shown for illustrative purposes.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
     ${haveYourSayBlock()}

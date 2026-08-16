@@ -503,5 +503,36 @@
     "image": "assets/bicester-motion-investigation-update.png",
     "date": "2026-07-06T10:05:00Z",
     "author": "Witney Wire Newsdesk"
+  },
+  {
+    "id": "two-sentenced-drug-supply-oxford",
+    "title": "Two sentenced over Class A drug supply in Oxford",
+    "category": "news",
+    "summary": "Two people have been sentenced after a Thames Valley Police investigation uncovered class A drugs, mobile phones and dealing paraphernalia in Oxford.",
+    "body": [
+      "Two people have been sentenced following a Thames Valley Police investigation into the supply of class A drugs in Oxford.",
+      "Cameron Riordan, 27, of Reedmace Close, Blackbird Leys, was sentenced at Oxford Crown Court on Friday 14 August to four years and eight months in prison.",
+      "Charley Webb, 29, of Pottery Place, Blackbird Leys, was given a sentence of one year and eight months, suspended for two years. She must also complete a 15-day rehabilitation requirement and pay £187 in costs.",
+      {
+        "type": "heading",
+        "text": "What the case involved"
+      },
+      "Riordan pleaded guilty to offences including possession with intent to supply cocaine, heroin and crack cocaine, along with being concerned in the supply of heroin and crack cocaine.",
+      "Webb pleaded guilty to being concerned in the supply of heroin and cocaine.",
+      "Police said officers arrested Riordan on 16 February after receiving information that he was operating a drugs line in Oxford. During a search, officers recovered heroin, crack cocaine and two mobile phones.",
+      "Analysis of one of the devices later indicated that drugs were being stored at Webb's address in exchange for cash payments.",
+      {
+        "type": "heading",
+        "text": "Search at second address"
+      },
+      "Officers searched Webb's address on 19 February and recovered a safe containing crack cocaine, heroin and cocaine with an estimated street value of £9,980.",
+      "Additional mobile phones and drug supply paraphernalia were also seized, including scales, blades and deal bags used for packaging controlled drugs.",
+      "Thames Valley Police said the case formed part of its continued work to disrupt drug supply networks and prevent harmful class A drugs from reaching local communities.",
+      "Source: Thames Valley Police."
+    ],
+    "image": "assets/two-sentenced-drug-supply-oxford.png",
+    "date": "2026-08-16T10:55:00Z",
+    "author": "Mary",
+    "excludeFromHomepage": true
   }
 ]
