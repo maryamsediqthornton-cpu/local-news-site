@@ -4,6 +4,7 @@
 // Configure the cron trigger separately: */30 * * * * (UTC).
 const API='https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
 const SNAPSHOT='v060-road-closures';
+const RUN_STATUS='v060-road-closures-run-status';
 const HOME='https://witneywire.co.uk';
 const HEADERS={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const BOX={south:51.45,north:52.25,west:-1.78,east:-0.75}; // approximate screening ONLY
@@ -114,16 +115,30 @@ async function refresh(env){
   publishing_enabled:false,
   pages_checked:planned.pages+unplanned.pages};
  await env.TRAVEL_KV.put(SNAPSHOT,JSON.stringify(feed));
+ await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'success',time:feed.updated_at,pages_checked:feed.pages_checked}));
  return feed;
 }
 export default {
- async scheduled(_controller,env,ctx){ctx.waitUntil(refresh(env).catch(()=>{}));},
+ async scheduled(_controller,env,ctx){
+  ctx.waitUntil((async()=>{
+   try {await refresh(env);}
+   catch (error) {
+    // Record failure without storing secrets, request payloads or upstream responses.
+    const message=String(error?.message||'unknown');
+    const reason=/^upstream_status_\d+$/.test(message)?'upstream_http_error':
+      ['missing_kv_or_secret','repeated_pagination_cursor','invalid_datex','unrecognised_pagination','page_cap_hit'].includes(message)?message:'request_or_processing_error';
+    console.error('Witney travel refresh failed',reason);
+    if(env.TRAVEL_KV)await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'error',time:new Date().toISOString(),reason}));
+   }
+  })());
+ },
  async fetch(request,env){
   const u=new URL(request.url),origin=request.headers.get('Origin');
   const allowed=origin===HOME||origin?.endsWith('.local-news-site.pages.dev')?origin:null;
   if(u.pathname==='/health'){
    const snapshot=env.TRAVEL_KV?await env.TRAVEL_KV.get(SNAPSHOT,'json'):null;
-   return json({ok:true,mode:'staging',key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
+   const run=env.TRAVEL_KV?await env.TRAVEL_KV.get(RUN_STATUS,'json'):null;
+   return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
     candidates:snapshot?.staging_candidates||0,publishing_enabled:false});
   }
