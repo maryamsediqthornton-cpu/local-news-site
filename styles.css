@@ -1607,3 +1607,9 @@ a:hover {
 .traffic-live-links a{font-weight:700;color:#0b2a4a;text-decoration:none}
 .traffic-live-links a:hover{text-decoration:underline}
 @media(max-width:600px){.traffic-live-top{padding:18px;align-items:flex-start}.traffic-live-mark{display:none}.traffic-live-results{padding:15px 18px}.traffic-live-bottom{padding:12px 18px}.traffic-live-top h2{font-size:21px}}
+
+/* Traffic reports archive: editorial history, not live travel information */
+.traffic-archive{border-top:1px solid #d9dee3;padding-top:18px;margin-top:18px}
+.traffic-archive>summary{cursor:pointer;color:#0b2a4a;font-size:17px;font-weight:800;padding:10px 0;list-style-position:inside}
+.traffic-archive>p,.traffic-current-empty{color:#596475;font-size:14px;line-height:1.6}
+.traffic-archive .card-grid{margin-top:18px}
