@@ -1,77 +1,95 @@
-// Witney Wire V060 — geographic screening diagnostic only.
-// This uses an APPROXIMATE Oxfordshire bounding box, NOT the county boundary.
-// Never publishes traffic alerts, raw records, or API credentials.
+// Witney Wire V060 — paginated road-closure validation preview ONLY.
+// Does not serve a public travel feed, publish alerts, or expose credentials.
+// The geographic box is approximate, NOT an official county boundary.
 const API='https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
 const H={'content-type':'application/json; charset=utf-8','cache-control':'no-store'};
-const BOX={south:51.45,north:52.25,west:-1.78,east:-0.75};
-function blocks(xml,tag){
- const re=new RegExp('<(?:[\\w.-]+:)?'+tag+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/(?:[\\w.-]+:)?'+tag+'>','gi');
- return [...xml.matchAll(re)].map(m=>m[1]);
+const B={minLat:51.45,maxLat:52.25,minLon:-1.78,maxLon:-0.75};
+function blocks(s,t){const p=new RegExp('<(?:[\\w.-]+:)?'+t+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/(?:[\\w.-]+:)?'+t+'>','gi');return [...s.matchAll(p)].map(m=>m[1]);}
+function field(s,t){return blocks(s,t).map(x=>x.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()).filter(Boolean)[0]||null;}
+function roadCodes(s){
+ const content=['roadName','locationDescription','locationContainedInGroup'].flatMap(t=>blocks(s,t)).join(' ').replace(/<[^>]*>/g,' ').toUpperCase();
+ return ['A40','M40'].filter(road=>new RegExp('(?:^|[^A-Z0-9])'+road+'(?![0-9])').test(content));
 }
-function plain(s){return s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();}
-function roads(record){
- const labels=['roadName','locationDescription','locationContainedInGroup'].flatMap(t=>blocks(record,t)).map(plain).join(' ').toUpperCase();
- return ['A40','M40'].filter(road=>new RegExp('(?:^|[^A-Z0-9])'+road+'(?![0-9])').test(labels));
-}
-function classifyGeometry(record){
- const geometry=blocks(record,'gmlLineString').concat(blocks(record,'LineString'));
- const input=geometry.length?geometry:blocks(record,'linearLocation');
- const pieces=input.length?input:[record];
- let usable=0,invalid=0,inside=0,segments=0;
- for(const piece of pieces){
-  for(const m of piece.matchAll(/<(?:[\w.-]+:)?posList\b[^>]*>([\s\S]*?)<\/(?:[\w.-]+:)?posList>/gi)){
-   const nearby=piece.slice(Math.max(0,m.index-400),m.index);
-   // Only apply lat/lon test to known WGS84 coordinate references.
-   if(!/4326/i.test(nearby)&&!/4326/i.test(piece.slice(0,500))){invalid++;continue;}
-   const nums=m[1].trim().split(/\s+/).map(Number);
-   if(nums.length<4||nums.length%2||nums.some(n=>!Number.isFinite(n))){invalid++;continue;}
+function geometry(record){
+ let usable=false,candidate=false;
+ for(const block of blocks(record,'gmlLineString').concat(blocks(record,'LineString'))){
+  if(!/4326/i.test(block))continue;
+  for(const raw of blocks(block,'posList')){
+   const nums=raw.trim().split(/\s+/).map(Number);
+   if(nums.length<4||nums.length%2||nums.some(x=>!Number.isFinite(x)))continue;
    const pts=[];
    for(let i=0;i<nums.length;i+=2){
-    const lat=nums[i],lon=nums[i+1];
-    if(Math.abs(lat)>90||Math.abs(lon)>180){invalid++;pts.length=0;break;}
-    pts.push([lat,lon]);usable++;
-    if(lat>=BOX.south&&lat<=BOX.north&&lon>=BOX.west&&lon<=BOX.east)inside++;
+    if(Math.abs(nums[i])>90||Math.abs(nums[i+1])>180){pts.length=0;break;}
+    pts.push([nums[i],nums[i+1]]);
    }
-   // Segment intersection: line can cross box even when endpoints are outside.
-   // Bounding-box overlap here is ONLY a candidate, not a proven route match.
+   if(!pts.length)continue;
+   usable=true;
+   for(const [lat,lon] of pts)if(lat>=B.minLat&&lat<=B.maxLat&&lon>=B.minLon&&lon<=B.maxLon)candidate=true;
    for(let i=1;i<pts.length;i++){
-    const a=pts[i-1],b=pts[i];
-    if(Math.max(a[0],b[0])>=BOX.south&&Math.min(a[0],b[0])<=BOX.north&&
-       Math.max(a[1],b[1])>=BOX.west&&Math.min(a[1],b[1])<=BOX.east)segments++;
+    const [a,b]=[pts[i-1],pts[i]];
+    if(Math.max(a[0],b[0])>=B.minLat&&Math.min(a[0],b[0])<=B.maxLat&&Math.max(a[1],b[1])>=B.minLon&&Math.min(a[1],b[1])<=B.maxLon)candidate=true;
    }
   }
  }
- return {candidate:inside>0||segments>0,usable,invalid};
+ return {usable,candidate};
 }
-function inspect(xml){
- const records=blocks(xml,'situationRecord');
- const result={total_records:records.length,road_matched:0,candidate_records:0,outside_or_unresolved:0,without_valid_geometry:0,invalid_geometry_fragments:0,by_road:{A40:0,M40:0},candidate_by_road:{A40:0,M40:0}};
- for(const record of records){
-  const rs=roads(record);if(!rs.length)continue;
-  result.road_matched++;
-  for(const r of rs)result.by_road[r]++;
-  const geo=classifyGeometry(record);
-  result.invalid_geometry_fragments+=geo.invalid;
-  if(!geo.usable)result.without_valid_geometry++;
-  if(geo.candidate){result.candidate_records++;for(const r of rs)result.candidate_by_road[r]++;}
-  else result.outside_or_unresolved++;
+function process(xml,now){
+ const counts={total_records:0,road_matches:0,approximate_area_candidates:0,not_area_candidates:0,
+  missing_geometry:0,date_or_status_rejected:0,review_candidates:0,road_candidates:{A40:0,M40:0},statuses:{}};
+ for(const sit of blocks(xml,'situation')){
+  for(const rec of blocks(sit,'situationRecord')){
+   counts.total_records++;
+   const roads=roadCodes(rec);if(!roads.length)continue;
+   counts.road_matches++;
+   const g=geometry(rec);
+   if(!g.usable)counts.missing_geometry++;
+   if(g.candidate){counts.approximate_area_candidates++;roads.forEach(r=>counts.road_candidates[r]++);}
+   else counts.not_area_candidates++;
+   const status=(field(rec,'validityStatus')||field(sit,'validityStatus')||'unknown').toLowerCase();
+   counts.statuses[status]=(counts.statuses[status]||0)+1;
+   const from=field(rec,'overallStartTime')||field(sit,'overallStartTime');
+   const to=field(rec,'overallEndTime')||field(sit,'overallEndTime');
+   const a=Date.parse(from||''),b=Date.parse(to||'');
+   // Only planned/active; future start or current; no expired or invalid dates.
+   const acceptable=Number.isFinite(a)&&Number.isFinite(b)&&b>a&&b>now&&
+     ['planned','active'].includes(status);
+   if(!acceptable)counts.date_or_status_rejected++;
+   if(g.usable&&g.candidate&&acceptable)counts.review_candidates++;
+  }
  }
- return result;
+ return counts;
+}
+function nextPage(current,header,type){
+ if(!header)return {url:null,reason:'end_of_pages'};
+ // x-next may be a raw cursor or an absolute/relative URL; never forward arbitrary URLs.
+ let u;
+ try{u=new URL(header,current);}catch{return {url:null,reason:'unrecognized_pagination_header'};}
+ const b=new URL(API);
+ if(u.origin!==b.origin||u.pathname!==b.pathname||u.searchParams.get('closureType')!==type)
+  return {url:null,reason:'unrecognized_pagination_header'};
+ return {url:u.href,reason:null};
 }
 export default {
  async fetch(request,env){
-  const url=new URL(request.url);
-  if(!['/','/health'].includes(url.pathname))return new Response('Not found',{status:404});
+  const u=new URL(request.url);
+  if(!['/health','/'].includes(u.pathname))return new Response('Not found',{status:404});
   if(!env.NATIONAL_HIGHWAYS_API_KEY)return Response.json({ok:false,stage:'missing_secret'},{status:503,headers:H});
-  const type=url.searchParams.get('type')==='unplanned'?'unplanned':'planned';
-  try{
-   const r=await fetch(API+'?closureType='+type,{headers:{'Ocp-Apim-Subscription-Key':env.NATIONAL_HIGHWAYS_API_KEY,Accept:'application/xml'},signal:AbortSignal.timeout(20000)});
-   if(!r.ok)return Response.json({ok:false,stage:'upstream',http_status:r.status},{status:502,headers:H});
-   const xml=await r.text();
-   if(!/<(?:[\w.-]+:)?D2Payload\b/i.test(xml))return Response.json({ok:false,stage:'unexpected_xml'},{status:502,headers:H});
-   return Response.json({ok:true,stage:'bounding_box_candidate_preview',type,first_page_only:true,publishing_enabled:false,
-    area:'Approximate Oxfordshire diagnostic box',...inspect(xml),
-    warning:'Bounding-box overlaps are candidates, NOT verified Oxfordshire closures. Incomplete pagination. No alerts are published.'},{headers:H});
-  }catch(e){return Response.json({ok:false,stage:e?.name==='TimeoutError'?'timeout':'request_failed'},{status:502,headers:H});}
+  const type=u.searchParams.get('type')==='unplanned'?'unplanned':'planned';
+  let url=API+'?closureType='+type,stop='end_of_pages';const seen=new Set(),pages=[];
+  for(let i=0;i<3&&url;i++){
+   if(seen.has(url)){stop='repeated_cursor';break;}seen.add(url);
+   try{
+    const r=await fetch(url,{headers:{'Ocp-Apim-Subscription-Key':env.NATIONAL_HIGHWAYS_API_KEY,Accept:'application/xml'},signal:AbortSignal.timeout(20000)});
+    if(!r.ok)return Response.json({ok:false,stage:'upstream_failure',status:r.status,pages_checked:pages.length},{status:502,headers:H});
+    const xml=await r.text();
+    if(!/<(?:[\w.-]+:)?D2Payload\b/i.test(xml))return Response.json({ok:false,stage:'invalid_xml',pages_checked:pages.length},{status:502,headers:H});
+    pages.push(process(xml,Date.now()));
+    const next=nextPage(url,r.headers.get('x-next'),type);
+    url=next.url;if(next.reason)stop=next.reason;
+    if(i===2&&url)stop='page_limit_more_records_possible';
+   }catch(e){return Response.json({ok:false,stage:e?.name==='TimeoutError'?'timeout':'request_failed',pages_checked:pages.length},{status:502,headers:H});}
+  }
+  return Response.json({ok:true,stage:'combined_validation_preview',type,publishing_enabled:false,
+   pages_checked:pages.length,stop,pages,notice:'Review candidates are NOT verified local closures. Bounding box is approximate, pagination and record identity require further verification.'},{headers:H});
  }
 };
