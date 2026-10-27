@@ -57,7 +57,7 @@
  function niceDate(d) {return new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'}).format(d)+' UK time';}
  function p(parent, value, className) {const el=document.createElement('p'); if(className) el.className=className; el.textContent=value; parent.append(el); return el;}
  function message(s){ const el=document.createElement('div');el.className='travel-panel';p(el,s,'travel-muted');list.append(el);}
- fetch('data/travel-feed.json',{cache:'no-store'}).then(async response=>{if(!response.ok)throw Error('Feed unavailable');return response.json();}).then(feed=>{
+ fetch('https://witney-wire-travel-updates.maryamsediqthornton.workers.dev/feed',{cache:'no-store'}).then(async response=>{if(!response.ok)throw Error('Feed unavailable');return response.json();}).then(feed=>{
   const now=new Date(), updated=validDate(feed.updated_at);
   if(!updated || updated>new Date(now.getTime()+5*60*1000) || now-updated>90*60*1000){
    status.textContent='No recently verified travel feed available';
@@ -65,6 +65,10 @@
    message('No verified current notices can be displayed. Please consult the official travel sources below.');return;
   }
   checked.textContent='Information last checked: '+niceDate(updated);
+  if(feed.status==='pending_geographic_validation'){
+   status.textContent='Automated road updates are being verified';
+   message('Automatic National Highways closure notices are not enabled yet. Please use the official sources below.');return;
+  }
   const notices=(Array.isArray(feed.notices)?feed.notices:[]).filter(n=>{
    const expiry=validDate(n.valid_until),start=validDate(n.valid_from), source=safeSource(n.source_url);
    return source && expiry && expiry>now && (!start || start<=new Date(now.getTime()+30*24*60*60*1000)) &&
