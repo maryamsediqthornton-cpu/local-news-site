@@ -3,41 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel Updates | Witney Wire</title>
+<meta name="description" content="Verified roadworks and travel notices for Witney, West Oxfordshire, the A40 and M40.">
+<title>Traffic &amp; Travel Updates | Witney Wire</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+.travel-shell{max-width:980px;margin:2rem auto;padding:0 1rem 3rem}
+.travel-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.travel-heading h1{margin:.2rem 0}.travel-muted{color:#596475}.travel-panel{border:1px solid #dce3e8;border-radius:10px;padding:1.2rem;background:#fff;margin-top:1rem}
+.travel-list{display:grid;gap:1rem;margin-top:1rem}.travel-card{border:1px solid #dce3e8;border-left:5px solid #294b61;border-radius:9px;padding:1.2rem;background:#fff}
+.travel-card h2{font-size:1.2rem;margin:.3rem 0}.travel-tag{font-size:.76rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#24475d}
+.travel-meta{font-size:.89rem;color:#596475;margin:.6rem 0}.travel-links{display:flex;gap:1.5rem;flex-wrap:wrap}.travel-shell a{color:#12577c;text-decoration:underline}
+.travel-note{font-size:.9rem;color:#596475}.travel-sources{display:flex;gap:.8rem;flex-wrap:wrap}.travel-sources a{display:inline-block}
+</style>
 <!-- Google AdSense site verification -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9678324763933867"
-     crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9678324763933867" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="wrap">
-    <h1>Travel Updates</h1>
+<header class="site-header"><div class="wrap"><a href="index.html" aria-label="Witney Wire home">Witney Wire</a></div></header>
+<main class="travel-shell">
+ <div class="travel-heading">
+  <div><p class="travel-tag">Witney Wire · Traffic &amp; Travel</p><h1>Local travel updates</h1>
+   <p>Roadworks and travel notices for Witney, West Oxfordshire, the A40, M40 and nearby routes.</p></div>
+ </div>
+ <section class="travel-panel" aria-live="polite" aria-atomic="true">
+  <strong id="feed-status">Checking available travel notices…</strong>
+  <p class="travel-note" id="last-checked"></p>
+  <p class="travel-note">Not a live traffic or journey-time service. Always follow road signs and official advice. Notices may change.</p>
+ </section>
+ <section aria-labelledby="notices-title">
+  <h2 id="notices-title">Current and upcoming notices</h2>
+  <div id="travel-list" class="travel-list" aria-live="polite"></div>
+ </section>
+ <section class="travel-panel" aria-labelledby="official-title">
+  <h2 id="official-title">Check official travel information</h2>
+  <p class="travel-note">Until verified data connections are active, use the official sources below for the latest information.</p>
+  <div class="travel-sources">
+   <a href="https://nationalhighways.co.uk/travel-updates/" target="_blank" rel="noopener noreferrer">National Highways</a>
+   <a href="https://www.oxfordshire.gov.uk/residents/roads-and-transport" target="_blank" rel="noopener noreferrer">Oxfordshire County Council</a>
+   <a href="https://www.trafficengland.com/" target="_blank" rel="noopener noreferrer">Traffic England</a>
   </div>
-</header>
-
-<main class="wrap">
-  <section class="travel-feed">
-
-    <div class="travel-card">
-      <span class="live-badge">LIVE</span>
-      <h2>A40 congestion expected during peak travel hours</h2>
-      <p>Drivers travelling between Witney and Oxford are advised to allow extra time.</p>
-    </div>
-
-    <div class="travel-card">
-      <h3>A34 delays northbound</h3>
-      <p>Slow moving traffic approaching Oxford interchange.</p>
-    </div>
-
-    <div class="travel-card">
-      <h3>Rail services operating normally</h3>
-      <p>No major disruption currently reported across Oxfordshire services.</p>
-    </div>
-
-  </section>
+ </section>
 </main>
-
+<script>
+(() => {
+ const list = document.getElementById('travel-list'), status = document.getElementById('feed-status');
+ const checked = document.getElementById('last-checked');
+ const sourceHostnames = ['nationalhighways.co.uk','trafficengland.com','oxfordshire.gov.uk','gov.uk'];
+ function safeSource(url) {
+  try { const u=new URL(url); return u.protocol==='https:' && sourceHostnames.some(h=>u.hostname===h||u.hostname.endsWith('.'+h)) ? u.href : null; }
+  catch { return null; }
+ }
+ function validDate(value) {const d = new Date(value);return Number.isFinite(d.getTime()) ? d : null;}
+ function niceDate(d) {return new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'Europe/London'}).format(d)+' UK time';}
+ function p(parent, value, className) {const el=document.createElement('p'); if(className) el.className=className; el.textContent=value; parent.append(el); return el;}
+ function message(s){ const el=document.createElement('div');el.className='travel-panel';p(el,s,'travel-muted');list.append(el);}
+ fetch('data/travel-feed.json',{cache:'no-store'}).then(async response=>{if(!response.ok)throw Error('Feed unavailable');return response.json();}).then(feed=>{
+  const now=new Date(), updated=validDate(feed.updated_at);
+  if(!updated || updated>new Date(now.getTime()+5*60*1000) || now-updated>90*60*1000){
+   status.textContent='No recently verified travel feed available';
+   checked.textContent=updated?'Last feed check: '+niceDate(updated)+'. Information is now out of date.':'Automatic updates are not yet connected.';
+   message('No verified current notices can be displayed. Please consult the official travel sources below.');return;
+  }
+  checked.textContent='Information last checked: '+niceDate(updated);
+  const notices=(Array.isArray(feed.notices)?feed.notices:[]).filter(n=>{
+   const expiry=validDate(n.valid_until),start=validDate(n.valid_from), source=safeSource(n.source_url);
+   return source && expiry && expiry>now && (!start || start<=new Date(now.getTime()+30*24*60*60*1000)) &&
+     typeof n.title==='string' && n.title.trim() && typeof n.description==='string' && n.description.trim();
+  }).slice(0,50);
+  status.textContent=notices.length ? notices.length+' verified travel notice'+(notices.length===1?'':'s')+' available' : 'No verified notices in the current feed';
+  if(!notices.length){message('No current notices were supplied by the verified feed. This does not mean roads are clear.');return;}
+  notices.forEach(n=>{
+   const card=document.createElement('article');card.className='travel-card';
+   const tag=document.createElement('span');tag.className='travel-tag';tag.textContent=n.type||'Travel notice';card.append(tag);
+   const heading=document.createElement('h2');heading.textContent=n.title;card.append(heading);
+   p(card,n.description);
+   const meta=[n.road,n.location,n.valid_from?'From '+niceDate(validDate(n.valid_from)):'',n.valid_until?'Until '+niceDate(validDate(n.valid_until)):''].filter(Boolean).join(' · ');
+   if(meta)p(card,meta,'travel-meta');
+   const a=document.createElement('a');a.href=safeSource(n.source_url);a.textContent='View official source';a.target='_blank';a.rel='noopener noreferrer';card.append(a);list.append(card);
+  });
+ }).catch(()=>{status.textContent='Travel feed not yet available';checked.textContent='Automatic official-source updates are awaiting connection.';message('Please consult the official travel sources below for current information.');});
+})();
+</script>
 </body>
 </html>
