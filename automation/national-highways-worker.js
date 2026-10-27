@@ -1,63 +1,50 @@
-// Witney Wire V060 — closure mapping validation (READ-ONLY).
-// No public travel feed and no automated publishing. National Highways XML only.
-const API='https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
-const H={'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'};
-const GOOD_ROADS=new Set(['A40','M40']);
-function decode(s) {
- return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
-  .replace(/&quot;/g,'"').replace(/&apos;/g,"'").replace(/&#(\d+);/g,(_,n)=>String.fromCodePoint(Number(n)))
-  .replace(/&#x([0-9a-f]+);/gi,(_,n)=>String.fromCodePoint(parseInt(n,16)));
-}
-function getText(xml,tag) {
- // Allow namespace prefixes and nested <value> inside DATEX fields.
- const re=new RegExp('<(?:[\\w-]+:)?'+tag+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/(?:[\\w-]+:)?'+tag+'>','i');
- const m=xml.match(re);
- return m ? decode(m[1].replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()).slice(0,250):null;
-}
-function inspect(xml) {
- const records=[...xml.matchAll(/<(?:[\w-]+:)?situationRecord\b[^>]*>([\s\S]*?)<\/(?:[\w-]+:)?situationRecord>/gi)];
- const counts={total_records:records.length,road_A40:0,road_M40:0,other_roads:0,missing_road:0,
-  missing_start:0,missing_end:0,invalid_dates:0};
- const examples=[];
- for(const m of records){
-  const record=m[1]; const rawRoad=getText(record,'roadNumber');
-  const road=rawRoad?.toUpperCase().replace(/\s+/g,'').match(/^(A40|M40)$/)?.[1]||null;
-  const start=getText(record,'overallStartTime'),end=getText(record,'overallEndTime');
-  const validDates=start && end && Number.isFinite(Date.parse(start)) && Number.isFinite(Date.parse(end)) && Date.parse(end)>Date.parse(start);
-  if(!rawRoad)counts.missing_road++; else if(road)counts['road_'+road]++;else counts.other_roads++;
-  if(!start)counts.missing_start++;if(!end)counts.missing_end++;
-  if(start&&end&&!validDates)counts.invalid_dates++;
-  if(road && examples.length<8){
-   examples.push({road,start:start||null,end:end||null,dates_valid:!!validDates,
-    validity_status:getText(record,'validityStatus'),information_status:getText(record,'informationStatus'),
-    lanes_restricted:getText(record,'numberOfLanesRestricted'),
-    // Read-only diagnostic: location fields not interpreted as confirmed place names.
-    from_node:getText(record,'fromNodeName'),to_node:getText(record,'toNodeName')});
-  }
+// Witney Wire V060: READ-ONLY DATEX-II road identifier diagnostic.
+// No automated posting, no API key exposure, no raw XML or personal data returned.
+const ENDPOINT='https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
+const RESPONSE_HEADERS={'content-type':'application/json; charset=utf-8','cache-control':'no-store'};
+const ROAD_TAGS=['roadName','roadNumber','linearElementIdentifier','locationDescription','locationContainedInGroup'];
+function textValues(xml,tag,max=10000){
+ const pattern=new RegExp('<(?:[\\w.-]+:)?'+tag+'(?:\\s[^>]*)?>([\\s\\S]*?)<\\/(?:[\\w.-]+:)?'+tag+'>','gi');
+ const out=[];let m;
+ while((m=pattern.exec(xml))!==null && out.length<max){
+  // Read only short simple text. Never return unescaped markup or full descriptions.
+  const s=m[1].replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+  if(s)out.push(s.slice(0,120));
  }
- return {counts,examples,matching_page_records:counts.road_A40+counts.road_M40};
+ return out;
+}
+function summary(values) {
+ const counts=new Map();
+ for(const value of values){
+  // Road codes only; ignore prose, junction/node identifiers and free text.
+  const matches=value.toUpperCase().match(/\b(?:M|A)\s*\d{1,4}\b/g)||[];
+  for(const road of matches){const n=road.replace(/\s+/g,'');counts.set(n,(counts.get(n)||0)+1);}
+ }
+ return {value_count:values.length,code_counts:[...counts].sort((a,b)=>b[1]-a[1]).slice(0,20)
+  .map(([road,count])=>({road,count})),A40_mentions:counts.get('A40')||0,M40_mentions:counts.get('M40')||0};
 }
 export default {
  async fetch(request,env){
-  const uri=new URL(request.url);
-  if(uri.pathname!=='/health'&&uri.pathname!=='/') return new Response('Not found',{status:404});
-  if(!env.NATIONAL_HIGHWAYS_API_KEY) return Response.json({ok:false,stage:'missing_secret'},{status:503,headers:H});
-  const type=uri.searchParams.get('type')==='unplanned'?'unplanned':'planned';
+  const url=new URL(request.url);
+  if(!['/','/health'].includes(url.pathname))return new Response('Not found',{status:404});
+  if(!env.NATIONAL_HIGHWAYS_API_KEY)return Response.json({ok:false,stage:'missing_secret'},{status:503,headers:RESPONSE_HEADERS});
+  const type=url.searchParams.get('type')==='unplanned'?'unplanned':'planned';
   try{
-   const r=await fetch(API+'?closureType='+type,{
+   const response=await fetch(ENDPOINT+'?closureType='+type,{
     headers:{'Ocp-Apim-Subscription-Key':env.NATIONAL_HIGHWAYS_API_KEY,Accept:'application/xml'},
     signal:AbortSignal.timeout(20000)
    });
-   if(!r.ok) return Response.json({ok:false,stage:'upstream',http_status:r.status},{status:502,headers:H});
-   const xml=await r.text();
-   if(!/<(?:[\w-]+:)?D2Payload\b/.test(xml))return Response.json({ok:false,stage:'not_expected_datex_xml'},{status:502,headers:H});
-   const parsed=inspect(xml);
-   return Response.json({ok:true,stage:'mapping_preview',type,publishing_enabled:false,
-    first_page_only:true,next_page_header_present:!!r.headers.get('x-next'),
-    ...parsed,
-    warning:'These are preliminary field mappings, not validated live closures. No notices are published.'},{headers:H});
-  }catch(e){
-   return Response.json({ok:false,stage:e?.name==='TimeoutError'?'timeout':'request_or_parse_error'},{status:502,headers:H});
-  }
+   if(!response.ok)return Response.json({ok:false,stage:'upstream',http_status:response.status},{status:502,headers:RESPONSE_HEADERS});
+   const xml=await response.text();
+   if(!/<(?:[\w.-]+:)?D2Payload\b/i.test(xml))return Response.json({ok:false,stage:'unexpected_payload'},{status:502,headers:RESPONSE_HEADERS});
+   const fields=Object.fromEntries(ROAD_TAGS.map(tag=>[tag,summary(textValues(xml,tag))]));
+   const records=(xml.match(/<(?:[\w.-]+:)?situationRecord\b/gi)||[]).length;
+   const situations=(xml.match(/<(?:[\w.-]+:)?situation\b/gi)||[]).length;
+   return Response.json({ok:true,stage:'road_identifier_preview',closure_type:type,
+    first_page_only:true,records,situations,fields,publishing_enabled:false,
+    note:'Diagnostic road-code counts are not a verified closure list. Locations, status, and pagination remain unvalidated.'},
+    {headers:RESPONSE_HEADERS});
+  }catch(e){return Response.json({ok:false,stage:e?.name==='TimeoutError'?'timeout':'request_failed'},
+    {status:502,headers:RESPONSE_HEADERS});}
  }
 };
