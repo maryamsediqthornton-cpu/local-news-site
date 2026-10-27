@@ -137,8 +137,64 @@ async function initCategory() {
 
   const category = params.get('category') || 'news';
   document.querySelector('#category-title').textContent = label(category);
+  if (category === 'traffic') initTrafficLivePanel();
   const articles = (await getArticles()).filter(a => a.category === category);
   holder.innerHTML = articles.length ? articles.map(card).join('') : '<p>No stories in this section yet.</p>';
+}
+
+// Roadwatch belongs on the existing Traffic category page, not a separate microsite.
+// It is intentionally read-only; it never changes the article collection.
+async function initTrafficLivePanel() {
+  const panel=document.querySelector('#traffic-live-panel');
+  if (!panel) return;
+  panel.hidden=false;
+  const results=panel.querySelector('#traffic-live-results');
+  const checked=panel.querySelector('#traffic-live-checked');
+  const showStatus=(message)=>{
+    results.replaceChildren();
+    const line=document.createElement('div');
+    line.className='traffic-live-status';
+    const dot=document.createElement('span');dot.className='traffic-live-dot';dot.setAttribute('aria-hidden','true');
+    const text=document.createElement('span');text.textContent=message;
+    line.append(dot,text);results.append(line);
+  };
+  try {
+    const response=await fetch('https://witney-wire-travel-updates.maryamsediqthornton.workers.dev/feed',{cache:'no-store'});
+    if(!response.ok)throw new Error('feed_unavailable');
+    const feed=await response.json();
+    const updated=new Date(feed.updated_at);
+    if(!Number.isFinite(updated.getTime())||updated.getTime()>Date.now()+300000||Date.now()-updated.getTime()>5400000)
+      throw new Error('feed_stale');
+    if(feed.status!=='verified_for_publication'){
+      showStatus('Verified automatic closure alerts are being prepared. Check official sources for current restrictions.');
+      checked.textContent='Automatic notices pending verification · Existing traffic stories below';
+      return;
+    }
+    const notices=(Array.isArray(feed.notices)?feed.notices:[]).filter(n=>{
+      const end=new Date(n.valid_until);
+      return n.geography_verified===true&&typeof n.title==='string'&&n.title.trim()&&
+        typeof n.description==='string'&&n.description.trim()&&
+        Number.isFinite(end.getTime())&&end.getTime()>Date.now()&&
+        typeof n.source_url==='string'&&/^https:\/\/(?:[a-z0-9-]+\.)*(?:nationalhighways\.co\.uk|oxfordshire\.gov\.uk)\//i.test(n.source_url);
+    }).slice(0,4);
+    results.replaceChildren();
+    if(!notices.length){
+      showStatus('No verified notices to display at present. This does not mean the roads are clear.');
+    }else{
+      for(const notice of notices){
+        const item=document.createElement('article');item.className='traffic-live-item';
+        const title=document.createElement('strong');title.textContent=notice.title;
+        const desc=document.createElement('p');desc.textContent=notice.description;
+        const link=document.createElement('a');link.href=notice.source_url;
+        link.rel='noopener noreferrer';link.target='_blank';link.textContent='Official details ↗';
+        item.append(title,desc,link);results.append(item);
+      }
+    }
+    checked.textContent='Last feed check: '+new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'}).format(updated)+' UK time';
+  } catch {
+    showStatus('Automatic travel notices are temporarily unavailable. Check official sources for the latest restrictions.');
+    checked.textContent='Existing traffic stories remain available below';
+  }
 }
 
 async function initArticle() {
