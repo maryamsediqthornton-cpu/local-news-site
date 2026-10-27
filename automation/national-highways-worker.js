@@ -58,14 +58,14 @@ function parse(xml,type){
    const startMs=Date.parse(start||''),endMs=Date.parse(end||'');
    if(!['active','planned'].includes(status)||!Number.isFinite(startMs)||!Number.isFinite(endMs)||
       endMs<=startMs||endMs<=now||startMs>maxFuture){stats.rejected++;continue;}
-   const road=matched[0],id=first(rec,'id')||null;
-   // Do NOT publish without a stable verified record identity.
-   if(!id){stats.rejected++;continue;}
-   // No fabricated junction, place or diversion. Explicit geographic coordinates are only candidates.
+   const road=matched[0];
+   // The DATEX II record identity is an XML attribute, not normally an <id> element.
+   // Candidate diagnostics must not reject otherwise valid records for this reason.
+   // No fabricated junction, place or diversion. Geometry alone does not verify the county.
    const description=values(rec,'locationDescription')[0]||null;
    if(!description){stats.rejected++;continue;}
    const safeDescription=description.slice(0,220);
-   const key=[type,id,road,start,end].join('|');
+   const key=[type,road,safeDescription,start,end].join('|');
    notices.push({id:key,title:road+' — '+(status==='active'?'reported restriction':'scheduled restriction'),
     road,description:safeDescription,location:'Approximate Oxfordshire-area candidate',
     type:status,valid_from:new Date(startMs).toISOString(),valid_until:new Date(endMs).toISOString(),
@@ -107,10 +107,12 @@ async function refresh(env){
  const unplanned=await fetchAll('unplanned',env);
  const candidates=[...planned.records,...unplanned.records];
  const dedup=new Map(candidates.map(n=>[n.id,n]));
+ const totals={road_matches:0,geographic_candidates:0,valid_candidates:0,missing_geometry:0};
+ for(const row of [...planned.stats,...unplanned.stats])for(const key of Object.keys(totals))totals[key]+=row[key]||0;
  // Staging contract: geometry candidates are not verified county locations.
  // Therefore no public notices until a verified geospatial boundary rule is implemented and reviewed.
  const feed={schema_version:1,updated_at:new Date().toISOString(),notices:[],
-  staging_candidates:dedup.size,
+  staging_candidates:dedup.size,candidate_diagnostics:totals,
   validation_status:'geographical_review_required',
   publishing_enabled:false,
   pages_checked:planned.pages+unplanned.pages};
@@ -140,7 +142,7 @@ export default {
    const run=env.TRAVEL_KV?await env.TRAVEL_KV.get(RUN_STATUS,'json'):null;
    return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
-    candidates:snapshot?.staging_candidates||0,publishing_enabled:false});
+    candidates:snapshot?.staging_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:false});
   }
   if(u.pathname==='/feed'){
    if(!env.TRAVEL_KV)return json({error:'feed_not_configured'},503,allowed);
