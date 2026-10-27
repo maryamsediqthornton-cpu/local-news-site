@@ -40,7 +40,6 @@
   <div class="travel-sources">
    <a href="https://nationalhighways.co.uk/travel-updates/" target="_blank" rel="noopener noreferrer">National Highways</a>
    <a href="https://www.oxfordshire.gov.uk/residents/roads-and-transport" target="_blank" rel="noopener noreferrer">Oxfordshire County Council</a>
-   <a href="https://nationalhighways.co.uk/travel-updates/" target="_blank" rel="noopener noreferrer">National Highways travel updates</a>
   </div>
  </section>
 </main>
@@ -68,6 +67,10 @@
   if(feed.status==='pending_geographic_validation'){
    status.textContent='Automated road updates are being verified';
    message('Automatic National Highways closure notices are not enabled yet. Please use the official sources below.');return;
+  }
+  if(feed.status!=='verified_for_publication'){
+   status.textContent='Travel updates awaiting verification';
+   message('Please check the official sources below for the latest restrictions.');return;
   }
   const notices=(Array.isArray(feed.notices)?feed.notices:[]).filter(n=>{
    const expiry=validDate(n.valid_until),start=validDate(n.valid_from), source=safeSource(n.source_url);
