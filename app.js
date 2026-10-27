@@ -139,7 +139,32 @@ async function initCategory() {
   document.querySelector('#category-title').textContent = label(category);
   if (category === 'traffic') initTrafficLivePanel();
   const articles = (await getArticles()).filter(a => a.category === category);
-  holder.innerHTML = articles.length ? articles.map(card).join('') : '<p>No stories in this section yet.</p>';
+  if (category === 'traffic') {
+    // Expired one-off traffic reports stay available at their original article URLs.
+    // They are moved out of the current listing, never deleted from articles.json.
+    const threshold=Date.now()-60*24*60*60*1000;
+    const isHistorical=a=>Number.isFinite(Date.parse(a.date))&&Date.parse(a.date)<threshold&&
+      /(?:roadworks?|lane closures?|slip road closures?|road closures?|closed between|traffic delays?)/i.test(a.title);
+    const current=articles.filter(a=>!isHistorical(a));
+    const archive=articles.filter(isHistorical);
+    holder.innerHTML=current.length?current.map(card).join(''):'';
+    const existing=document.querySelector('#traffic-archive');
+    if(existing)existing.remove();
+    if(archive.length){
+      const details=document.createElement('details');details.id='traffic-archive';details.className='traffic-archive';
+      const summary=document.createElement('summary');summary.textContent='Earlier traffic reports ('+archive.length+')';
+      const note=document.createElement('p');note.textContent='Previous roadworks and incident reports are archived for reference. Dates and restrictions may no longer apply.';
+      const grid=document.createElement('div');grid.className='card-grid';grid.innerHTML=archive.map(card).join('');
+      details.append(summary,note,grid);
+      holder.after(details);
+    }
+    if(!current.length){
+      const note=document.createElement('p');note.className='traffic-current-empty';note.textContent='Current roadwatch updates are shown above. Older traffic reports are available in the archive below.';
+      holder.before(note);
+    }
+  } else {
+    holder.innerHTML=articles.length?articles.map(card).join(''):'<p>No stories in this section yet.</p>';
+  }
 }
 
 // Roadwatch belongs on the existing Traffic category page, not a separate microsite.
