@@ -1,35 +1,33 @@
-// Witney Wire · National Highways v2 API inspection, read-only test
-// No road closures are published by this Worker.
-// API key is read only from the encrypted Cloudflare Secret.
-const API = 'https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
-const headers = {'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'};
+// Witney Wire: safe National Highways response-format diagnosis.
+// Never exposes credentials, request headers, or raw API response content.
+// No closure records are published.
+const API='https://api.data.nationalhighways.co.uk/roads/v2.0/closures?closureType=planned';
+const OUT={'content-type':'application/json; charset=utf-8','cache-control':'no-store'};
 export default {
-  async fetch(request, env) {
-    const path = new URL(request.url).pathname;
-    if (path !== '/health' && path !== '/') return new Response('Not found', {status:404});
-    if (!env.NATIONAL_HIGHWAYS_API_KEY) return Response.json({service:'Witney Wire travel',ready:false,reason:'Missing Cloudflare secret'}, {status:503,headers});
-    // Do not return the request URL, request headers, key, or raw API payload.
-    try {
-      const upstream = await fetch(API+'?closureType=planned', {
-        headers:{'Ocp-Apim-Subscription-Key':env.NATIONAL_HIGHWAYS_API_KEY,'Accept':'application/json'},
-        signal:AbortSignal.timeout(12000)
-      });
-      if (!upstream.ok) return Response.json({service:'Witney Wire travel',ready:false,upstream_status:upstream.status},{status:502,headers});
-      const body = await upstream.json();
-      // Expose only structural diagnostics to validate the documented DATEX-II response mapping.
-      const rootKeys = body && typeof body==='object' && !Array.isArray(body) ? Object.keys(body).slice(0,12):[];
-      const kind = Array.isArray(body)?'array':typeof body;
-      const topArrayLength = Array.isArray(body)?body.length:null;
-      const subtypes = Object.fromEntries(rootKeys.map(k=>[k,Array.isArray(body[k])?'array':typeof body[k]]));
-      return Response.json({
-        service:'Witney Wire travel',connected:true,upstream_status:upstream.status,
-        payload_kind:kind,root_keys:rootKeys,root_value_types:subtypes,
-        top_array_length:topArrayLength,
-        publishing_enabled:false,
-        note:'Schema inspection only. No closures are displayed or published.'
-      },{headers});
-    } catch {
-      return Response.json({service:'Witney Wire travel',connected:false,reason:'Data parsing or upstream request failed'},{status:502,headers});
-    }
+ async fetch(request,env) {
+  if(!['/','/health'].includes(new URL(request.url).pathname)) return new Response('Not found',{status:404});
+  if(!env.NATIONAL_HIGHWAYS_API_KEY) return Response.json({connected:false,reason:'Missing API secret'},{status:503,headers:OUT});
+  let response;
+  try {
+   response=await fetch(API,{headers:{'Ocp-Apim-Subscription-Key':env.NATIONAL_HIGHWAYS_API_KEY,'Accept':'application/json'},signal:AbortSignal.timeout(20000)});
+  } catch(e) {
+   return Response.json({connected:false,stage:'request',error_type:e?.name==='TimeoutError'?'timeout':'network_error'},{status:502,headers:OUT});
   }
+  const type=response.headers.get('content-type')||'unknown';
+  const metadata={connected:response.ok,http_status:response.status,response_type:type.split(';')[0],content_length:response.headers.get('content-length')||'unknown',publishing_enabled:false};
+  if(!response.ok)return Response.json({...metadata,stage:'upstream_status'},{status:502,headers:OUT});
+  try {
+   const body=await response.text();
+   const trimmed=body.trimStart();
+   const detected_format=trimmed.startsWith('<')?'xml':trimmed.startsWith('{')||trimmed.startsWith('[')?'json':'other';
+   let root_keys=[];
+   if(detected_format==='json'){
+    try {const parsed=JSON.parse(body);root_keys=Array.isArray(parsed)?['array']:parsed&&typeof parsed==='object'?Object.keys(parsed).slice(0,15):[];}
+    catch {return Response.json({...metadata,detected_format,stage:'json_parse_failed'},{headers:OUT});}
+   }
+   return Response.json({...metadata,detected_format,root_keys,body_bytes:new TextEncoder().encode(body).length,stage:'format_checked'},{headers:OUT});
+  } catch(e){
+   return Response.json({...metadata,stage:'body_read_failed',error_type:e?.name||'error'},{status:502,headers:OUT});
+  }
+ }
 };
