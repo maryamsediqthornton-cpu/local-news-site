@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="styles.css?v=v061-credits-6">
+<link rel="stylesheet" href="styles.css?v=v061-credits-7">
 <script defer src="app.js?v=v061-credits-6"></script>
 <title>Article | Witney Wire</title>
 <meta name="description" content="Local news, sport, events and community stories from Witney Wire.">
@@ -40,6 +40,18 @@
 </nav>
 <main class="wrap article-page">
   <article id="article-view"></article>
+  <aside class="newsroom-attribution newsroom-static-credit" data-news-id="west-oxfordshire-lowlands-transport-plan-approved-2026" aria-label="Article reporting and image sources" hidden>
+    <div class="newsroom-attribution-line"><strong>Source</strong><span>Oxfordshire County Council · 20 October 2026</span><a href="https://news.oxfordshire.gov.uk/plan-to-improve-sustainable-transport-in-west-oxfordshire-is-approved/" target="_blank" rel="noopener noreferrer">Original announcement ↗</a></div>
+    <div class="newsroom-attribution-line"><strong>Image credit</strong><span>Motacilla / Wikimedia Commons · Illustrative archive photograph</span><a href="https://commons.wikimedia.org/wiki/File:AlexanderDennis_Trident2_Enviro400_MMC_SN69_ZDU_Witney.jpg" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a></div>
+  </aside>
+  <aside class="newsroom-attribution newsroom-static-credit" data-news-id="witney-charter-market-shopper-survey-oct-2026" aria-label="Article reporting and image sources" hidden>
+    <div class="newsroom-attribution-line"><strong>Source</strong><span>West Oxfordshire District Council · 23 October 2026</span><a href="https://news.westoxon.gov.uk/news/west-oxfordshires-markets-going-strong-as-shoppers-give-their-verdict" target="_blank" rel="noopener noreferrer">Original announcement ↗</a></div>
+    <div class="newsroom-attribution-line"><strong>Image credit</strong><span>Steve Daniels / Geograph · Illustrative market photograph · CC BY-SA 2.0</span><a href="https://commons.wikimedia.org/wiki/File:Market_stalls_in_the_Market_Square_-_geograph.org.uk_-_7936542.jpg" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a></div>
+  </aside>
+  <aside class="newsroom-attribution newsroom-static-credit" data-news-id="marriotts-walk-free-halloween-activities-oct-2026" aria-label="Article reporting and image sources" hidden>
+    <div class="newsroom-attribution-line"><strong>Source</strong><span>West Oxfordshire District Council · 20 October 2026</span><a href="https://news.westoxon.gov.uk/news/pumpkin-fun-comes-to-marriotts-walk-this-half-term" target="_blank" rel="noopener noreferrer">Original announcement ↗</a></div>
+    <div class="newsroom-attribution-line"><strong>Image credit</strong><span>Raysonho / Wikimedia Commons · Illustrative pumpkin photograph · CC0</span><a href="https://commons.wikimedia.org/wiki/File:HalloweenPumpkin.JPG" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a></div>
+  </aside>
   <aside class="print-sponsor" aria-label="Print sponsor message">
     <span>Print sponsor</span>
     <strong>Advertise with Witney Wire</strong>
@@ -131,6 +143,30 @@
   if(insert())return;
   const observer=new MutationObserver(()=>{if(insert())observer.disconnect();});
   observer.observe(document.getElementById('article-view'),{childList:true,subtree:true});
+})();
+</script>
+<script>
+/* Independent article source credits: render even when legacy article scripts are cached. */
+(() => {
+  const id=new URLSearchParams(window.location.search).get('id');
+  const blocks=document.querySelectorAll('.newsroom-static-credit');
+  for(const block of blocks) {
+    if(block.dataset.newsId===id) block.hidden=false;
+  }
+  const article=document.getElementById('article-view');
+  const active=document.querySelector('.newsroom-static-credit:not([hidden])');
+  if(!article||!active)return;
+  const place=()=>{
+    const body=article.querySelector('.article-body');
+    if(!body)return false;
+    for(const duplicate of article.querySelectorAll('.newsroom-attribution')) duplicate.remove();
+    body.after(active);
+    return true;
+  };
+  if(!place()){
+    const watch=new MutationObserver(()=>{if(place())watch.disconnect()});
+    watch.observe(article,{childList:true,subtree:true});
+  }
 })();
 </script>
 </body>
