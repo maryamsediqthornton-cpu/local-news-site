@@ -176,7 +176,7 @@ async function initHome() {
         <p>${article.summary}</p>
         <div class="meta">${formatDate(article.date)} · ${article.author}</div>
       </div>
-      <img class="${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? 'musicals-lead-photo' : ''}" src="${article.image}" alt="">
+      <img class="${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? 'musicals-lead-photo' : ''}" ${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? 'style="object-fit:contain;object-position:center center;background:#f5f7f6;"' : ''} src="${article.image}" alt="">
     </a>
   `).join('');
 
