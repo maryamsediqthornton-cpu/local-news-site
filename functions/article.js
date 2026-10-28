@@ -686,7 +686,7 @@ function renderPage(article) {
 <meta name="twitter:image" content="${escapeHtml(image)}">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" href="/favicon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=20261028">
 <!-- Google AdSense site verification -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9678324763933867"
      crossorigin="anonymous"></script>
