@@ -1637,3 +1637,7 @@ a:hover {
 .newsroom-attribution-line strong{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#0b2a4a;min-width:85px}
 .newsroom-attribution-line a{color:#174f7a;font-weight:700;text-decoration:underline;text-underline-offset:2px}
 @media(max-width:600px){.newsroom-attribution{padding:12px}.newsroom-attribution-line{display:block}.newsroom-attribution-line strong{display:block;margin-bottom:3px}.newsroom-attribution-line a{display:block;margin-top:4px}}
+
+/* V062: preserve the two organisers' faces in the editorial photograph */
+.lead-card img.musicals-lead-photo{object-position:center top}
+.article-hero.musicals-article-photo{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center top;margin-bottom:18px}
