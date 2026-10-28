@@ -1640,4 +1640,4 @@ a:hover {
 
 /* V062: preserve the two organisers' faces in the editorial photograph */
 .lead-card img.musicals-lead-photo{object-position:center top}
-.article-hero.musicals-article-photo{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center top;margin-bottom:18px}
+.article-hero.musicals-article-photo{display:block;width:min(100%,300px);height:auto;max-height:none;object-fit:contain;object-position:center;margin:20px auto 26px}
