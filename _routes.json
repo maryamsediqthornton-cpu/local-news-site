@@ -1,7 +1,8 @@
 {
   "version": 1,
   "include": [
-    "/article"
+    "/article",
+    "/api/roadwatch-preview"
   ],
   "exclude": [
     "/assets/*",
