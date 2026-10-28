@@ -560,8 +560,15 @@
       },
       "The newly approved plan will help guide future transport projects and support efforts to secure funding. However, approval of the strategy does not mean that every proposed improvement has received construction funding or a confirmed delivery date.",
       "For communities that rely heavily on road transport, the key question will be how quickly the long-term ambitions translate into practical improvements.",
-      "Source: Oxfordshire County Council, announcement published 20 October 2026. <a href=\"https://news.oxfordshire.gov.uk/plan-to-improve-sustainable-transport-in-west-oxfordshire-is-approved/\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
-      "Image credit: Photograph: Motacilla / Wikimedia Commons. Stagecoach bus in Witney (2020), used as an illustrative transport image. See image page for licence. <a href=\"https://commons.wikimedia.org/wiki/File:AlexanderDennis_Trident2_Enviro400_MMC_SN69_ZDU_Witney.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Image details and licence.</a>"
+      {
+        "type": "editorial-credits",
+        "sourcePublisher": "Oxfordshire County Council",
+        "sourceDate": "20 October 2026",
+        "sourceUrl": "https://news.oxfordshire.gov.uk/plan-to-improve-sustainable-transport-in-west-oxfordshire-is-approved/",
+        "imageCredit": "Motacilla / Wikimedia Commons",
+        "imageNote": "Archive transport photograph, illustrative only.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/File:AlexanderDennis_Trident2_Enviro400_MMC_SN69_ZDU_Witney.jpg"
+      }
     ]
   },
   {
@@ -586,8 +593,15 @@
       "Markets remain an important part of Witney town centre, supporting independent businesses and offering residents an alternative to larger retail outlets.",
       "The council and market operator say their next priorities include attracting additional traders, improving signage and exploring more activities to encourage visits.",
       "The satisfaction figures reflect the views of those surveyed and should not be interpreted as representing every shopper.",
-      "Source: West Oxfordshire District Council, announcement published 23 October 2026. <a href=\"https://news.westoxon.gov.uk/news/west-oxfordshires-markets-going-strong-as-shoppers-give-their-verdict\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
-      "Image credit: Photograph: Steve Daniels / Geograph, CC BY-SA 2.0. Witney market stalls (2024); illustrative archive image. <a href=\"https://commons.wikimedia.org/wiki/File:Market_stalls_in_the_Market_Square_-_geograph.org.uk_-_7936542.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">Image details and licence.</a>"
+      {
+        "type": "editorial-credits",
+        "sourcePublisher": "West Oxfordshire District Council",
+        "sourceDate": "23 October 2026",
+        "sourceUrl": "https://news.westoxon.gov.uk/news/west-oxfordshires-markets-going-strong-as-shoppers-give-their-verdict",
+        "imageCredit": "Steve Daniels / Geograph",
+        "imageNote": "Archive market photograph, illustrative only. CC BY-SA 2.0.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/File:Market_stalls_in_the_Market_Square_-_geograph.org.uk_-_7936542.jpg"
+      }
     ]
   },
   {
@@ -607,8 +621,15 @@
       "The council also reported that footfall at Marriotts Walk had increased by 23.7% year on year, although that figure should be treated as a reported measure rather than evidence that this week's event caused the increase.",
       "Both activities are advertised as free, making them an option for families looking for a half-term outing without an admission charge.",
       "Visitors should check the event organiser's latest information for participation arrangements and opening times before travelling.",
-      "Source: West Oxfordshire District Council, announcement published 20 October 2026. <a href=\"https://news.westoxon.gov.uk/news/pumpkin-fun-comes-to-marriotts-walk-this-half-term\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
-      "Image credit: Illustrative photograph: Raysonho / Wikimedia Commons, CC0. Pumpkins photographed outside Witney; not the Marriotts Walk event. <a href=\"https://commons.wikimedia.org/wiki/File:HalloweenPumpkin.JPG\" target=\"_blank\" rel=\"noopener noreferrer\">Image details and licence.</a>"
+      {
+        "type": "editorial-credits",
+        "sourcePublisher": "West Oxfordshire District Council",
+        "sourceDate": "20 October 2026",
+        "sourceUrl": "https://news.westoxon.gov.uk/news/pumpkin-fun-comes-to-marriotts-walk-this-half-term",
+        "imageCredit": "Raysonho / Wikimedia Commons",
+        "imageNote": "Illustrative pumpkin photograph; not the Marriotts Walk event. CC0.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/File:HalloweenPumpkin.JPG"
+      }
     ]
   }
 ]
