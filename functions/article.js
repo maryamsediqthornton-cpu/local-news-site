@@ -641,6 +641,9 @@ function haveYourSayBlock() {
 }
 
 function articleMetaImage(article) {
+  if (article.id === 'witney-students-night-at-musicals-children-in-need-2026') {
+    return `${SITE_URL}/assets/witney-musicals-facebook-1200x630.jpg`;
+  }
   if (article.id === 'phone-free-schools-thames-valley-fund') {
     return `${SITE_URL}/assets/phone-free-classroom-illustration-social.png`;
   }
