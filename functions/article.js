@@ -600,6 +600,23 @@ function renderArticleBody(body = []) {
     .join('');
 }
 
+function renderNewsroomAttribution(credit) {
+  if (!credit) return '';
+  function allowedLink(value) {
+    try {
+      const url=new URL(value);
+      if(url.protocol!=='https:' || !['news.oxfordshire.gov.uk','news.westoxon.gov.uk','commons.wikimedia.org'].includes(url.hostname))return null;
+      return url.href;
+    } catch { return null; }
+  }
+  const official=allowedLink(credit.source);
+  const image=allowedLink(credit.image);
+  return `<aside class="newsroom-attribution" aria-label="Reporting and image credits">
+    <div class="newsroom-attribution-line"><strong>Source</strong><span>${escapeHtml(credit.publisher)} · ${escapeHtml(credit.date)}</span>${official ? `<a href="${escapeHtml(official)}" target="_blank" rel="noopener noreferrer">Original announcement ↗</a>` : ''}</div>
+    <div class="newsroom-attribution-line"><strong>Image credit</strong><span>${escapeHtml(credit.credit)} · ${escapeHtml(credit.note)}</span>${image ? `<a href="${escapeHtml(image)}" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a>` : ''}</div>
+  </aside>`;
+}
+
 function adBlock(kind = 'article') {
   const labels = { inline: 'Advertisement', article: 'Article sponsor', print: 'Print sponsor' };
   return `<aside class="content-ad content-ad-${kind}" aria-label="${labels[kind] || 'Advertisement'}">
@@ -701,10 +718,11 @@ function renderPage(article) {
       </div>
     </div>
     <div class="meta">${escapeHtml(formatDate(article.date))} · ${escapeHtml(article.author)}</div>
-    <img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}" src="/${escapeHtml(String(article.image || '').replace(/^\/+/, ''))}" alt="">
+    <img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}" src="${escapeHtml(absoluteUrl(article.image))}" alt="">
     ${disclaimer}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
+    ${renderNewsroomAttribution(article.sourceAttribution)}
     ${haveYourSayBlock()}
     ${adBlock('article')}
   </article>
