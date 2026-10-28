@@ -121,6 +121,14 @@ function renderArticleBody(body = []) {
       }
 
       if (typeof block === 'object') return '';
+      if (typeof block === 'string' && (block.startsWith('Source: ') || block.startsWith('Image credit: '))) {
+        const isSource = block.startsWith('Source: ');
+        const marker = isSource ? ' Official announcement: ' : ' Image details: ';
+        const split = block.indexOf(marker);
+        const description = split >= 0 ? block.slice(0, split) : block;
+        const url = split >= 0 ? trustedEditorialLink(block.slice(split + marker.length)) : null;
+        return `<p class="editorial-credit-line"><strong>${isSource ? 'Source' : 'Image credit'}:</strong> ${escapeEditorialCredit(description.replace(/^(?:Source|Image credit): /, ''))}${url ? ` <a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${isSource ? 'Read original announcement' : 'Image information &amp; licence'} ↗</a>` : ''}</p>`;
+      }
       return `<p>${block}</p>`;
     })
     .join('');
