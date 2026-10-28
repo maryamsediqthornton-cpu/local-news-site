@@ -64,6 +64,21 @@ function haveYourSayBlock() {
   </section>`;
 }
 
+function escapeEditorialCredit(value) {
+  return String(value || '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
+
+function trustedEditorialLink(value) {
+  try {
+    const url = new URL(value);
+    if(url.protocol !== 'https:') return null;
+    const host = url.hostname.toLowerCase();
+    return ['news.oxfordshire.gov.uk', 'news.westoxon.gov.uk', 'commons.wikimedia.org'].includes(host) ? url.href : null;
+  } catch { return null; }
+}
+
 function renderArticleBody(body = []) {
   const blocks = Array.isArray(body) ? body : [body];
 
@@ -71,6 +86,26 @@ function renderArticleBody(body = []) {
     .filter(Boolean)
     .map(block => {
       if (typeof block === 'object') {
+        if (block.type === 'editorial-credits') {
+          const official = trustedEditorialLink(block.sourceUrl);
+          const image = trustedEditorialLink(block.imageUrl);
+          const source = escapeEditorialCredit(block.sourcePublisher);
+          const date = escapeEditorialCredit(block.sourceDate);
+          const credit = escapeEditorialCredit(block.imageCredit);
+          const note = escapeEditorialCredit(block.imageNote);
+          return `<aside class="editorial-credits" aria-label="Article sources and image credits">
+            <div class="editorial-credits-item">
+              <span class="editorial-credits-label">Source</span>
+              <span>${source}${date ? ' · ' + date : ''}</span>
+              ${official ? `<a href="${escapeEditorialCredit(official)}" target="_blank" rel="noopener noreferrer">Official announcement ↗</a>` : ''}
+            </div>
+            <div class="editorial-credits-item">
+              <span class="editorial-credits-label">Image</span>
+              <span>${credit}${note ? ' · ' + note : ''}</span>
+              ${image ? `<a href="${escapeEditorialCredit(image)}" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a>` : ''}
+            </div>
+          </aside>`;
+        }
         if (block.type === 'heading') {
           return `<h2>${block.text || ''}</h2>`;
         }
