@@ -101,6 +101,16 @@ function renderEditorialCredits(block) {
           </aside>`;
 }
 
+function renderSourceAttribution(credit) {
+  if (!credit) return '';
+  const source = trustedEditorialLink(credit.source);
+  const image = trustedEditorialLink(credit.image);
+  return `<aside class="newsroom-attribution" aria-label="Sources and image credits">
+    <div class="newsroom-attribution-line"><strong>Source</strong><span>${escapeEditorialCredit(credit.publisher)} · ${escapeEditorialCredit(credit.date)}</span>${source ? `<a href="${escapeEditorialCredit(source)}" target="_blank" rel="noopener noreferrer">Original announcement ↗</a>` : ''}</div>
+    <div class="newsroom-attribution-line"><strong>Image credit</strong><span>${escapeEditorialCredit(credit.credit)} · ${escapeEditorialCredit(credit.note)}</span>${image ? `<a href="${escapeEditorialCredit(image)}" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a>` : ''}</div>
+  </aside>`;
+}
+
 function renderArticleBody(body = []) {
   const blocks = Array.isArray(body) ? body : [body];
 
@@ -307,7 +317,7 @@ async function initArticle() {
     ${article.id === 'two-sentenced-drug-supply-oxford' ? '<p class="ai-disclaimer">AI-generated illustration: drugs evidence, mobile phones and scales shown for illustrative purposes.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
-    ${renderEditorialCredits(article.editorialCredits)}
+    ${renderSourceAttribution(article.sourceAttribution)}
     ${haveYourSayBlock()}
     ${adBlock('article')}
   `;
