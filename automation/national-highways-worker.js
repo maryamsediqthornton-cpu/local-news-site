@@ -53,6 +53,26 @@ function localPlace(text,road){
   : ['wheatley','bicester','ardley','banbury','stokenchurch','junction 8a','junction 9','junction 10','junction 11','j8a','j9','j10','j11'];
  return places.find(place=>str.includes(place))||null;
 }
+// Report only fields actually present in the upstream DATEX II record.
+// Absence must stay "not specified"; do not infer full motorway closures.
+function fieldFrom(record,tags){
+ for(const tag of tags){
+  const value=first(record,tag);
+  if(value)return {value:value.slice(0,200),field:tag};
+ }
+ return null;
+}
+function restrictionDetails(rec){
+ const classification=fieldFrom(rec,['roadOrCarriagewayOrLaneManagementType','roadMaintenanceType','roadworksType','mobilityType','restrictionType','closureType','trafficRestrictionType']);
+ const lane=fieldFrom(rec,['lanesClosed','numberOfLanesClosed','laneRestriction','laneUsage','laneStatus','carriageway','roadOrCarriagewayOrLaneManagementSubType']);
+ const cause=fieldFrom(rec,['roadworksReason','causeType','causeDescription','reasonForRoadworks','reasonForClosure','roadMaintenanceCause','publicEventType','constructionWorkType']);
+ const comment=fieldFrom(rec,['generalPublicComment','comment','additionalInfo','description']);
+ // Metadata is captured verbatim for editorial review, not presented as verified advice.
+ return {restriction_type:classification?.value||null,restriction_field:classification?.field||null,
+  lane_information:lane?.value||null,lane_field:lane?.field||null,
+  reason:cause?.value||null,reason_field:cause?.field||null,
+  official_comment:comment?.value||null,comment_field:comment?.field||null};
+}
 function parse(xml,type){
  const notices=[],stats={read:0,road_matches:0,geographic_candidates:0,valid_candidates:0,rejected:0,missing_geometry:0};
  const now=Date.now(),maxFuture=now+30*86400000;
@@ -78,11 +98,12 @@ function parse(xml,type){
    // Require explicit route, place, valid dates and intersecting official geometry.
    if(!locality){stats.rejected++;continue;}
    const safeDescription=description.slice(0,220);
+   const details=restrictionDetails(rec);
    const key=[type,road,safeDescription,start,end].join('|');
    notices.push({id:key,title:road+' — '+(status==='active'?'reported restriction':'scheduled restriction'),
     road,description:safeDescription,location:locality,
     type:status,valid_from:new Date(startMs).toISOString(),valid_until:new Date(endMs).toISOString(),
-    source_url:SOURCE,source:'National Highways',geography_verified:true});
+    source_url:SOURCE,source:'National Highways',geography_verified:false,...details});
    stats.valid_candidates++;
   }
  }
@@ -133,7 +154,7 @@ async function refresh(env){
   publishing_enabled:publish,
   pages_checked:planned.pages+unplanned.pages};
  await env.TRAVEL_KV.put(SNAPSHOT,JSON.stringify(feed));
- await env.TRAVEL_KV.put(REVIEW,JSON.stringify({updated_at:feed.updated_at,description:'Unverified National Highways candidates — NOT for public travel advice',count:dedup.size,notices:[...dedup.values()].map(n=>({road:n.road,location:n.location,description:n.description,valid_from:n.valid_from,valid_until:n.valid_until,type:n.type,source_url:n.source_url}))}));
+ await env.TRAVEL_KV.put(REVIEW,JSON.stringify({updated_at:feed.updated_at,description:'Unverified National Highways candidates — NOT for public travel advice',count:dedup.size,notices:[...dedup.values()].map(n=>({road:n.road,location:n.location,description:n.description,valid_from:n.valid_from,valid_until:n.valid_until,type:n.type,restriction_type:n.restriction_type,restriction_field:n.restriction_field,lane_information:n.lane_information,lane_field:n.lane_field,reason:n.reason,reason_field:n.reason_field,official_comment:n.official_comment,comment_field:n.comment_field,source_url:n.source_url}))}));
  await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'success',time:feed.updated_at,pages_checked:feed.pages_checked}));
  return feed;
 }
