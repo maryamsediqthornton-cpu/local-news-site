@@ -53,6 +53,26 @@ function localPlace(text,road){
   : ['wheatley','bicester','ardley','banbury','stokenchurch','junction 8a','junction 9','junction 10','junction 11','j8a','j9','j10','j11'];
  return places.find(place=>str.includes(place))||null;
 }
+// Publication gate: restrict motorway reports to a bounded set of relevant junctions.
+// This checks route wording as well as the source geometry; it does not infer county from a town substring.
+function publicationGeography(description,road,geometryOk){
+ if(!geometryOk)return false;
+ const text=String(description||'').toUpperCase();
+ if(road==='M40'){
+   const matches=[...text.matchAll(/\bJ(?:UNCTION|CT)?\s*(\d{1,2}A?)\b/g)].map(m=>m[1]);
+   // Restrict to junctions 8A–11, and require explicit junctions.
+   return matches.length>=1&&matches.every(j=>['8','8A','9','10','11'].includes(j));
+ }
+ if(road==='A40'){
+   return /\b(?:WITNEY|EYNSHAM|CASSINGTON|BOTLEY|NORTH HINKSEY)\b/i.test(text);
+ }
+ return false;
+}
+function validRestriction(comment){
+ const text=String(comment||'');
+ return /\b(?:hard shoulder|lanes?\s+[1-4]|slip road|carriageway|full road)\b.{0,90}\b(?:closure|closed)\b/i.test(text) ||
+        /\b(?:closed|closure)\b.{0,90}\b(?:hard shoulder|lanes?\s+[1-4]|slip road|carriageway)\b/i.test(text);
+}
 // Report only fields actually present in the upstream DATEX II record.
 // Absence must stay "not specified"; do not infer full motorway closures.
 function fieldFrom(record,tags){
@@ -103,8 +123,8 @@ function parse(xml,type){
    notices.push({id:key,title:road+' — '+(status==='active'?'reported restriction':'scheduled restriction'),
     road,description:safeDescription,location:locality,
     type:status,valid_from:new Date(startMs).toISOString(),valid_until:new Date(endMs).toISOString(),
-    source_url:SOURCE,source:'National Highways',geography_verified:false,
-    restriction_description_verified:!!(details.official_comment&&/\\b(?:closure|closed|restriction)\\b/i.test(details.official_comment)),
+    source_url:SOURCE,source:'National Highways',geography_verified:publicationGeography(safeDescription,road,g.near),
+    restriction_description_verified:validRestriction(details.official_comment),
     ...details});
    stats.valid_candidates++;
   }
@@ -148,10 +168,10 @@ async function refresh(env){
  // Publishing remains explicitly opt-in, even when conservative checks pass.
  // Never publish simply because a town name appears in the description.
  // Candidate records must be inspected against actual route/junction geography first.
- const publish=false;
- const eligible=[...dedup.values()].filter(n=>n.geography_verified===true);
+ const publish=env.TRAVEL_PUBLISH_ENABLED==='true';
+ const eligible=[...dedup.values()].filter(n=>n.geography_verified===true&&n.restriction_description_verified===true);
  const feed={schema_version:1,updated_at:new Date().toISOString(),notices:publish?eligible:[],
-  staging_candidates:dedup.size,candidate_diagnostics:totals,
+  staging_candidates:dedup.size,verified_candidates:eligible.length,candidate_diagnostics:totals,
   validation_status:publish?'verified_for_publication':'awaiting_editorial_approval',
   publishing_enabled:publish,
   pages_checked:planned.pages+unplanned.pages};
@@ -191,8 +211,8 @@ export default {
    if(different!==0)return json({error:'unauthorised'},401);
    try{
     const refreshed=await refresh(env);
-    return json({ok:true,updated_at:refreshed.updated_at,candidates:refreshed.staging_candidates,
-      diagnostics:refreshed.candidate_diagnostics,review_path:'/review',public_notices_enabled:false});
+    return json({ok:true,updated_at:refreshed.updated_at,candidates:refreshed.staging_candidates,verified_candidates:refreshed.verified_candidates,
+      diagnostics:refreshed.candidate_diagnostics,review_path:'/review',public_notices_enabled:refreshed.publishing_enabled});
    }catch(error){
     return json({ok:false,error:'refresh_failed_check_health'},502);
    }
@@ -202,7 +222,7 @@ export default {
    const run=env.TRAVEL_KV?await env.TRAVEL_KV.get(RUN_STATUS,'json'):null;
    return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
-    candidates:snapshot?.staging_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
+    candidates:snapshot?.staging_candidates||0,verified_candidates:snapshot?.verified_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
   }
   if(u.pathname==='/review'){
    if(!env.TRAVEL_KV)return json({error:'review_not_configured'},503);
