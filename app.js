@@ -251,6 +251,38 @@ async function initTrafficLivePanel() {
     if(!Number.isFinite(updated.getTime())||updated.getTime()>Date.now()+300000||Date.now()-updated.getTime()>5400000)
       throw new Error('feed_stale');
     if(feed.status!=='verified_for_publication'){
+      // Separate explicitly-labelled editorial preview, never presented as live closures.
+      try {
+        const reviewResponse=await fetch('/api/roadwatch-preview',{cache:'no-store'});
+        if(!reviewResponse.ok)throw new Error('preview_unavailable');
+        const review=await reviewResponse.json();
+        const candidates=(Array.isArray(review.notices)?review.notices:[]).filter(n=>{
+          const end=Date.parse(n.valid_until||'');
+          return /^(M40|A40)$/.test(n.road)&&Number.isFinite(end)&&end>Date.now()&&
+            typeof n.description==='string'&&n.description.trim();
+        }).slice(0,6);
+        if(candidates.length){
+          results.replaceChildren();
+          const heading=document.createElement('p');
+          heading.className='traffic-live-status';
+          heading.style.fontWeight='700';
+          heading.textContent='National Highways records — unverified preview. Not live travel advice; check official sources before travelling.';
+          results.append(heading);
+          const fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'});
+          for(const n of candidates){
+            const item=document.createElement('article');item.className='traffic-live-item';
+            const title=document.createElement('strong');title.textContent=n.description;
+            const detail=document.createElement('p');
+            detail.textContent=[n.official_comment,n.lane_information&&'Lane data: '+n.lane_information,n.reason&&'Reason: '+n.reason].filter(Boolean).join(' · ')||'Restriction details are not confirmed.';
+            const time=document.createElement('p');time.style.fontSize='0.85em';
+            const start=Date.parse(n.valid_from||''),end=Date.parse(n.valid_until||'');
+            time.textContent=Number.isFinite(start)&&Number.isFinite(end)?'Recorded period: '+fmt.format(new Date(start))+' – '+fmt.format(new Date(end))+' (UK time)':'Times not confirmed';
+            item.append(title,detail,time);results.append(item);
+          }
+          checked.textContent='Unverified preview · Last checked: '+fmt.format(new Date(review.updated_at))+' · National Highways records';
+          return;
+        }
+      }catch{}
       showStatus('Verified automatic closure alerts are being prepared. Check official sources for current restrictions.');
       checked.textContent='Automatic notices pending verification · Existing traffic stories below';
       return;
