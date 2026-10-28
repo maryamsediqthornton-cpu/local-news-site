@@ -159,8 +159,7 @@ async function fetchAll(type,env){
 }
 async function refresh(env){
  if(!env.TRAVEL_KV||!env.NATIONAL_HIGHWAYS_API_KEY)throw Error('missing_kv_or_secret');
- const planned=await fetchAll('planned',env);
- const unplanned=await fetchAll('unplanned',env);
+ const [planned,unplanned]=await Promise.all([fetchAll('planned',env),fetchAll('unplanned',env)]);
  const candidates=[...planned.records,...unplanned.records];
  const dedup=new Map(candidates.map(n=>[n.id,n]));
  const totals={road_matches:0,geographic_candidates:0,valid_candidates:0,missing_geometry:0};
