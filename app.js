@@ -127,7 +127,11 @@ function renderArticleBody(body = []) {
         const split = block.indexOf(marker);
         const description = split >= 0 ? block.slice(0, split) : block;
         const url = split >= 0 ? trustedEditorialLink(block.slice(split + marker.length)) : null;
-        return `<p class="editorial-credit-line"><strong>${isSource ? 'Source' : 'Image credit'}:</strong> ${escapeEditorialCredit(description.replace(/^(?:Source|Image credit): /, ''))}${url ? ` <a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${isSource ? 'Read original announcement' : 'Image information &amp; licence'} ↗</a>` : ''}</p>`;
+        return `<div class="newsroom-credit-row">
+          <span class="newsroom-credit-label">${isSource ? 'Reporting source' : 'Photograph'}</span>
+          <span class="newsroom-credit-copy">${escapeEditorialCredit(description.replace(/^(?:Source|Image credit): /, ''))}</span>
+          ${url ? `<a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${isSource ? 'View original report' : 'Photo &amp; licence'} ↗</a>` : ''}
+        </div>`;
       }
       return `<p>${block}</p>`;
     })
