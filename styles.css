@@ -1629,3 +1629,11 @@ a:hover {
 .article-body .newsroom-credit-row a{color:#174f7a;text-decoration:underline;text-underline-offset:2px;font-weight:700;white-space:nowrap}
 .article-body .newsroom-credit-row a:hover{color:#2f7d5a}
 @media(max-width:600px){.article-body .newsroom-credit-row{display:block}.article-body .newsroom-credit-label{display:block;margin-bottom:3px}.article-body .newsroom-credit-row a{display:inline-block;margin-left:0;margin-top:4px}}
+
+/* V061: source attribution beneath newsroom drafts */
+.newsroom-attribution{margin:26px 0 18px;padding:13px 18px;background:#f7f9fa;border-left:3px solid #2f7d5a;border-radius:4px;font-size:13px;line-height:1.55;color:#53606c}
+.newsroom-attribution-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:7px 0}
+.newsroom-attribution-line + .newsroom-attribution-line{border-top:1px solid #e3e8eb}
+.newsroom-attribution-line strong{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#0b2a4a;min-width:85px}
+.newsroom-attribution-line a{color:#174f7a;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+@media(max-width:600px){.newsroom-attribution{padding:12px}.newsroom-attribution-line{display:block}.newsroom-attribution-line strong{display:block;margin-bottom:3px}.newsroom-attribution-line a{display:block;margin-top:4px}}
