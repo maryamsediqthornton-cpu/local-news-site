@@ -268,15 +268,23 @@ async function initTrafficLivePanel() {
           heading.style.fontWeight='700';
           heading.textContent='National Highways records — unverified preview. Not live travel advice; check official sources before travelling.';
           results.append(heading);
-          const fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'});
+          const fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit',hour12:false,timeZone:'Europe/London'});
+          const cleanLocation=(raw)=>String(raw||'').replace(/\\bbetween\\s+(J\\d+[A-Z]?)\\s+and\\s+(J\\d+[A-Z]?)/i,'$1–$2').trim();
+          const restrictionText=(n)=>{
+            const comment=String(n.official_comment||'');
+            const match=comment.match(/(?:hard shoulder(?:,?\\s*lanes?\\s*[\\d\\s,and]+)?|lanes?\\s*\\d+(?:\\s*(?:and|&)\\s*\\d+)?|exit slip road lanes?\\s*\\d+)\\s+closure/i);
+            let restriction=match?match[0].replace(/\\s+/g,' ').replace(/\\blane\\s+(\\d+)\\s+and\\s+(\\d+)/i,'lanes $1 and $2'):'Restriction details not specified';
+            restriction=restriction.charAt(0).toUpperCase()+restriction.slice(1);
+            const reason=String(n.reason||'')==='roadMaintenance'?'road maintenance':null;
+            return reason&&match?restriction+' for '+reason:restriction;
+          };
           for(const n of candidates){
             const item=document.createElement('article');item.className='traffic-live-item';
-            const title=document.createElement('strong');title.textContent=n.description;
-            const detail=document.createElement('p');
-            detail.textContent=[n.official_comment,n.lane_information&&'Lane data: '+n.lane_information,n.reason&&'Reason: '+n.reason].filter(Boolean).join(' · ')||'Restriction details are not confirmed.';
+            const title=document.createElement('strong');title.textContent=cleanLocation(n.description);
+            const detail=document.createElement('p');detail.textContent=restrictionText(n);
             const time=document.createElement('p');time.style.fontSize='0.85em';
             const start=Date.parse(n.valid_from||''),end=Date.parse(n.valid_until||'');
-            time.textContent=Number.isFinite(start)&&Number.isFinite(end)?'Recorded period: '+fmt.format(new Date(start))+' – '+fmt.format(new Date(end))+' (UK time)':'Times not confirmed';
+            time.textContent=Number.isFinite(start)&&Number.isFinite(end)?fmt.format(new Date(start))+' – '+fmt.format(new Date(end))+' (UK time)':'Times not confirmed';
             item.append(title,detail,time);results.append(item);
           }
           checked.textContent='Unverified preview · Last checked: '+fmt.format(new Date(review.updated_at))+' · National Highways records';
