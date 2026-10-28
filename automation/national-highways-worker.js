@@ -209,20 +209,29 @@ export default {
    let different=0;const aa=new Uint8Array(a),bb=new Uint8Array(b);
    for(let i=0;i<aa.length;i++)different|=aa[i]^bb[i];
    if(different!==0)return json({error:'unauthorised'},401);
-   try{
-    const refreshed=await refresh(env);
-    return json({ok:true,updated_at:refreshed.updated_at,candidates:refreshed.staging_candidates,verified_candidates:refreshed.verified_candidates,
-      diagnostics:refreshed.candidate_diagnostics,review_path:'/review',public_notices_enabled:refreshed.publishing_enabled});
-   }catch(error){
-    return json({ok:false,error:'refresh_failed_check_health'},502);
-   }
+   if(!ctx||typeof ctx.waitUntil!=='function')return json({error:'background_execution_unavailable'},503);
+   // Return immediately: the upstream fetch may require tens of seconds.
+   // Keep the previous successful snapshot until this run completes.
+   const launched_at=new Date().toISOString();
+   ctx.waitUntil((async()=>{
+     try{
+       await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'running',time:launched_at,trigger:'manual'}));
+       await refresh(env);
+     }catch(error){
+       const message=String(error?.message||'unknown');
+       const reason=/^upstream_status_\\d+$/.test(message)?'upstream_http_error':
+         ['missing_kv_or_secret','repeated_pagination_cursor','invalid_datex','unrecognised_pagination','page_cap_hit'].includes(message)?message:'request_or_processing_error';
+       if(env.TRAVEL_KV)await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'error',time:new Date().toISOString(),reason}));
+     }
+   })());
+   return json({ok:true,state:'refresh_started',launched_at,health_path:'/health',review_path:'/review',public_notices_enabled:false},202);
   }
   if(u.pathname==='/health'){
    const snapshot=env.TRAVEL_KV?await env.TRAVEL_KV.get(SNAPSHOT,'json'):null;
    const run=env.TRAVEL_KV?await env.TRAVEL_KV.get(RUN_STATUS,'json'):null;
    return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
-    candidates:snapshot?.staging_candidates||0,verified_candidates:snapshot?.verified_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
+    current_run_started_at:run?.state==='running'?run.time:null,candidates:snapshot?.staging_candidates||0,verified_candidates:snapshot?.verified_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
   }
   if(u.pathname==='/review'){
    if(!env.TRAVEL_KV)return json({error:'review_not_configured'},503);
