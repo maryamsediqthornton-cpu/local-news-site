@@ -595,6 +595,10 @@ function renderArticleBody(body = []) {
         }
       }
 
+      if (typeof block === 'string' && block.includes('www.buttercrosstheatreproductions.co.uk')) {
+        const safeText = escapeHtml(block);
+        return `<p>${safeText.replace('www.buttercrosstheatreproductions.co.uk', '<a href="https://www.buttercrosstheatreproductions.co.uk" target="_blank" rel="noopener noreferrer">www.buttercrosstheatreproductions.co.uk</a>')}</p>`;
+      }
       return `<p>${escapeHtml(block)}</p>`;
     })
     .join('');
