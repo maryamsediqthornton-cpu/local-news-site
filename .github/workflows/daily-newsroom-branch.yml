@@ -1,0 +1,56 @@
+name: Witney Wire - create daily newsroom branch
+
+on:
+  schedule:
+    # Both UTC hours cover 08:00 UK time in GMT and BST.
+    - cron: '0 7 * * *'
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-newsroom-branch
+  cancel-in-progress: false
+
+jobs:
+  create-newsroom-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check UK newsroom hour
+        id: london
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          echo "date=$(TZ=Europe/London date +%F)" >> "$GITHUB_OUTPUT"
+          if [[ "$EVENT_NAME" == "workflow_dispatch" || "$(TZ=Europe/London date +%H)" == "08" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping duplicate UTC trigger outside 08:00 UK hour."
+          fi
+
+      - name: Check out current main
+        if: steps.london.outputs.run == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Create branch from current main if absent
+        if: steps.london.outputs.run == 'true'
+        shell: bash
+        env:
+          UK_DATE: ${{ steps.london.outputs.date }}
+        run: |
+          set -euo pipefail
+          BRANCH="newsroom/$UK_DATE"
+          git fetch origin main --depth=1
+          if git ls-remote --exit-code --heads origin "refs/heads/$BRANCH" >/dev/null 2>&1; then
+            echo "Branch $BRANCH already exists. Leaving it unchanged."
+            exit 0
+          fi
+          git push origin "refs/remotes/origin/main:refs/heads/$BRANCH"
+          echo "Created $BRANCH from latest remote main."
