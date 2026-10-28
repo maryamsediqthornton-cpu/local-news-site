@@ -79,15 +79,9 @@ function trustedEditorialLink(value) {
   } catch { return null; }
 }
 
-function renderArticleBody(body = []) {
-  const blocks = Array.isArray(body) ? body : [body];
-
-  return blocks
-    .filter(Boolean)
-    .map(block => {
-      if (typeof block === 'object') {
-        if (block.type === 'editorial-credits') {
-          const official = trustedEditorialLink(block.sourceUrl);
+function renderEditorialCredits(block) {
+  if (!block || block.type !== 'editorial-credits') return '';
+  const official = trustedEditorialLink(block.sourceUrl);
           const image = trustedEditorialLink(block.imageUrl);
           const source = escapeEditorialCredit(block.sourcePublisher);
           const date = escapeEditorialCredit(block.sourceDate);
@@ -105,7 +99,15 @@ function renderArticleBody(body = []) {
               ${image ? `<a href="${escapeEditorialCredit(image)}" target="_blank" rel="noopener noreferrer">Image details &amp; licence ↗</a>` : ''}
             </div>
           </aside>`;
-        }
+}
+
+function renderArticleBody(body = []) {
+  const blocks = Array.isArray(body) ? body : [body];
+
+  return blocks
+    .filter(Boolean)
+    .map(block => {
+      if (typeof block === 'object') {
         if (block.type === 'heading') {
           return `<h2>${block.text || ''}</h2>`;
         }
@@ -293,6 +295,7 @@ async function initArticle() {
     ${article.id === 'two-sentenced-drug-supply-oxford' ? '<p class="ai-disclaimer">AI-generated illustration: drugs evidence, mobile phones and scales shown for illustrative purposes.</p>' : ''}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
+    ${renderEditorialCredits(article.editorialCredits)}
     ${haveYourSayBlock()}
     ${adBlock('article')}
   `;
