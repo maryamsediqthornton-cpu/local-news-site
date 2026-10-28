@@ -5,6 +5,7 @@
 const API='https://api.data.nationalhighways.co.uk/roads/v2.0/closures';
 const SNAPSHOT='v060-road-closures';
 const RUN_STATUS='v060-road-closures-run-status';
+const REVIEW='v063-road-closures-review';
 const HOME='https://witneywire.co.uk';
 const HEADERS={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const BOX={south:51.45,north:52.25,west:-1.78,east:-0.75}; // approximate screening ONLY
@@ -122,7 +123,9 @@ async function refresh(env){
  const totals={road_matches:0,geographic_candidates:0,valid_candidates:0,missing_geometry:0};
  for(const row of [...planned.stats,...unplanned.stats])for(const key of Object.keys(totals))totals[key]+=row[key]||0;
  // Publishing remains explicitly opt-in, even when conservative checks pass.
- const publish=env.TRAVEL_PUBLISH_ENABLED==='true';
+ // Never publish simply because a town name appears in the description.
+ // Candidate records must be inspected against actual route/junction geography first.
+ const publish=false;
  const eligible=[...dedup.values()].filter(n=>n.geography_verified===true);
  const feed={schema_version:1,updated_at:new Date().toISOString(),notices:publish?eligible:[],
   staging_candidates:dedup.size,candidate_diagnostics:totals,
@@ -130,6 +133,7 @@ async function refresh(env){
   publishing_enabled:publish,
   pages_checked:planned.pages+unplanned.pages};
  await env.TRAVEL_KV.put(SNAPSHOT,JSON.stringify(feed));
+ await env.TRAVEL_KV.put(REVIEW,JSON.stringify({updated_at:feed.updated_at,description:'Unverified National Highways candidates — NOT for public travel advice',count:dedup.size,notices:[...dedup.values()].map(n=>({road:n.road,location:n.location,description:n.description,valid_from:n.valid_from,valid_until:n.valid_until,type:n.type,source_url:n.source_url}))}));
  await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'success',time:feed.updated_at,pages_checked:feed.pages_checked}));
  return feed;
 }
@@ -156,6 +160,11 @@ export default {
    return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
     candidates:snapshot?.staging_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
+  }
+  if(u.pathname==='/review'){
+   if(!env.TRAVEL_KV)return json({error:'review_not_configured'},503);
+   const review=await env.TRAVEL_KV.get(REVIEW,'json');
+   return json(review||{status:'waiting_for_next_scheduled_check',notices:[]},200);
   }
   if(u.pathname==='/feed'){
    if(!env.TRAVEL_KV)return json({error:'feed_not_configured'},503,allowed);
