@@ -43,6 +43,15 @@ function geometry(s){
  }
  return {usable,near};
 }
+// Conservative named-location verification. An approximate county bounding box alone
+// must never authorise publishing a road notice.
+function localPlace(text,road){
+ const str=String(text||'').toLowerCase();
+ const places=road==='A40'
+  ? ['witney','eynsham','cassington','wheatley','headington','north hinksey','botley','oxford']
+  : ['wheatley','bicester','ardley','banbury','stokenchurch','junction 8a','junction 9','junction 10','junction 11','j8a','j9','j10','j11'];
+ return places.find(place=>str.includes(place))||null;
+}
 function parse(xml,type){
  const notices=[],stats={read:0,road_matches:0,geographic_candidates:0,valid_candidates:0,rejected:0,missing_geometry:0};
  const now=Date.now(),maxFuture=now+30*86400000;
@@ -64,12 +73,15 @@ function parse(xml,type){
    // No fabricated junction, place or diversion. Geometry alone does not verify the county.
    const description=values(rec,'locationDescription')[0]||null;
    if(!description){stats.rejected++;continue;}
+   const locality=localPlace(description,road);
+   // Require explicit route, place, valid dates and intersecting official geometry.
+   if(!locality){stats.rejected++;continue;}
    const safeDescription=description.slice(0,220);
    const key=[type,road,safeDescription,start,end].join('|');
    notices.push({id:key,title:road+' — '+(status==='active'?'reported restriction':'scheduled restriction'),
-    road,description:safeDescription,location:'Approximate Oxfordshire-area candidate',
+    road,description:safeDescription,location:locality,
     type:status,valid_from:new Date(startMs).toISOString(),valid_until:new Date(endMs).toISOString(),
-    source_url:SOURCE,source:'National Highways',geography_verified:false});
+    source_url:SOURCE,source:'National Highways',geography_verified:true});
    stats.valid_candidates++;
   }
  }
@@ -109,12 +121,13 @@ async function refresh(env){
  const dedup=new Map(candidates.map(n=>[n.id,n]));
  const totals={road_matches:0,geographic_candidates:0,valid_candidates:0,missing_geometry:0};
  for(const row of [...planned.stats,...unplanned.stats])for(const key of Object.keys(totals))totals[key]+=row[key]||0;
- // Staging contract: geometry candidates are not verified county locations.
- // Therefore no public notices until a verified geospatial boundary rule is implemented and reviewed.
- const feed={schema_version:1,updated_at:new Date().toISOString(),notices:[],
+ // Publishing remains explicitly opt-in, even when conservative checks pass.
+ const publish=env.TRAVEL_PUBLISH_ENABLED==='true';
+ const eligible=[...dedup.values()].filter(n=>n.geography_verified===true);
+ const feed={schema_version:1,updated_at:new Date().toISOString(),notices:publish?eligible:[],
   staging_candidates:dedup.size,candidate_diagnostics:totals,
-  validation_status:'geographical_review_required',
-  publishing_enabled:false,
+  validation_status:publish?'verified_for_publication':'awaiting_editorial_approval',
+  publishing_enabled:publish,
   pages_checked:planned.pages+unplanned.pages};
  await env.TRAVEL_KV.put(SNAPSHOT,JSON.stringify(feed));
  await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'success',time:feed.updated_at,pages_checked:feed.pages_checked}));
@@ -142,16 +155,17 @@ export default {
    const run=env.TRAVEL_KV?await env.TRAVEL_KV.get(RUN_STATUS,'json'):null;
    return json({ok:true,mode:'staging',last_run_status:run?.state||'not_run',last_run_at:run?.time||null,last_run_error:run?.reason||null,key_configured:!!env.NATIONAL_HIGHWAYS_API_KEY,
     kv_configured:!!env.TRAVEL_KV,last_success:snapshot?.updated_at||null,
-    candidates:snapshot?.staging_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:false});
+    candidates:snapshot?.staging_candidates||0,candidate_diagnostics:snapshot?.candidate_diagnostics||null,publishing_enabled:snapshot?.publishing_enabled===true});
   }
   if(u.pathname==='/feed'){
    if(!env.TRAVEL_KV)return json({error:'feed_not_configured'},503,allowed);
    const snapshot=await env.TRAVEL_KV.get(SNAPSHOT,'json');
    if(!snapshot||!snapshot.updated_at||Date.now()-Date.parse(snapshot.updated_at)>75*60000)
      return json({error:'travel_feed_unavailable_or_stale'},503,allowed);
-   // No public records while geographic verification is pending.
-   return json({schema_version:1,updated_at:snapshot.updated_at,notices:[],
-    status:'pending_geographic_validation'},200,allowed);
+   const enabled=snapshot.publishing_enabled===true && snapshot.validation_status==='verified_for_publication';
+   return json({schema_version:1,updated_at:snapshot.updated_at,
+    notices:enabled&&Array.isArray(snapshot.notices)?snapshot.notices:[],
+    status:enabled?'verified_for_publication':'pending_geographic_validation'},200,allowed);
   }
   return new Response('Not found',{status:404});
  }
