@@ -534,5 +534,81 @@
     "date": "2026-08-16T10:55:00Z",
     "author": "Mary",
     "excludeFromHomepage": true
+  },
+  {
+    "id": "west-oxfordshire-lowlands-transport-plan-approved-2026",
+    "title": "Long-term transport plan approved for Witney and Carterton",
+    "category": "news",
+    "summary": "Oxfordshire County Council has approved a 25-year strategy for transport in Witney, Carterton and neighbouring communities, setting out ambitions for buses, walking and cycling.",
+    "date": "2026-10-28T08:03:00Z",
+    "image": "assets/traffic.svg",
+    "author": "Witney Wire Newsdesk",
+    "body": [
+      "A long-term transport strategy aimed at improving connections across Witney, Carterton and surrounding communities has been approved by Oxfordshire County Council.",
+      "The West Oxfordshire Lowlands Movement and Place Plan sets out a 25-year approach to transport across the area, with 15 objectives and 114 supporting actions.",
+      "The plan focuses on improving opportunities for walking, cycling, wheeling and public transport, while recognising that private vehicles will remain necessary for some residents, particularly in rural communities.",
+      {
+        "type": "heading",
+        "text": "What the plan proposes"
+      },
+      "Among the priorities are more reliable and integrated bus services, better pedestrian and cycling connections, and transport hubs designed to make journeys between different services easier.",
+      "The strategy also supports work to improve rail connections and follows ongoing consideration of rapid transit options between the Witney area and Oxford.",
+      "The council says approximately 87,000 people live in the West Oxfordshire Lowlands area, with around 16% commuting to Oxford for work.",
+      {
+        "type": "heading",
+        "text": "What happens next?"
+      },
+      "The newly approved plan will help guide future transport projects and support efforts to secure funding. However, approval of the strategy does not mean that every proposed improvement has received construction funding or a confirmed delivery date.",
+      "For communities that rely heavily on road transport, the key question will be how quickly the long-term ambitions translate into practical improvements.",
+      "Source: Oxfordshire County Council, announcement published 20 October 2026. <a href=\"https://news.oxfordshire.gov.uk/plan-to-improve-sustainable-transport-in-west-oxfordshire-is-approved/\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
+      "Editorial image note: Category illustration used for this preview; replace with a verified, appropriately licensed local photograph before publication."
+    ]
+  },
+  {
+    "id": "witney-charter-market-shopper-survey-oct-2026",
+    "title": "Witney market wins strong backing from shoppers in council survey",
+    "category": "business",
+    "summary": "A council survey reports high customer satisfaction at Witney's Charter Market, with the operator's first year also seeing strong stall occupancy.",
+    "date": "2026-10-28T08:02:00Z",
+    "image": "assets/cafe.svg",
+    "author": "Witney Wire Newsdesk",
+    "body": [
+      "Witney's Charter Market has received encouraging feedback from shoppers following changes to the management of local markets.",
+      "A survey published by West Oxfordshire District Council found that 98% of 143 customers questioned were satisfied with customer service, while 96% were satisfied with product quality and 95% with the market atmosphere.",
+      "The results follow the first year of operations under Cotswold Markets Ltd, which took over the management of Witney and Chipping Norton's Charter Markets in August 2025.",
+      "According to the council, stall occupancy at Witney has regularly reached between 90% and 99%, exceeding the council's 75% target.",
+      {
+        "type": "heading",
+        "text": "Market operation under review"
+      },
+      "The council's Executive has supported extending the agreement with the operator following its review of the first year.",
+      "The findings also suggest improvements in market organisation, stall variety and trader confidence, although traders identified a continuing need to attract more visitors and raise awareness.",
+      "Markets remain an important part of Witney town centre, supporting independent businesses and offering residents an alternative to larger retail outlets.",
+      "The council and market operator say their next priorities include attracting additional traders, improving signage and exploring more activities to encourage visits.",
+      "The satisfaction figures reflect the views of those surveyed and should not be interpreted as representing every shopper.",
+      "Source: West Oxfordshire District Council, announcement published 23 October 2026. <a href=\"https://news.westoxon.gov.uk/news/west-oxfordshires-markets-going-strong-as-shoppers-give-their-verdict\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
+      "Editorial image note: Category illustration used for this preview; replace with a verified, appropriately licensed market photograph before publication."
+    ]
+  },
+  {
+    "id": "marriotts-walk-free-halloween-activities-oct-2026",
+    "title": "Free Halloween fun comes to Marriotts Walk this half term",
+    "category": "whats-on",
+    "summary": "Families can take part in a free Pumpkin Trail and Pumpkin Patch at Marriotts Walk in Witney during October half term, from 26 to 31 October.",
+    "date": "2026-10-28T08:01:00Z",
+    "image": "assets/festival.svg",
+    "author": "Witney Wire Newsdesk",
+    "body": [
+      "Families looking for something to do during the October half-term holiday can enjoy free Halloween-themed activities at Marriotts Walk in Witney.",
+      "The shopping centre is hosting a Pumpkin Trail and a pop-up Pumpkin Patch from Monday 26 October until Saturday 31 October.",
+      "The activities are designed to give younger visitors something seasonal to enjoy while encouraging families to spend time in Witney town centre.",
+      "The Pumpkin Trail offers an opportunity to explore the shopping centre, while the Pumpkin Patch provides a themed setting for family photographs.",
+      "West Oxfordshire District Council says the activities form part of efforts to support town-centre businesses and attract more visitors.",
+      "The council also reported that footfall at Marriotts Walk had increased by 23.7% year on year, although that figure should be treated as a reported measure rather than evidence that this week's event caused the increase.",
+      "Both activities are advertised as free, making them an option for families looking for a half-term outing without an admission charge.",
+      "Visitors should check the event organiser's latest information for participation arrangements and opening times before travelling.",
+      "Source: West Oxfordshire District Council, announcement published 20 October 2026. <a href=\"https://news.westoxon.gov.uk/news/pumpkin-fun-comes-to-marriotts-walk-this-half-term\" target=\"_blank\" rel=\"noopener noreferrer\">Read the original council announcement.</a>",
+      "Editorial image note: Category illustration used for this preview; replace with a verified, appropriately licensed event image before publication."
+    ]
   }
 ]
