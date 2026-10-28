@@ -718,7 +718,7 @@ function renderPage(article) {
       </div>
     </div>
     <div class="meta">${escapeHtml(formatDate(article.date))} · ${escapeHtml(article.author)}</div>
-    <img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? ' musicals-article-photo' : ''}" src="${escapeHtml(article.image && /^https?:\\/\\//i.test(article.image) ? article.image : '/' + String(article.image || '').replace(/^\\/+/, ''))}" alt="${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? 'Eleanor and Annie promoting A Night at the Musicals at the Corn Exchange in Witney' : ''}">
+    <img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? ' musicals-article-photo' : ''}" src="${escapeHtml(article.image && String(article.image).startsWith('https://') ? article.image : '/' + String(article.image || '').replace(/^\\/+/, ''))}" alt="${article.id === 'witney-students-night-at-musicals-children-in-need-2026' ? 'Eleanor and Annie promoting A Night at the Musicals in Witney' : ''}">
     ${disclaimer}
     ${adBlock('article')}
     <div class="article-body">${renderArticleBody(article.body)}</div>
