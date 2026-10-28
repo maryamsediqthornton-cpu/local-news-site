@@ -103,7 +103,9 @@ function parse(xml,type){
    notices.push({id:key,title:road+' — '+(status==='active'?'reported restriction':'scheduled restriction'),
     road,description:safeDescription,location:locality,
     type:status,valid_from:new Date(startMs).toISOString(),valid_until:new Date(endMs).toISOString(),
-    source_url:SOURCE,source:'National Highways',geography_verified:false,...details});
+    source_url:SOURCE,source:'National Highways',geography_verified:false,
+    restriction_description_verified:!!(details.official_comment&&/\\b(?:closure|closed|restriction)\\b/i.test(details.official_comment)),
+    ...details});
    stats.valid_candidates++;
   }
  }
@@ -154,7 +156,7 @@ async function refresh(env){
   publishing_enabled:publish,
   pages_checked:planned.pages+unplanned.pages};
  await env.TRAVEL_KV.put(SNAPSHOT,JSON.stringify(feed));
- await env.TRAVEL_KV.put(REVIEW,JSON.stringify({updated_at:feed.updated_at,description:'Unverified National Highways candidates — NOT for public travel advice',count:dedup.size,notices:[...dedup.values()].map(n=>({road:n.road,location:n.location,description:n.description,valid_from:n.valid_from,valid_until:n.valid_until,type:n.type,restriction_type:n.restriction_type,restriction_field:n.restriction_field,lane_information:n.lane_information,lane_field:n.lane_field,reason:n.reason,reason_field:n.reason_field,official_comment:n.official_comment,comment_field:n.comment_field,source_url:n.source_url}))}));
+ await env.TRAVEL_KV.put(REVIEW,JSON.stringify({updated_at:feed.updated_at,description:'Unverified National Highways candidates — NOT for public travel advice',count:dedup.size,notices:[...dedup.values()].map(n=>({road:n.road,location:n.location,description:n.description,valid_from:n.valid_from,valid_until:n.valid_until,type:n.type,restriction_description_verified:n.restriction_description_verified,restriction_type:n.restriction_type,restriction_field:n.restriction_field,lane_information:n.lane_information,lane_field:n.lane_field,reason:n.reason,reason_field:n.reason_field,official_comment:n.official_comment,comment_field:n.comment_field,source_url:n.source_url}))}));
  await env.TRAVEL_KV.put(RUN_STATUS,JSON.stringify({state:'success',time:feed.updated_at,pages_checked:feed.pages_checked}));
  return feed;
 }
