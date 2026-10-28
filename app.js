@@ -118,6 +118,7 @@ function renderArticleBody(body = []) {
         }
       }
 
+      if (typeof block === 'object') return '';
       return `<p>${block}</p>`;
     })
     .join('');
