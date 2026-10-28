@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="styles.css?v=v061-credits-5">
-<script defer src="app.js?v=v061-credits-5"></script>
+<link rel="stylesheet" href="styles.css?v=v061-credits-6">
+<script defer src="app.js?v=v061-credits-6"></script>
 <title>Article | Witney Wire</title>
 <meta name="description" content="Local news, sport, events and community stories from Witney Wire.">
 <link rel="canonical" href="https://witneywire.co.uk/article">
@@ -89,5 +89,49 @@
   </div>
 </footer>
 
+<script>
+/* V061 review credits: independent of any previously cached app.js renderer. */
+(() => {
+  const citations = {
+    'west-oxfordshire-lowlands-transport-plan-approved-2026': [
+      ['Source', 'Oxfordshire County Council · 20 October 2026', 'Original announcement', 'https://news.oxfordshire.gov.uk/plan-to-improve-sustainable-transport-in-west-oxfordshire-is-approved/'],
+      ['Image credit', 'Motacilla / Wikimedia Commons · Archive transport photo, illustrative only', 'Image details & licence', 'https://commons.wikimedia.org/wiki/File:AlexanderDennis_Trident2_Enviro400_MMC_SN69_ZDU_Witney.jpg']
+    ],
+    'witney-charter-market-shopper-survey-oct-2026': [
+      ['Source', 'West Oxfordshire District Council · 23 October 2026', 'Original announcement', 'https://news.westoxon.gov.uk/news/west-oxfordshires-markets-going-strong-as-shoppers-give-their-verdict'],
+      ['Image credit', 'Steve Daniels / Geograph · Archive market photo · CC BY-SA 2.0', 'Image details & licence', 'https://commons.wikimedia.org/wiki/File:Market_stalls_in_the_Market_Square_-_geograph.org.uk_-_7936542.jpg']
+    ],
+    'marriotts-walk-free-halloween-activities-oct-2026': [
+      ['Source', 'West Oxfordshire District Council · 20 October 2026', 'Original announcement', 'https://news.westoxon.gov.uk/news/pumpkin-fun-comes-to-marriotts-walk-this-half-term'],
+      ['Image credit', 'Raysonho / Wikimedia Commons · Illustrative pumpkin photograph · CC0', 'Image details & licence', 'https://commons.wikimedia.org/wiki/File:HalloweenPumpkin.JPG']
+    ]
+  };
+  const id = new URLSearchParams(location.search).get('id');
+  const rows = citations[id];
+  if (!rows) return;
+  function insert() {
+    const article = document.getElementById('article-view');
+    const body = article && article.querySelector('.article-body');
+    if (!body) return false;
+    if (article.querySelector('.newsroom-attribution')) return true;
+    const section = document.createElement('aside');
+    section.className='newsroom-attribution';
+    section.setAttribute('aria-label','Sources and image credits');
+    for(const [label,description,linkText,url] of rows){
+      const row=document.createElement('div');row.className='newsroom-attribution-line';
+      const title=document.createElement('strong');title.textContent=label;
+      const text=document.createElement('span');text.textContent=description;
+      const link=document.createElement('a');link.href=url;link.textContent=linkText+' ↗';
+      link.target='_blank';link.rel='noopener noreferrer';
+      row.append(title,text,link);section.append(row);
+    }
+    body.after(section);
+    return true;
+  }
+  if(insert())return;
+  const observer=new MutationObserver(()=>{if(insert())observer.disconnect();});
+  observer.observe(document.getElementById('article-view'),{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
