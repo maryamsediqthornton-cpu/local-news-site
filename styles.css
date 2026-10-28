@@ -1613,3 +1613,11 @@ a:hover {
 .traffic-archive>summary{cursor:pointer;color:#0b2a4a;font-size:17px;font-weight:800;padding:10px 0;list-style-position:inside}
 .traffic-archive>p,.traffic-current-empty{color:#596475;font-size:14px;line-height:1.6}
 .traffic-archive .card-grid{margin-top:18px}
+
+/* V061 newsroom: discreet, accessible editorial attributions below articles */
+.editorial-credits{margin:30px 0 12px;padding:15px 18px;border-top:1px solid #d9e2e8;border-bottom:1px solid #d9e2e8;background:#f7f9fa;font-size:13px;line-height:1.6;color:#526171}
+.editorial-credits-item{display:flex;align-items:baseline;gap:7px 12px;flex-wrap:wrap;padding:5px 0}
+.editorial-credits-label{min-width:52px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#0b2a4a}
+.editorial-credits a{color:#174f7a;text-decoration:underline;text-underline-offset:2px;font-weight:700}
+.editorial-credits a:hover{color:#2f7d5a}
+@media(max-width:600px){.editorial-credits{padding:13px 14px}.editorial-credits-item{display:block}.editorial-credits-label{display:block;margin-bottom:2px}.editorial-credits-item a{display:inline-block;margin-left:8px}}
