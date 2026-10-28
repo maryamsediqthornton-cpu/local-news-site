@@ -271,12 +271,21 @@ async function initTrafficLivePanel() {
           const fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit',hour12:false,timeZone:'Europe/London'});
           const cleanLocation=(raw)=>String(raw||'').replace(/\\bbetween\\s+(J\\d+[A-Z]?)\\s+and\\s+(J\\d+[A-Z]?)/i,'$1–$2').trim();
           const restrictionText=(n)=>{
-            const comment=String(n.official_comment||'');
-            const match=comment.match(/(?:hard shoulder(?:,?\\s*lanes?\\s*[\\d\\s,and]+)?|lanes?\\s*\\d+(?:\\s*(?:and|&)\\s*\\d+)?|exit slip road lanes?\\s*\\d+)\\s+closure/i);
-            let restriction=match?match[0].replace(/\\s+/g,' ').replace(/\\blane\\s+(\\d+)\\s+and\\s+(\\d+)/i,'lanes $1 and $2'):'Restriction details not specified';
-            restriction=restriction.charAt(0).toUpperCase()+restriction.slice(1);
-            const reason=String(n.reason||'')==='roadMaintenance'?'road maintenance':null;
-            return reason&&match?restriction+' for '+reason:restriction;
+            const comment=String(n.official_comment||'').trim();
+            const normalised=comment.replace(/\s+/g,' ');
+            const reason=String(n.reason||'')==='roadMaintenance'?' for road maintenance':'';
+            // The official plain-English comment is more reliable than raw DATEX lane codes.
+            // Preserve all lane numbers; never imply a whole motorway closure.
+            const restriction=normalised.match(/(?:hard shoulder(?:,\s*lanes?\s*[\d\s,and]+)?|(?:exit\s+slip\s+road\s+)?lanes?\s+\d+(?:\s*(?:and|&|,)\s*\d+)*)\s+closure/i);
+            if(restriction){
+              let words=restriction[0].replace(/\s+/g,' ').trim();
+              words=words.charAt(0).toUpperCase()+words.slice(1);
+              return words+reason;
+            }
+            const general=normalised.match(/\b(?:full closure|carriageway closure|road closed|slip road closed)\b/i);
+            if(general)return general[0]+reason;
+            if(normalised)return 'National Highways states: '+normalised;
+            return 'National Highways has not supplied a readable restriction description.';
           };
           for(const n of candidates){
             const item=document.createElement('article');item.className='traffic-live-item';
@@ -296,26 +305,31 @@ async function initTrafficLivePanel() {
       return;
     }
     const notices=(Array.isArray(feed.notices)?feed.notices:[]).filter(n=>{
-      const end=new Date(n.valid_until);
-      return n.geography_verified===true&&typeof n.title==='string'&&n.title.trim()&&
+      const start=Date.parse(n.valid_from||''),end=Date.parse(n.valid_until||'');
+      return n.geography_verified===true&&n.restriction_description_verified===true&&
         typeof n.description==='string'&&n.description.trim()&&
-        Number.isFinite(end.getTime())&&end.getTime()>Date.now()&&
-        typeof n.source_url==='string'&&/^https:\/\/(?:[a-z0-9-]+\.)*(?:nationalhighways\.co\.uk|oxfordshire\.gov\.uk)\//i.test(n.source_url);
-    }).slice(0,4);
+        typeof n.official_comment==='string'&&n.official_comment.trim()&&
+        Number.isFinite(start)&&Number.isFinite(end)&&end>Date.now()&&
+        typeof n.source_url==='string'&&/^https:\/\/(?:[a-z0-9-]+\.)*nationalhighways\.co\.uk\//i.test(n.source_url);
+    }).slice(0,6);
     results.replaceChildren();
+    const fmt=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/London'});
     if(!notices.length){
-      showStatus('No verified notices to display at present. This does not mean the roads are clear.');
+      showStatus('No currently validated National Highways restrictions to display. This does not mean roads are clear.');
     }else{
       for(const notice of notices){
         const item=document.createElement('article');item.className='traffic-live-item';
-        const title=document.createElement('strong');title.textContent=notice.title;
-        const desc=document.createElement('p');desc.textContent=notice.description;
-        const link=document.createElement('a');link.href=notice.source_url;
-        link.rel='noopener noreferrer';link.target='_blank';link.textContent='Official details ↗';
-        item.append(title,desc,link);results.append(item);
+        const title=document.createElement('strong');title.textContent=notice.description.replace(/\bbetween\s+(J\d+[A-Z]?)\s+and\s+(J\d+[A-Z]?)/i,'$1–$2');
+        const desc=document.createElement('p');
+        const comment=notice.official_comment.replace(/\s+/g,' ').trim();
+        const restriction=comment.match(/(?:hard shoulder(?:,\s*lanes?\s*[\d\s,and]+)?|(?:exit\s+slip\s+road\s+)?lanes?\s+\d+(?:\s*(?:and|&|,)\s*\d+)*)\s+closure/i);
+        desc.textContent=(restriction?restriction[0].replace(/\s+/g,' '):comment)+(notice.reason==='roadMaintenance'?' for road maintenance':'');
+        const times=document.createElement('p');times.textContent=fmt.format(new Date(notice.valid_from))+' – '+fmt.format(new Date(notice.valid_until))+' (UK time)';
+        const link=document.createElement('a');link.href=notice.source_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='National Highways information ↗';
+        item.append(title,desc,times,link);results.append(item);
       }
     }
-    checked.textContent='Last feed check: '+new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Europe/London'}).format(updated)+' UK time';
+    checked.textContent='National Highways · Last checked: '+fmt.format(updated)+' UK time';
   } catch {
     showStatus('Automatic travel notices are temporarily unavailable. Check official sources for the latest restrictions.');
     checked.textContent='Existing traffic stories remain available below';
