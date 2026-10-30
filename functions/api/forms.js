@@ -71,6 +71,57 @@ function buildNotificationHtml(config, kind, values, origin, receivedAt) {
     '</td></tr></table></td></tr></table></body></html>';
 }
 
+// A courtesy receipt is sent only after the editorial/advertising notification is accepted.
+// It never confirms a newsletter opt-in, creates a subscription or echoes private submissions.
+function buildAcknowledgement(kind) {
+  const variants = {
+    advertise: {
+      subject: "Witney Wire — advertising enquiry received",
+      heading: "Thank you for your enquiry",
+      message: "We've received your advertising enquiry. Our team will review your message and respond where appropriate.",
+      replyTo: "advertise@witneywire.co.uk"
+    },
+    "send-story": {
+      subject: "Witney Wire — story submission received",
+      heading: "Thank you for sharing your story",
+      message: "Our editorial team has received your submission and will review it. We cannot guarantee publication or a personal response.",
+      replyTo: "contact@witneywire.co.uk"
+    },
+    newsletter: {
+      subject: "Witney Wire — newsletter request received",
+      heading: "We've received your newsletter request",
+      message: "Thank you for your interest in Witney Wire. We've received your newsletter request. This acknowledgement is not confirmation that you've been added to a mailing list. We'll handle your request according to our subscription process.",
+      replyTo: "subscribe@witneywire.co.uk"
+    },
+    subscribe: {
+      subject: "Witney Wire — subscription request received",
+      heading: "We've received your subscription request",
+      message: "Thank you for your interest in Witney Wire. We've received your subscription request. This acknowledgement is not confirmation that you've been added to a mailing list. We'll handle your request according to our subscription process.",
+      replyTo: "subscribe@witneywire.co.uk"
+    }
+  };
+  const template = variants[kind];
+  if (!template) return null;
+
+  const text = "Hello,\n\n" + template.message +
+    "\n\nIf you need to follow up, reply to this email.\n\nWitney Wire\nYour Town. Your Stories.\nhttps://witneywire.co.uk/";
+  const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>' +
+    '<body style="margin:0;padding:0;background:#f3f6f8;font-family:Arial,sans-serif">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f6f8"><tr><td align="center" style="padding:28px 12px">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border:1px solid #e5ebee">' +
+    '<tr><td style="padding:22px 26px;background:#082846;border-top:4px solid #327352">' +
+    '<p style="margin:0;color:white;font-size:22px;font-weight:bold">Witney Wire</p>' +
+    '<p style="margin:5px 0 0;color:#bfd8c9;font-size:12px">Your Town. Your Stories.</p></td></tr>' +
+    '<tr><td style="padding:28px 26px">' +
+    '<h1 style="margin:0 0 18px;font-size:23px;line-height:1.4;color:#082846">' + escapeHTML(template.heading) + '</h1>' +
+    '<p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#243f53">' + escapeHTML(template.message) + '</p>' +
+    '<p style="margin:0;color:#526477;font-size:14px;line-height:1.6">If you need to follow up, you can reply directly to this email.</p>' +
+    '</td></tr><tr><td style="padding:16px 26px;border-top:1px solid #e8edf1;background:#f7f9fa">' +
+    '<p style="margin:0;font-size:12px;color:#657586">Witney Wire &middot; <a href="https://witneywire.co.uk/" style="color:#327352">witneywire.co.uk</a></p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+  return { ...template, text, html };
+}
+
 function errorResponse(message, status) {
   const page = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Form unavailable | Witney Wire</title><link rel="stylesheet" href="/styles.css"></head><body><main style="max-width:640px;margin:8vh auto;padding:24px;font-family:Arial,sans-serif"><h1>We could not send your message</h1><p>' +
     escapeHTML(message) + '</p><p>Nothing has been confirmed as sent. Please email <a href="mailto:contact@witneywire.co.uk">contact@witneywire.co.uk</a> directly, or go back to try again.</p><p><a href="/">Return to Witney Wire</a></p></main></body></html>';
@@ -204,6 +255,35 @@ export async function onRequestPost({ request, env }) {
   } catch {
     return errorResponse("The email service could not be reached. Please email us directly.", 502);
   }
+  // Courtesy acknowledgement is best-effort: a delivery failure must not undo a
+  // successful inbox notification or ask the visitor to resubmit a duplicate.
+  const acknowledgement = buildAcknowledgement(kind);
+  if (acknowledgement) {
+    try {
+      const ackResponse = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "authorization": "Bearer " + env.RESEND_API_KEY,
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          from: env.FORM_FROM,
+          to: [replyAddress],
+          reply_to: acknowledgement.replyTo,
+          subject: acknowledgement.subject,
+          text: acknowledgement.text,
+          html: acknowledgement.html
+        })
+      });
+      if (!ackResponse.ok) {
+        // Do not log visitor details or email addresses.
+        console.warn("Witney Wire visitor acknowledgement provider status", ackResponse.status);
+      }
+    } catch {
+      console.warn("Witney Wire visitor acknowledgement request failed");
+    }
+  }
+
   // Only a successful provider response gets the thank-you page.
   return Response.redirect(ownOrigin + "/thanks.html", 303);
 }
