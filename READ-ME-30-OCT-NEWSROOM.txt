@@ -1,0 +1,37 @@
+WITNEY WIRE - 30 OCTOBER 2026 ARTICLES AND PICTURES
+
+Prepared from main at commit d4cadea8a481bfca30ae2acb8d07f941262cf569.
+
+Includes:
+- Proposed Oxfordshire and West Berkshire council changes (News).
+- Woodstock museum opportunities for young people (Community).
+- Oxfordshire hospital RSV advice for parents (News).
+- Three AI-generated illustrative pictures, identified in captions.
+
+HOW TO APPLY WITH GITHUB DESKTOP
+1. Fetch origin, select main, and pull any changes.
+2. Create a new branch from main, such as V069_Newsroom_301026.
+3. Choose Repository > Show in Explorer.
+4. Extract this ZIP. Copy the data and assets folders into the repository
+   folder, agreeing to replace data/articles.json and merge the folders.
+5. GitHub Desktop should show one changed data file and three new pictures.
+6. Commit the four files, publish the branch and check the preview before
+   merging into main.
+
+The updated data file retains every existing article from the main version
+above and adds three. The homepage automatically sorts stories by date.
+No layout, advert, form, travel or other site files are included.
+
+If main has received more articles since this patch was prepared, do not
+replace its articles.json with this copy: ask for a refreshed patch first.
+
+Official reporting sources:
+https://news.oxfordshire.gov.uk/new-minded-to-decision/
+https://news.oxfordshire.gov.uk/young-people-offered-chance-to-experience-working-in-a-museum/
+https://www.ouh.nhs.uk/news/articles/2498/
+https://www.nhs.uk/conditions/bronchiolitis/
+
+Pictures were created using the built-in image-generation tool with these
+subjects: a generic empty English council chamber; young adult assistants
+in a generic local museum; a parent holding a child at home. They do not
+show actual locations, participants or patients.

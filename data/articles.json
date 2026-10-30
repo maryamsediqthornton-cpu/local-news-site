@@ -748,5 +748,102 @@
       "source": "https://letstalk.oxfordshire.gov.uk/charlbury-lcwip",
       "note": "AI-generated illustrative image, not a photograph of the actual location, event or proposals."
     }
+  },
+  {
+    "id": "oxfordshire-west-berkshire-three-councils-proposal-oct-2026",
+    "title": "Government proposes three new councils for Oxfordshire and West Berkshire",
+    "category": "news",
+    "summary": "Most of West Oxfordshire would join a North Oxfordshire council under proposals ministers intend to take forward, with a final decision still to come.",
+    "date": "2026-10-30T08:03:00Z",
+    "image": "assets/oxfordshire-councils-oct-2026.png",
+    "body": [
+      {
+        "type": "image",
+        "src": "assets/oxfordshire-councils-oct-2026.png",
+        "alt": "An empty council chamber (AI-generated illustration)",
+        "caption": "AI-generated illustration: An empty council chamber. This is not an actual council venue or proposed boundary map."
+      },
+      "Ministers have indicated they intend to replace the seven councils serving Oxfordshire and West Berkshire with three authorities, each responsible for services in its area.",
+      "The proposal would place most of West Oxfordshire and Cherwell in North Oxfordshire Council. Greater Oxford Council would serve Oxford and nearby communities, while Ridgeway Council would bring together most of South Oxfordshire and the Vale of White Horse with West Berkshire.",
+      "The government is seeking further representations over three weeks before reaching a final decision before Christmas.",
+      "Oxfordshire County Council opposes the split, arguing that one county-wide authority would provide a more sustainable basis for services. It says it will review the evidence and consider its legal options.",
+      "If the changes proceed, elections for shadow councils are scheduled for May 2028. They would prepare for the new authorities, which are due to take over on 1 April 2029."
+    ],
+    "sourceAttribution": {
+      "publisher": "Oxfordshire County Council",
+      "date": "29 October 2026",
+      "source": "https://news.oxfordshire.gov.uk/new-minded-to-decision/",
+      "credit": "Witney Wire / AI-generated illustration",
+      "note": "Not an actual council venue or proposed boundary map."
+    },
+    "author": "Witney Wire Newsdesk",
+    "hideHero": true
+  },
+  {
+    "id": "woodstock-museums-young-people-takeover-day-2026",
+    "title": "Woodstock museums offer young people a chance to work behind the scenes",
+    "category": "community",
+    "summary": "Four places are available for Oxfordshire residents aged 25 or under, with expressions of interest due by 8 November.",
+    "date": "2026-10-30T08:02:00Z",
+    "image": "assets/woodstock-museum-opportunities-2026.png",
+    "body": [
+      {
+        "type": "image",
+        "src": "assets/woodstock-museum-opportunities-2026.png",
+        "alt": "Young adults looking at museum displays (AI-generated illustration)",
+        "caption": "AI-generated illustration: Young adults looking at museum displays. This is not the actual Woodstock museums or participants."
+      },
+      "Young people in Oxfordshire can apply for one of four opportunities to experience working at two museums in Woodstock.",
+      "The Oxfordshire Museum and Soldiers of Oxfordshire Museum are taking part in Takeover Day on Friday 20 November, with roles in social media and front-of-house work.",
+      "The event gives participants a look at museum careers through practical experience. This year’s national theme is careers.",
+      "Applications are open to Oxfordshire residents aged 25 or under, and reasonable travel costs will be covered.",
+      "Those interested should email <a href=\"mailto:handsonheritage@oxfordshire.org.uk\">handsonheritage@oxfordshire.org.uk</a>, marking their message for Laura Dean. The deadline for expressions of interest is Sunday 8 November.",
+      "The scheme is organised nationally by Kids in Museums. The county museum service says this is its second year taking part."
+    ],
+    "sourceAttribution": {
+      "publisher": "Oxfordshire County Council",
+      "date": "29 October 2026",
+      "source": "https://news.oxfordshire.gov.uk/young-people-offered-chance-to-experience-working-in-a-museum/",
+      "credit": "Witney Wire / AI-generated illustration",
+      "note": "Not the actual Woodstock museums or participants."
+    },
+    "author": "Witney Wire Newsdesk",
+    "hideHero": true
+  },
+  {
+    "id": "oxfordshire-hospital-rsv-advice-parents-oct-2026",
+    "title": "Oxfordshire hospital experts urge parents to recognise RSV warning signs",
+    "category": "news",
+    "summary": "Oxford University Hospitals has shared advice on respiratory illness in children as winter approaches, including when families should seek urgent help.",
+    "date": "2026-10-30T08:01:00Z",
+    "image": "assets/rsv-parents-advice-oct-2026.png",
+    "body": [
+      {
+        "type": "image",
+        "src": "assets/rsv-parents-advice-oct-2026.png",
+        "alt": "A parent holding a child at home (AI-generated illustration)",
+        "caption": "AI-generated illustration: A parent holding a child at home. This is not a real patient."
+      },
+      "Oxford University Hospitals is asking parents and carers to watch for respiratory illnesses as temperatures fall.",
+      "Respiratory syncytial virus, known as RSV, commonly causes winter coughs and colds and is a leading cause of bronchiolitis in children under two.",
+      "The trust says most cases of bronchiolitis are not serious. Symptoms can include a runny nose, cough, raised temperature and reduced appetite.",
+      {
+        "type": "heading",
+        "text": "When to seek help"
+      },
+      "NHS advice is to seek an urgent GP appointment or call 111 if a child is eating or feeding much less than usual, has had no wet nappy for 12 hours, seems unusually tired or irritable, or you are worried.",
+      "<strong>Call 999 if a child is struggling to breathe, has pauses in breathing, turns blue or grey, or is floppy and will not wake or stay awake.</strong>",
+      "Handwashing, catching coughs and sneezes in tissues and avoiding hospital visits when unwell can help reduce transmission.",
+      "<a href=\"https://www.ouh.nhs.uk/news/articles/2498/\" target=\"_blank\" rel=\"noopener noreferrer\">Read the hospital announcement</a> and <a href=\"https://www.nhs.uk/conditions/bronchiolitis/\" target=\"_blank\" rel=\"noopener noreferrer\">full NHS bronchiolitis advice</a>."
+    ],
+    "sourceAttribution": {
+      "publisher": "Oxford University Hospitals NHS Foundation Trust; NHS",
+      "date": "28 October 2026 (OUH); NHS advice checked 30 October",
+      "source": "https://www.ouh.nhs.uk/news/articles/2498/",
+      "credit": "Witney Wire / AI-generated illustration",
+      "note": "Not a real patient."
+    },
+    "author": "Witney Wire Newsdesk",
+    "hideHero": true
   }
 ]
