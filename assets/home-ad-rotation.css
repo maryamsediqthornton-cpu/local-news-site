@@ -1,0 +1,47 @@
+.home-ad-rotation { margin-top:28px; background:var(--brand-navy); color:#fff; border-radius:2px; overflow:hidden; }
+.home-ad-slides { display:grid; }
+.home-ad-slide { grid-area:1 / 1; padding:32px 36px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px 30px; align-content:center; align-items:center; opacity:0; visibility:hidden; transition:opacity .9s ease, visibility .9s; }
+.home-ad-slide.is-active { opacity:1; visibility:visible; }
+.home-ad-house { background:linear-gradient(90deg,var(--brand-navy),var(--brand-blue)); }
+.home-ad-label { grid-column:1 / -1; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; color:#d4deea; }
+.home-ad-slide strong { display:block; font-size:clamp(26px,3.5vw,40px); line-height:1.15; max-width:620px; }
+.home-ad-slide p { margin:10px 0 0; line-height:1.6; }
+.home-ad-cta { display:inline-block; margin-top:16px; padding:13px 22px; background:#fff; color:#0b2a4a; border-radius:6px; font-weight:800; text-decoration:none; }
+.home-ad-cta:hover { color:#0b2a4a; background:#eef1f6; }
+.home-ad-bluebell { background:linear-gradient(110deg,#26294e,#4b4d82); grid-template-columns:140px minmax(0,1fr) auto; }
+.home-ad-bluebell .home-ad-label { color:#ededfa; }
+.home-ad-logo { width:140px; height:140px; object-fit:contain; border-radius:8px; }
+.home-ad-employer { display:block; font-size:15px; font-weight:700; margin-bottom:8px; }
+.home-ad-bluebell strong { font-size:clamp(25px,3vw,36px); }
+.home-ad-bluebell .home-ad-cta { margin:0; white-space:nowrap; }
+.home-ad-pay { font-weight:800; font-size:20px; }
+.home-ad-controls { display:none; justify-content:flex-end; gap:8px; padding:10px 18px; border-top:1px solid #ffffff26; }
+.ad-rotation-ready .home-ad-controls { display:flex; }
+.home-ad-controls button { appearance:none; background:transparent; border:1px solid #ffffff70; border-radius:4px; padding:7px 12px; color:#fff; font:inherit; font-size:12px; cursor:pointer; }
+.home-ad-rotation :focus-visible { outline:3px solid #f2d787; outline-offset:3px; }
+@media(max-width:800px) { .home-ad-slide { padding:24px; grid-template-columns:1fr; } .home-ad-bluebell { grid-template-columns:100px minmax(0,1fr); gap:14px 18px; } .home-ad-logo { width:100px; height:100px; } .home-ad-bluebell .home-ad-cta { grid-column:1 / -1; justify-self:start; } }
+@media(max-width:480px) { .home-ad-bluebell { grid-template-columns:1fr; } .home-ad-logo { width:80px; height:80px; } .home-ad-slide { padding:22px; } .home-ad-bluebell strong { font-size:26px; } }
+@media(prefers-reduced-motion:reduce) { .home-ad-slide { transition:none; } }
+/* Compact homepage placement. Controls sit within the banner. */
+.home-ad-rotation { position:relative; }
+.home-ad-slide { padding:20px 28px 44px; gap:10px 24px; align-content:center; }
+.home-ad-label { font-size:10px; }
+.home-ad-slide strong { font-size:clamp(23px,2.8vw,30px); max-width:520px; }
+.home-ad-slide p { margin:6px 0 0; font-size:14px; line-height:1.4; }
+.home-ad-cta { margin-top:10px; padding:10px 16px; font-size:14px; }
+.home-ad-bluebell { grid-template-columns:90px minmax(0,1fr) auto; }
+.home-ad-logo { width:90px; height:90px; }
+.home-ad-employer { font-size:13px; margin-bottom:5px; }
+.home-ad-bluebell strong { font-size:clamp(23px,2.8vw,30px); }
+.home-ad-bluebell strong br { display:none; }
+.home-ad-bluebell strong br::after { content:' '; }
+.home-ad-bluebell .home-ad-pay { font-size:17px; }
+.home-ad-controls { position:absolute; right:12px; bottom:8px; padding:0; border:0; gap:7px; }
+.home-ad-controls button { padding:4px 7px; font-size:11px; border-color:#ffffff45; }
+@media(max-width:800px) { .home-ad-slide { padding:18px 20px 44px; grid-template-columns:minmax(0,1fr) auto; } .home-ad-house > p { grid-column:1 / -1; margin:0; } .home-ad-bluebell { grid-template-columns:75px minmax(0,1fr); gap:10px 15px; } .home-ad-logo { width:75px; height:75px; } .home-ad-bluebell .home-ad-cta { grid-column:2; } }
+@media(max-width:480px) { .home-ad-slide { padding:16px 16px 42px; } .home-ad-house { grid-template-columns:1fr; } .home-ad-bluebell { grid-template-columns:60px minmax(0,1fr); } .home-ad-logo { width:60px; height:60px; } .home-ad-bluebell strong { font-size:23px; } }
+
+/* Automatic rotation without navigation controls. */
+.home-ad-slide { padding-bottom:20px; }
+@media(max-width:800px) { .home-ad-slide { padding-bottom:18px; } }
+@media(max-width:480px) { .home-ad-slide { padding-bottom:16px; } }

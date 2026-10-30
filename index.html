@@ -6,6 +6,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="assets/home-ad-rotation.css">
+<script defer src="assets/home-ad-rotation.js"></script>
 <script defer src="app.js"></script>
 <title>Witney Wire | Local news, sport and what's on</title>
 <!-- Google AdSense site verification -->
@@ -51,11 +53,20 @@
   </div>
 </div>
 
-<section class="ad-slot ad-slot-leaderboard wrap" aria-label="Advertisement">
-  <span>Advertisement</span>
-  <strong>Promote your Witney business here</strong>
-  <p>Premium homepage banner space for trusted local advertisers.</p>
-  <a href="advertise.html">Book now</a>
+<section class="home-ad-rotation wrap" data-home-ads aria-label="Advertisements">
+  <div class="home-ad-slides">
+    <div class="home-ad-slide home-ad-bluebell is-active" data-ad-slide aria-hidden="false">
+      <span class="home-ad-label">Advertisement · Now recruiting</span>
+      <img class="home-ad-logo" src="assets/bluebell-healthcare-logo.webp" alt="Bluebell Healthcare" width="140" height="140">
+      <div><span class="home-ad-employer">Bluebell Healthcare Ltd</span><strong>A caring career, close to home</strong><p>Domiciliary Care Assistants · Full-time, part-time &amp; bank</p><p class="home-ad-pay">£13.10–£15.77 per hour</p><p>Witney &amp; surrounding areas</p></div>
+      <a class="home-ad-cta" href="jobs.html#bluebell-healthcare">View job &amp; apply</a>
+    </div>
+    <div class="home-ad-slide home-ad-house" data-ad-slide aria-hidden="true" inert>
+      <span class="home-ad-label">Advertisement</span>
+      <div><strong>Promote your Witney business here</strong><a class="home-ad-cta" href="advertise.html">Book now</a></div>
+      <p>Premium homepage banner space for trusted local advertisers.</p>
+    </div>
+  </div>
 </section>
 
 <main class="wrap main-layout">
