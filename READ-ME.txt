@@ -1,0 +1,7 @@
+Witney Wire - duplicate article image correction
+
+Copy the functions folder into your site repository folder, replacing functions/article.js. Commit and push the change using GitHub Desktop.
+
+This makes the live article template respect the existing hideHero setting. Each of the three 30 October articles will show only its inline picture and caption. Keep the article data and pictures from the previous patch.
+
+Only functions/article.js is changed. No articles or pictures are removed.
