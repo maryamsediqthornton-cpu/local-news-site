@@ -1,0 +1,14 @@
+Witney Wire - latest article image loading fix
+
+Branch: V070_Latest_Article_Image_Speed_301026
+Prepared from main c5da5fa4cd1fda61d52bf42d75bd198207cf3dd5.
+NOT merged or deployed to main.
+
+Three large PNG pictures are replaced in article references by WebP versions at 1200 x 800 pixels. Combined image size falls from 6,835,830 bytes to 323,092 bytes (95.3% smaller). Pictures and article wording are unchanged. Original PNG files remain available.
+
+Files: data/articles.json and three new assets/*.webp images.
+Copy the data and assets folders into your NEW BRANCH repository folder, replacing articles.json and merging the assets folder. Commit and push using GitHub Desktop. Preview before merging.
+
+This patch is separate from V069_Mobile_Centering_301026. The two fixes can be merged independently. If more articles have been added since the base above, request a refreshed patch before replacing articles.json.
+
+Checked: all three images decode and display on the homepage and article pages at 390px and 1440px viewport widths in Chromium.
