@@ -18,7 +18,9 @@
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'article-share-button';
-    button.textContent = 'Share this story';
+    button.setAttribute('aria-label', 'Share this story');
+    button.title = 'Share this story';
+    button.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V3m-4 4 4-4 4 4M5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8"/></svg>';
     const status = document.createElement('span');
     status.className = 'article-share-status';
     status.setAttribute('role', 'status');
