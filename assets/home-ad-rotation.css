@@ -22,3 +22,21 @@
 @media(max-width:800px) { .home-ad-slide { padding:24px; grid-template-columns:1fr; } .home-ad-bluebell { grid-template-columns:100px minmax(0,1fr); gap:14px 18px; } .home-ad-logo { width:100px; height:100px; } .home-ad-bluebell .home-ad-cta { grid-column:1 / -1; justify-self:start; } }
 @media(max-width:480px) { .home-ad-bluebell { grid-template-columns:1fr; } .home-ad-logo { width:80px; height:80px; } .home-ad-slide { padding:22px; } .home-ad-bluebell strong { font-size:26px; } }
 @media(prefers-reduced-motion:reduce) { .home-ad-slide { transition:none; } }
+/* Compact homepage placement. Controls sit within the banner. */
+.home-ad-rotation { position:relative; }
+.home-ad-slide { padding:20px 28px 44px; gap:10px 24px; align-content:center; }
+.home-ad-label { font-size:10px; }
+.home-ad-slide strong { font-size:clamp(23px,2.8vw,30px); max-width:520px; }
+.home-ad-slide p { margin:6px 0 0; font-size:14px; line-height:1.4; }
+.home-ad-cta { margin-top:10px; padding:10px 16px; font-size:14px; }
+.home-ad-bluebell { grid-template-columns:90px minmax(0,1fr) auto; }
+.home-ad-logo { width:90px; height:90px; }
+.home-ad-employer { font-size:13px; margin-bottom:5px; }
+.home-ad-bluebell strong { font-size:clamp(23px,2.8vw,30px); }
+.home-ad-bluebell strong br { display:none; }
+.home-ad-bluebell strong br::after { content:' '; }
+.home-ad-bluebell .home-ad-pay { font-size:17px; }
+.home-ad-controls { position:absolute; right:12px; bottom:8px; padding:0; border:0; gap:7px; }
+.home-ad-controls button { padding:4px 7px; font-size:11px; border-color:#ffffff45; }
+@media(max-width:800px) { .home-ad-slide { padding:18px 20px 44px; grid-template-columns:minmax(0,1fr) auto; } .home-ad-house > p { grid-column:1 / -1; margin:0; } .home-ad-bluebell { grid-template-columns:75px minmax(0,1fr); gap:10px 15px; } .home-ad-logo { width:75px; height:75px; } .home-ad-bluebell .home-ad-cta { grid-column:2; } }
+@media(max-width:480px) { .home-ad-slide { padding:16px 16px 42px; } .home-ad-house { grid-template-columns:1fr; } .home-ad-bluebell { grid-template-columns:60px minmax(0,1fr); } .home-ad-logo { width:60px; height:60px; } .home-ad-bluebell strong { font-size:23px; } }
