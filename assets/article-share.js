@@ -6,8 +6,8 @@
 
   function addShareButton() {
     const heading = view.querySelector('h1');
-    const meta = view.querySelector('.meta');
-    if (!heading || !meta || view.querySelector('.article-share')) return false;
+    const body = view.querySelector('.article-body');
+    if (!heading || !body || view.querySelector('.article-share')) return false;
 
     const link = new URL('/article', 'https://witneywire.co.uk');
     link.searchParams.set('id', id);
@@ -20,7 +20,7 @@
     button.className = 'article-share-button';
     button.setAttribute('aria-label', 'Share this story');
     button.title = 'Share this story';
-    button.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V3m-4 4 4-4 4 4M5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8"/></svg>';
+    button.innerHTML = '<span>Share</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8.7 10.5 6.6-4M8.7 13.5l6.6 4"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="5" r="3"/><circle cx="18" cy="19" r="3"/></svg>';
     const status = document.createElement('span');
     status.className = 'article-share-status';
     status.setAttribute('role', 'status');
@@ -71,7 +71,8 @@
       }
     });
     area.append(button, status, manual);
-    meta.after(area);
+    const end = view.querySelector('.newsroom-attribution') || body;
+    end.after(area);
     return true;
   }
 

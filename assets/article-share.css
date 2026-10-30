@@ -4,20 +4,20 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 14px;
-  margin: 16px 0 20px;
+  margin: 22px 0;
 }
 .article-share-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex: 0 0 44px;
-  border: 1px solid transparent;
-  border-radius: 6px;
+  gap: 6px;
+  min-height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid #e0e4e8;
+  border-radius: 999px;
   background: transparent;
-  color: #0b2a4a;
-  padding: 9px;
+  color: #161616;
+  padding: 5px 11px;
   font: 700 14px/1.4 Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
