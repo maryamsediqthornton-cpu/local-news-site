@@ -31,3 +31,17 @@ Do not copy keys to GitHub, a chat, or the production environment until promotio
 7. Once the owner approves the outcome, plan a controlled merge into main with a verified Preview-to-Production configuration check.
 
 Note: DNS verification and environment setup alone do not prove email delivery. No persistent backup database is yet implemented.
+
+## Acceptance tests confirmed by site owner (30 October 2026)
+- Advertising: submission redirected to thank-you page and Resend notification delivered to advertising inbox.
+- Send a Story: submission and notification confirmed by owner.
+- Newsletter: form request delivered to subscription inbox.
+- Subscribe: subscription request email delivered with branded internal notification, visitor acknowledgement also delivered (GMX initially placed it in Junk).
+- User agreed not to repeat the mail delivery tests; agreed to prepare production switch.
+
+## Production release gate
+1. Set **Production** Pages variables/secrets; the Preview values do not automatically transfer. Do not put secret values in GitHub.
+2. The Resend API key entered into Preview is encrypted/unreadable; create a **new, sending-only, production Resend API key** if the original value was not retained. Restrict it to forms.witneywire.co.uk if available.
+3. Production variables: RESEND_API_KEY (secret), FORM_FROM (text: Witney Wire <forms@forms.witneywire.co.uk>), TURNSTILE_SITE_KEY (text), TURNSTILE_SECRET_KEY (secret).
+4. Confirm Cloudflare settings show all four in **Production** before merging. Once deployed, verify /api/forms is 200 and public site loads all forms, and monitor Resend delivery activity.
+5. If a production failure occurs, restore the previous main deployment or revert the merge in GitHub; do not expose secrets.
