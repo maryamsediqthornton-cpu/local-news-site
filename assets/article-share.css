@@ -1,0 +1,46 @@
+/* Compact article sharing; independent of homepage and advertising styles. */
+.article-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin: 22px 0;
+}
+.article-share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  flex: 0 0 auto;
+  border: 1px solid #e0e4e8;
+  border-radius: 999px;
+  background: transparent;
+  color: #161616;
+  padding: 5px 11px;
+  font: 700 14px/1.4 Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+.article-share-button:hover { background: #eaf2ee; border-color: #2f7d5a; }
+.article-share-button:focus-visible {
+  outline: 3px solid #2f7d5a;
+  outline-offset: 3px;
+}
+.article-share-button:disabled { cursor: wait; opacity: .7; }
+.article-share-status { font-size: 13px; color: #435464; }
+.article-share-manual { flex-basis: 100%; min-width: 0; font-size: 13px; color: #435464; }
+.article-share-manual[hidden] { display: none; }
+.article-share-manual input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 6px;
+  border: 1px solid #b9c9cf;
+  border-radius: 4px;
+  padding: 10px;
+  font: 16px/1.4 Arial, Helvetica, sans-serif;
+  color: #0b2a4a;
+  background: #fff;
+}
+@media print { .article-share { display: none; } }

@@ -718,6 +718,8 @@ function renderPage(article) {
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="stylesheet" href="/styles.css?v=20261028">
+<link rel="stylesheet" href="/assets/article-share.css">
+<script defer src="/assets/article-share.js"></script>
 <!-- Google AdSense site verification -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9678324763933867"
      crossorigin="anonymous"></script>
