@@ -2,7 +2,8 @@
   "version": 1,
   "include": [
     "/article",
-    "/api/roadwatch-preview"
+    "/api/roadwatch-preview",
+    "/api/forms"
   ],
   "exclude": [
     "/assets/*",
