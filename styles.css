@@ -1641,3 +1641,38 @@ a:hover {
 /* V062: preserve the two organisers' faces in the editorial photograph */
 .lead-card img.musicals-lead-photo{object-position:center top}
 .article-hero.musicals-article-photo{display:block;width:min(100%,300px);height:auto;max-height:none;object-fit:contain;object-position:center;margin:20px auto 26px}
+
+/* Keep the mobile layout within the viewport; navigation scrolls in its own row. */
+@media (max-width: 850px) {
+  .utility-inner {
+    flex-wrap: wrap;
+    gap: 8px 22px;
+  }
+
+  .main-layout > *,
+  .lead-card > *,
+  .site-footer .footer-grid > * {
+    min-width: 0;
+  }
+
+  .site-footer .footer-grid {
+    width: calc(100% - 32px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    width: calc(100% - 32px);
+  }
+
+  .site-footer p,
+  .site-footer a,
+  .article-body,
+  .newsroom-attribution {
+    overflow-wrap: anywhere;
+  }
+
+  .brand img {
+    max-width: 100%;
+  }
+}
