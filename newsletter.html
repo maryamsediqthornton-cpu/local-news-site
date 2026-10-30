@@ -20,11 +20,8 @@
     <section class="form-card">
   <h1>Subscribe to Witney Wire</h1>
   <p>Use this form to subscribe to the latest local news. Your request will be sent securely to <strong>subscribe@witneywire.co.uk</strong>.</p>
-  <form class="form-grid" action="https://formsubmit.co/subscribe@witneywire.co.uk" method="POST">
-    <input type="hidden" name="_subject" value="New newsletter subscription - Witney Wire">
-    <input type="hidden" name="_next" value="https://witneywire.co.uk/thanks.html">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="false">
+  <form class="form-grid" action="/api/forms" data-ww-form="true" method="POST">
+    <input type="hidden" name="form_kind" value="newsletter">
     <input type="text" name="_honey" style="display:none">
     <label for="name">Your name</label>
     <input id="name" name="Name" required>
@@ -99,14 +96,6 @@
 </footer>
 
 
-<script>
-  // Keep the thank-you redirect on whichever domain is being tested/live.
-  document.addEventListener('DOMContentLoaded', function () {
-    var nextField = document.querySelector('input[name="_next"]');
-    if (nextField) {
-      nextField.value = window.location.origin + '/thanks.html';
-    }
-  });
-</script>
+<script src="/assets/form-security.js" defer></script>
 </body>
 </html>
