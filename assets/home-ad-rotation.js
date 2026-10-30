@@ -17,7 +17,7 @@
   function schedule() {
     clearInterval(timer);
     if (!paused && !document.hidden && !banner.matches(':hover') && !banner.contains(document.activeElement)) {
-      timer = setInterval(() => show((current + 1) % slides.length), 7000);
+      timer = setInterval(() => show((current + 1) % slides.length), 5000);
     }
   }
   banner.addEventListener('mouseenter', schedule);
