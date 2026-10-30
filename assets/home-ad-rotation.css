@@ -40,3 +40,8 @@
 .home-ad-controls button { padding:4px 7px; font-size:11px; border-color:#ffffff45; }
 @media(max-width:800px) { .home-ad-slide { padding:18px 20px 44px; grid-template-columns:minmax(0,1fr) auto; } .home-ad-house > p { grid-column:1 / -1; margin:0; } .home-ad-bluebell { grid-template-columns:75px minmax(0,1fr); gap:10px 15px; } .home-ad-logo { width:75px; height:75px; } .home-ad-bluebell .home-ad-cta { grid-column:2; } }
 @media(max-width:480px) { .home-ad-slide { padding:16px 16px 42px; } .home-ad-house { grid-template-columns:1fr; } .home-ad-bluebell { grid-template-columns:60px minmax(0,1fr); } .home-ad-logo { width:60px; height:60px; } .home-ad-bluebell strong { font-size:23px; } }
+
+/* Automatic rotation without navigation controls. */
+.home-ad-slide { padding-bottom:20px; }
+@media(max-width:800px) { .home-ad-slide { padding-bottom:18px; } }
+@media(max-width:480px) { .home-ad-slide { padding-bottom:16px; } }
