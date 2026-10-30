@@ -39,3 +39,6 @@ If any of the four settings is missing, forms **fail closed** with an explanator
 This is **not deployed/tested end-to-end**; no Resend account, credentials, DNS verification or Turnstile keys are available in the repository. Therefore there are no claims that messages are arriving yet. The provider's acceptance response does not guarantee final inbox delivery. The patch does not create a persistent backup/database of enquiries. The form intentionally does not promise that. Implement separate durable storage if lost enquiries remain a concern.
 
 There are no paid-service activations or production deployments in this preparation.
+
+## Configuration progress (30 October 2026)
+The owner confirmed that the four required settings are saved in the **Preview** environment: `RESEND_API_KEY` and `TURNSTILE_SECRET_KEY` as encrypted secrets, plus `FORM_FROM` and `TURNSTILE_SITE_KEY` as text. Resend reported that `forms.witneywire.co.uk` is verified. This commit is intended to trigger a new preview build so its runtime can pick up the settings. No email delivery test has yet been confirmed. The live website must remain unchanged.
