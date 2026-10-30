@@ -577,6 +577,30 @@ function authorProfile(article) {
   return { name: 'Mary', role: 'Journalist', image: 'assets/maryam-author.jpg' };
 }
 
+function renderInlineArticleText(value) {
+  const text = String(value || '');
+  const markup = /<a\s+href="([^"]+)"(?:\s+target="_blank")?(?:\s+rel="noopener noreferrer")?>([^<>]*)<\/a>|<strong>([^<>]*)<\/strong>/g;
+  let html = '';
+  let offset = 0;
+  for (const match of text.matchAll(markup)) {
+    html += escapeHtml(text.slice(offset, match.index));
+    if (match[3] !== undefined) {
+      html += '<strong>' + escapeHtml(match[3]) + '</strong>';
+    } else {
+      let safe = false;
+      try {
+        const url = new URL(match[1]);
+        safe = ['https:', 'mailto:'].includes(url.protocol) && !/[\r\n]/.test(match[1]);
+      } catch {}
+      html += safe
+        ? '<a href="' + escapeHtml(match[1]) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(match[2]) + '</a>'
+        : escapeHtml(match[2]);
+    }
+    offset = match.index + match[0].length;
+  }
+  return html + escapeHtml(text.slice(offset));
+}
+
 function renderArticleBody(body = []) {
   const blocks = Array.isArray(body) ? body : [body];
   return blocks
@@ -599,7 +623,7 @@ function renderArticleBody(body = []) {
         const safeText = escapeHtml(block);
         return `<p>${safeText.replace('www.buttercrosstheatreproductions.co.uk', '<a href="https://www.buttercrosstheatreproductions.co.uk" target="_blank" rel="noopener noreferrer">www.buttercrosstheatreproductions.co.uk</a>')}</p>`;
       }
-      return `<p>${escapeHtml(block)}</p>`;
+      return `<p>${renderInlineArticleText(block)}</p>`;
     })
     .join('');
 }
