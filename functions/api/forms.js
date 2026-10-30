@@ -33,6 +33,44 @@ function escapeHTML(value) {
   })[char]);
 }
 
+// Branded, email-client-friendly internal notification. All visitor content is escaped.
+function buildNotificationHtml(config, kind, values, origin, receivedAt) {
+  const titles = {
+    advertise: "New advertising enquiry",
+    newsletter: "New newsletter subscription",
+    subscribe: "New subscription request",
+    "send-story": "New story submission"
+  };
+  const headline = titles[kind] || "New website message";
+  const rows = config.fields.map(field => {
+    const value = values[field] || "Not provided";
+    const display = escapeHTML(value).replace(/\r?\n/g, "<br>");
+    return '<tr><td style="padding:12px 16px;border-bottom:1px solid #e8edf1;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;color:#526477;vertical-align:top;width:34%">' +
+      escapeHTML(field) +
+      '</td><td style="padding:12px 16px;border-bottom:1px solid #e8edf1;font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#102b47;vertical-align:top;word-break:break-word">' +
+      display + '</td></tr>';
+  }).join("");
+
+  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>' +
+    '<body style="margin:0;padding:0;background:#f3f6f8;font-family:Arial,sans-serif">' +
+    '<div style="display:none;font-size:1px;color:#f3f6f8;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden">New Witney Wire website enquiry</div>' +
+    '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#f3f6f8"><tr><td align="center" style="padding:28px 12px">' +
+    '<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:620px;background:#ffffff;border:1px solid #e5ebee">' +
+    '<tr><td style="padding:22px 26px;background:#082846;border-top:4px solid #327352">' +
+    '<p style="margin:0;color:#ffffff;font-size:22px;font-weight:bold;letter-spacing:.2px">Witney Wire</p>' +
+    '<p style="margin:5px 0 0;color:#bfd8c9;font-size:12px">Your Town. Your Stories.</p></td></tr>' +
+    '<tr><td style="padding:26px 26px 12px">' +
+    '<p style="margin:0 0 8px;color:#327352;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:1px">Website notification</p>' +
+    '<h1 style="margin:0 0 12px;color:#082846;font-size:24px;line-height:1.3">' + escapeHTML(headline) + '</h1>' +
+    '<p style="margin:0;color:#526477;font-size:13px;line-height:1.6">Received: ' + escapeHTML(receivedAt) + ' (UTC)</p>' +
+    '</td></tr><tr><td style="padding:12px 26px 24px">' +
+    '<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #e8edf1;border-collapse:collapse">' + rows + '</table>' +
+    '<p style="margin:20px 0 0;color:#526477;font-size:13px;line-height:1.6">To respond, use <strong>Reply</strong> in your email application. Your reply will be addressed to the person who submitted the form.</p>' +
+    '</td></tr><tr><td style="padding:14px 26px;background:#f7f9fa;border-top:1px solid #e8edf1">' +
+    '<p style="margin:0;color:#657586;font-size:11px;line-height:1.6">Internal Witney Wire form notification. Sent from: ' + escapeHTML(origin) + '. Please handle personal information according to your privacy policy.</p>' +
+    '</td></tr></table></td></tr></table></body></html>';
+}
+
 function errorResponse(message, status) {
   const page = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Form unavailable | Witney Wire</title><link rel="stylesheet" href="/styles.css"></head><body><main style="max-width:640px;margin:8vh auto;padding:24px;font-family:Arial,sans-serif"><h1>We could not send your message</h1><p>' +
     escapeHTML(message) + '</p><p>Nothing has been confirmed as sent. Please email <a href="mailto:contact@witneywire.co.uk">contact@witneywire.co.uk</a> directly, or go back to try again.</p><p><a href="/">Return to Witney Wire</a></p></main></body></html>';
@@ -154,7 +192,8 @@ export async function onRequestPost({ request, env }) {
         to: [config.recipient],
         reply_to: replyAddress,
         subject: config.subject,
-        text: details
+        text: details,
+        html: buildNotificationHtml(config, kind, values, ownOrigin, new Date().toISOString())
       })
     });
     if (!response.ok) {
