@@ -1,0 +1,22 @@
+/* Scoped to the Bluebell Healthcare featured vacancy. */
+.bluebell-featured { border-color: #d8d9e9; border-top-color: #4b4d8d; padding: clamp(20px, 4vw, 32px); }
+.bluebell-heading { display:flex; align-items:center; gap:24px; }
+.bluebell-logo { flex:none; width:140px; height:140px; object-fit:contain; border-radius:8px; }
+.bluebell-featured-label { display:inline-block; color:#494b81; background:#eeeef7; border-radius:4px; padding:6px 9px; font-size:12px; font-weight:800; }
+.bluebell-featured .job-company { margin:14px 0 6px; }
+.bluebell-featured h2 { font-size:clamp(1.6rem, 3vw, 2rem); line-height:1.2; }
+.bluebell-featured .bluebell-tagline { margin:8px 0 0; font-style:italic; }
+.bluebell-facts { display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:22px; margin:24px 0; background:#f5f5fa; border-radius:8px; }
+.bluebell-facts dt { color:#494b81; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; }
+.bluebell-facts dd { margin:0; color:#263348; line-height:1.6; font-weight:600; }
+.bluebell-location { grid-column:1 / -1; }
+.bluebell-featured h3 { color:var(--brand-navy); font-size:1.15rem; margin:26px 0 8px; }
+.bluebell-featured ul { padding-left:22px; color:#3f4b53; line-height:1.7; }
+.bluebell-featured li { margin:6px 0; }
+.bluebell-apply { margin-top:26px; border-top:1px solid #d8d9e9; padding-top:4px; }
+.bluebell-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.bluebell-featured .bluebell-actions a { background:#494b81; text-align:center; }
+.bluebell-featured .bluebell-actions .bluebell-call { color:#363968; background:#eeeef7; }
+.bluebell-actions a:focus-visible { outline:3px solid #b18a28; outline-offset:3px; }
+.bluebell-featured .bluebell-email { font-size:.95rem; overflow-wrap:anywhere; }
+@media (max-width:600px) { .bluebell-heading { flex-direction:column; align-items:flex-start; gap:16px; } .bluebell-facts { grid-template-columns:1fr; padding:18px; } .bluebell-actions { flex-direction:column; align-items:stretch; } }
