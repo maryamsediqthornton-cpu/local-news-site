@@ -1650,6 +1650,8 @@ a:hover {
   }
 
   .main-layout > *,
+  .jobs-layout > *,
+  .jobs-sidebar > *,
   .lead-card > *,
   .site-footer .footer-grid > * {
     min-width: 0;
@@ -1667,6 +1669,8 @@ a:hover {
 
   .site-footer p,
   .site-footer a,
+  .job-card,
+  .jobs-info-card,
   .article-body,
   .newsroom-attribution {
     overflow-wrap: anywhere;
@@ -1676,3 +1680,4 @@ a:hover {
     max-width: 100%;
   }
 }
+
