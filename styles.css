@@ -1681,3 +1681,10 @@ a:hover {
   }
 }
 
+
+/* Editorial review: balance long lead headlines without changing article page typography */
+@media (min-width: 760px) {
+  .top-stories .lead-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  .top-stories .lead-card h2 { font-size: clamp(28px, 2.5vw, 36px); line-height: 1.13; letter-spacing: -.45px; overflow-wrap: break-word; }
+  .top-stories .lead-card > div { min-width: 0; }
+}
