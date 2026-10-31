@@ -42,7 +42,7 @@
         <h2>Latest vacancies</h2>
       </div>
 
-      <article class="job-card bluebell-featured" id="bluebell-healthcare" aria-labelledby="bluebell-job-title">
+      <article class="job-card bluebell-featured" id="bluebell-healthcare" data-track-view="bluebell-care" aria-labelledby="bluebell-job-title">
         <div class="bluebell-heading">
           <img class="bluebell-logo" src="assets/bluebell-healthcare-logo.webp" alt="Bluebell Healthcare" width="140" height="140">
           <div>
@@ -77,8 +77,8 @@
           <h3>Take the next step</h3>
           <p>To find out more or apply, contact Bluebell Healthcare’s recruitment team.</p>
           <div class="bluebell-actions">
-            <a href="mailto:recruitment@bluebell-health.co.uk?subject=Domiciliary%20Care%20Assistant%20vacancy%20-%20Witney%20Wire">Email recruitment</a>
-            <a class="bluebell-call" href="tel:01491682827">Call 01491 682 827</a>
+            <a data-track-item="bluebell-care" data-track-event="apply_email" href="mailto:recruitment@bluebell-health.co.uk?subject=Domiciliary%20Care%20Assistant%20vacancy%20-%20Witney%20Wire">Email recruitment</a>
+            <a class="bluebell-call" data-track-item="bluebell-care" data-track-event="apply_phone" href="tel:01491682827">Call 01491 682 827</a>
           </div>
           <p class="bluebell-email">recruitment@bluebell-health.co.uk</p>
         </div>
@@ -164,5 +164,6 @@
   </div>
 </footer>
 
+<script src="/assets/advert-job-tracking.js" defer></script>
 </body>
 </html>
