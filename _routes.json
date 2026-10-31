@@ -3,7 +3,8 @@
   "include": [
     "/article",
     "/api/roadwatch-preview",
-    "/api/forms"
+    "/api/forms",
+    "/api/tracking"
   ],
   "exclude": [
     "/assets/*",
