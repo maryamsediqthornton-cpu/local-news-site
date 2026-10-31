@@ -1688,3 +1688,10 @@ a:hover {
   .top-stories .lead-card h2 { font-size: clamp(28px, 2.5vw, 36px); line-height: 1.13; letter-spacing: -.45px; overflow-wrap: break-word; }
   .top-stories .lead-card > div { min-width: 0; }
 }
+
+/* Review branch: lead headline and card typography */
+.top-stories .lead-card:first-child h2 {color:#111827 !important;font-size:clamp(26px,2.3vw,34px) !important;line-height:1.16 !important;letter-spacing:-.4px !important;}
+.top-stories .lead-card:first-child p {color:#263744 !important;}
+.top-stories .lead-card:first-child img {object-fit:cover;object-position:center;}
+.story-card h3 {color:#111827;}
+.story-card p {color:#263744;}
