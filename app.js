@@ -357,7 +357,10 @@ async function initArticle() {
   }
 
   document.title = `${article.title} | Witney Wire`;
-  const author = authorProfile(article);
+  // Court roundup has an explicit assigned author, independent of category defaults.
+  const author = article.id === 'oxfordshire-october-2026-court-roundup'
+    ? { name: 'Mark', role: 'Journalist', image: 'assets/mark-author.png' }
+    : authorProfile(article);
   view.innerHTML = `
     <span class="label">${label(article.category)}</span>
     <h1>${article.title}</h1>
