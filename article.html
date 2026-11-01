@@ -171,5 +171,21 @@
   }
 })();
 </script>
+
+<script>
+/* Court roundup author-card safeguard for older cached article scripts. */
+(() => {
+  if (new URLSearchParams(location.search).get('id') !== 'oxfordshire-october-2026-court-roundup') return;
+  const article = document.getElementById('article-view');
+  if (!article) return;
+  const correct = () => {
+    article.querySelectorAll('.article-author-box').forEach(node => node.remove());
+  };
+  correct();
+  const observer = new MutationObserver(correct);
+  observer.observe(article, {childList:true, subtree:true});
+  window.addEventListener('pagehide', () => observer.disconnect(), {once:true});
+})();
+</script>
 </body>
 </html>
