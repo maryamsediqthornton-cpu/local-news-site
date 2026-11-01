@@ -362,13 +362,13 @@ async function initArticle() {
     <span class="label">${label(article.category)}</span>
     <h1>${article.title}</h1>
     <p class="article-summary">${article.summary}</p>
-        <div class="article-author-box">
+${article.id === 'oxfordshire-october-2026-court-roundup' ? '' : `        <div class="article-author-box">
           <img class="article-author-photo" src="${author.image}" alt="${author.name}">
           <div class="article-author-details">
             <div class="article-author-name">By ${author.name}</div>
             <div class="article-author-role">${author.role}</div>
           </div>
-        </div>
+        </div>`}
 
     <div class="meta">${formatDate(article.date)} · ${article.author}</div>
     ${article.hideHero ? '' : `<img class="article-hero${article.heroContain ? ' article-hero-contain' : ''}" src="${article.image}" alt="">`}
