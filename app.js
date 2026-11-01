@@ -17,7 +17,7 @@ function label(category) {
 function authorProfile(article) {
   const category = String(article.category || '').toLowerCase();
 
-  if (category === 'sport') {
+  if (category === 'sport' || String(article.author || '').trim().toLowerCase() === 'mark' || article.id === 'oxfordshire-october-2026-court-roundup') {
     return {
       name: 'Mark',
       role: 'Sports Journalist',
@@ -143,6 +143,12 @@ function renderArticleBody(body = []) {
           ${url ? `<a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${isSource ? 'View original report' : 'Photo &amp; licence'} ↗</a>` : ''}
         </div>`;
       }
+      if (typeof block === 'string' && block.includes(' — https://www.thamesvalley.police.uk/')) {
+        const separator = block.indexOf(' — https://');
+        const label = escapeEditorialCredit(block.slice(0, separator));
+        const url = trustedEditorialLink(block.slice(separator + 3));
+        if (url) return `<p><a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${label}</a></p>`;
+      }
       return `<p>${block}</p>`;
     })
     .join('');
@@ -165,6 +171,9 @@ async function initHome() {
   if (!top) return;
 
   const articles = (await getArticles()).filter(article => article.excludeFromHomepage !== true);
+  // Keep the editor-approved Amazon fraud story as the homepage lead, regardless of date.
+  const leadIndex = articles.findIndex(article => article.id === 'amazon-impersonation-fraud-warning-oct-2026');
+  if (leadIndex > 0) articles.unshift(articles.splice(leadIndex, 1)[0]);
   const lead = articles[0];
   const secondary = articles[1];
 
@@ -348,7 +357,10 @@ async function initArticle() {
   }
 
   document.title = `${article.title} | Witney Wire`;
-  const author = authorProfile(article);
+  // Court roundup has an explicit assigned author, independent of category defaults.
+  const author = article.id === 'oxfordshire-october-2026-court-roundup'
+    ? { name: 'Mark', role: 'Journalist', image: 'assets/mark-author.png' }
+    : authorProfile(article);
   view.innerHTML = `
     <span class="label">${label(article.category)}</span>
     <h1>${article.title}</h1>

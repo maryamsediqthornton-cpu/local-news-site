@@ -63,6 +63,75 @@
     "author": "Witney Wire Newsdesk"
   },
   {
+    "id": "oxfordshire-october-2026-court-roundup",
+    "title": "October court roundup: Prison sentences handed down across Oxfordshire",
+    "category": "news",
+    "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Oxford_Crown_Court_(geograph_5233095).jpg",
+    "body": [
+      "Prison sentences for offences including murder, serious violence and bicycle theft were among the outcomes announced by Thames Valley Police in October. This selection is based on official police releases and is not a complete record of all court cases.",
+      "Carl Rundle, 42, of Harwell, was sentenced to life imprisonment with a minimum term of 20 years at Oxford Crown Court on 23 October after being convicted of murdering his mother, Helen Rundle, 64.",
+      "In another case, Romario Qatja, 31, received two years and six months in prison for dangerous driving and affray following violent incidents in Oxford. Arger Poleshi, 21, received a six-month sentence for affray. Four other defendants received suspended sentences or community-based penalties.",
+      "Andrew Hurtault, 45, of no fixed abode, was sentenced to two years and ten months in prison after admitting seven bicycle thefts and going equipped for theft. The court also imposed a five-year Criminal Behaviour Order.",
+      "These cases are drawn from Thames Valley Police sentencing announcements. The convictions and sentences should not be confused with unrelated allegations or ongoing investigations."
+    ],
+    "date": "2026-11-01T11:00:00Z",
+    "author": "Mark",
+    "summary": "Prison sentences for offences including murder, serious violence and bicycle theft were among the outcomes announced by Thames Valley Police in October. This selection is based on official police releases and is not a complete record of all court cases.",
+    "sourceAttribution": {
+      "publisher": "Thames Valley Police",
+      "date": "October 2026",
+      "source": "https://www.thamesvalley.police.uk/news/news-search/?ct=Oxfordshire",
+      "credit": "Steve Daniels / Geograph, CC BY-SA 2.0",
+      "note": "Archive photograph of Oxford Crown Court (2016), not taken during these cases. Photo: https://commons.wikimedia.org/wiki/File:Oxford_Crown_Court_(geograph_5233095).jpg"
+    }
+  },
+  {
+    "id": "west-oxfordshire-planning-delegation-rules-2026",
+    "title": "New planning rules change how some West Oxfordshire applications are decided",
+    "category": "news",
+    "image": "assets/oxfordshire-planning-review.svg",
+    "body": [
+      "Changes to national planning decision arrangements could affect which applications are considered by elected councillors and which are handled by planning officers in West Oxfordshire.",
+      "West Oxfordshire District Council has expressed concern that fewer applications may be considered at planning committee meetings, reducing elected councillors' direct involvement in some decisions.",
+      "The changes are intended nationally to bring greater consistency and efficiency to planning decisions. Residents can still submit comments through the usual planning consultation process.",
+      "The council's original announcement was published in August and discussed changes expected from the end of October. The final legal rules and implementation details require verification before publication.",
+      "Source: https://news.westoxon.gov.uk/news/government-changes-to-mean-fewer-planning-decisions-will-be-made-by-elected-councillors-from-october"
+    ],
+    "date": "2026-11-01T09:00:00Z",
+    "author": "Mary",
+    "summary": "Changes to national planning decision arrangements could affect which applications are considered by elected councillors and which are handled by planning officers in West Oxfordshire.",
+    "sourceAttribution": {
+      "publisher": "West Oxfordshire District Council",
+      "date": "5 August 2026",
+      "source": "https://news.westoxon.gov.uk/news/government-changes-to-mean-fewer-planning-decisions-will-be-made-by-elected-councillors-from-october",
+      "credit": "Witney Wire temporary editorial illustration",
+      "note": "Illustrative image, not documentary photograph. Replace with licensed image before publication."
+    }
+  },
+  {
+    "id": "oxford-united-reading-police-operation-nov-2026",
+    "title": "Police announce additional powers ahead of Oxford United and Reading fixture",
+    "category": "sport",
+    "image": "assets/oxford-united-policing-review.svg",
+    "body": [
+      "Thames Valley Police has announced a policing operation ahead of Oxford United's home fixture against Reading at the Kassam Stadium on Wednesday 4 November, with kick-off scheduled for 7.45pm.",
+      "Police say Section 35 dispersal and Section 60AA powers are planned for designated areas of Oxford, Didcot and Reading from 11am on Wednesday until 1am on Thursday 5 November.",
+      "The measures include powers to direct individuals to leave designated areas in specified circumstances and, where legally permitted, to require removal of items used to conceal identity.",
+      "The restrictions do not apply throughout Oxfordshire. Supporters should consult the police maps and any updated travel notices before travelling.",
+      "Source: https://www.thamesvalley.police.uk/news/thames-valley/news/2026/october/w.c-26-oct/policing-operation-planned-for-oxford-united-v-reading-fc-fixture/"
+    ],
+    "date": "2026-11-01T08:00:00Z",
+    "author": "Mary",
+    "summary": "Thames Valley Police has announced a policing operation ahead of Oxford United's home fixture against Reading at the Kassam Stadium on Wednesday 4 November, with kick-off scheduled for 7.45pm.",
+    "sourceAttribution": {
+      "publisher": "Thames Valley Police",
+      "date": "30 October 2026",
+      "source": "https://www.thamesvalley.police.uk/news/thames-valley/news/2026/october/w.c-26-oct/policing-operation-planned-for-oxford-united-v-reading-fc-fixture/",
+      "credit": "Witney Wire temporary editorial illustration",
+      "note": "Illustrative image, not documentary photograph. Replace with licensed image before publication."
+    }
+  },
+  {
     "id": "west-oxfordshire-waste-fleet-investment-oct-2026",
     "title": "West Oxfordshire Council approves £3.5m investment in waste collection vehicles",
     "category": "news",
