@@ -1695,3 +1695,11 @@ a:hover {
 .top-stories .lead-card:first-child img {object-fit:cover;object-position:center;}
 .story-card h3 {color:#111827;}
 .story-card p {color:#263744;}
+
+/* November editorial preview: consistent readable Top Stories, with Amazon first */
+.top-stories .lead-card {grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:22px}
+.top-stories .lead-card > * {min-width:0}
+.top-stories .lead-card h2,.top-stories .lead-card:first-child h2 {font-size:clamp(25px,2.3vw,35px)!important;line-height:1.13!important;letter-spacing:-.5px!important;color:#0b1c34!important;overflow-wrap:normal;word-break:normal}
+.top-stories .lead-card p {font-size:16px;line-height:1.4;color:#263744!important}
+.top-stories .lead-card img {height:300px;width:100%;object-fit:cover;object-position:center;display:block}
+@media(max-width:760px){.top-stories .lead-card {grid-template-columns:minmax(0,1fr)}.top-stories .lead-card img {height:auto;max-height:340px;aspect-ratio:16/9;object-fit:cover}.top-stories .lead-card h2,.top-stories .lead-card:first-child h2 {font-size:clamp(26px,6vw,34px)!important}}
