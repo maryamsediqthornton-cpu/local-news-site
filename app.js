@@ -17,7 +17,7 @@ function label(category) {
 function authorProfile(article) {
   const category = String(article.category || '').toLowerCase();
 
-  if (category === 'sport' || article.author === 'Mark') {
+  if (category === 'sport' || String(article.author || '').trim().toLowerCase() === 'mark' || article.id === 'oxfordshire-october-2026-court-roundup') {
     return {
       name: 'Mark',
       role: 'Sports Journalist',
@@ -142,6 +142,12 @@ function renderArticleBody(body = []) {
           <span class="newsroom-credit-copy">${escapeEditorialCredit(description.replace(/^(?:Source|Image credit): /, ''))}</span>
           ${url ? `<a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${isSource ? 'View original report' : 'Photo &amp; licence'} ↗</a>` : ''}
         </div>`;
+      }
+      if (typeof block === 'string' && block.includes(' — https://www.thamesvalley.police.uk/')) {
+        const separator = block.indexOf(' — https://');
+        const label = escapeEditorialCredit(block.slice(0, separator));
+        const url = trustedEditorialLink(block.slice(separator + 3));
+        if (url) return `<p><a href="${escapeEditorialCredit(url)}" target="_blank" rel="noopener noreferrer">${label}</a></p>`;
       }
       return `<p>${block}</p>`;
     })
