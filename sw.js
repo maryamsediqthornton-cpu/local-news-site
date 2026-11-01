@@ -1,5 +1,5 @@
 
-const CACHE = 'witney-wire-review-20261101-author-fix-2';
+const CACHE = 'witney-wire-review-20261101-mark-direct-4';
 const ASSETS = [
   './',
   'index.html',
