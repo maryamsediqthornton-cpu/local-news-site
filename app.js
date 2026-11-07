@@ -171,9 +171,7 @@ async function initHome() {
   if (!top) return;
 
   const articles = (await getArticles()).filter(article => article.excludeFromHomepage !== true);
-  // Keep the editor-approved Amazon fraud story as the homepage lead, regardless of date.
-  const leadIndex = articles.findIndex(article => article.id === 'amazon-impersonation-fraud-warning-oct-2026');
-  if (leadIndex > 0) articles.unshift(articles.splice(leadIndex, 1)[0]);
+  // Display newest stories first; do not pin older headlines above new reporting.
   const lead = articles[0];
   const secondary = articles[1];
 
