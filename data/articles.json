@@ -1,5 +1,46 @@
 [
   {
+    "id": "powdertech-bicester-ultrasonic-cleaning-investment-nov-2026",
+    "title": "Bicester firm Powdertech expands aluminium cleaning capacity in major investment",
+    "category": "business",
+    "summary": "Powdertech Surface Science says it has invested more than £2 million over four years, including a new ultrasonic cleaning system and a £500,000 facility extension in Bicester.",
+    "date": "2026-11-07T10:16:00Z",
+    "author": "Robert",
+    "image": "assets/powdertech-bicester-ultrasonic-tank.jpg",
+    "featured": true,
+    "excludeFromHomepage": false,
+    "body": [
+      "A Bicester-based surface treatment specialist has expanded its aluminium cleaning operations after investing in a large ultrasonic cleaning system at its Oxfordshire facility.",
+      "Powdertech Surface Science says it has spent more than £2 million over the past four years on specialist equipment, technical improvements and upgrades to its premises. The latest installation represents an investment of more than £140,000, according to the company.",
+      "The new ultrasonic equipment has been added to the company's existing four-metre, 4,800-litre cleaning tanks. Powdertech says the technology is designed to remove grease and other contaminants from surfaces and hard-to-reach areas before aluminium components are bonded or coated.",
+      "The business says this is particularly important for customers in the automotive, medical and precision engineering sectors, where consistent surface preparation can affect the quality of subsequent manufacturing processes.",
+      {
+        "type": "image",
+        "src": "assets/powdertech-bicester-ultrasonic-tank-side.jpg",
+        "alt": "Ultrasonic aluminium cleaning installation at Powdertech's Bicester facility",
+        "caption": "Powdertech's new ultrasonic aluminium cleaning installation. Photograph supplied by Powdertech Surface Science."
+      },
+      "Jimmy Phillips, Powdertech's head of sales and marketing, said: “We know our customers are seeing more demanding cleaning specifications, with this new system, we can offer them measurably cleaner aluminium at scale.”",
+      "He also described the installation as potentially the biggest system of its kind operated by a specialist provider in the UK. That comparison is the company's assessment and has not been independently verified.",
+      "Alongside the cleaning investment, Powdertech says it has spent £500,000 extending its Bicester facility to move loading and unloading operations indoors. The company says the extension is intended to improve efficiency and staff working conditions while reducing noise for nearby residents.",
+      {
+        "type": "image",
+        "src": "assets/powdertech-bicester-facility.jpg",
+        "alt": "Interior of the expanded Powdertech Surface Science facility in Bicester",
+        "caption": "The expanded facility in Bicester. Photograph supplied by Powdertech Surface Science."
+      },
+      "Powdertech says the extension was designed following consultation with surveyors and town planners and completed through the planning process with Cherwell District Council.",
+      "Established in 1984 as a powder coating business, the company began offering cleaning and pre-treatment services in 2000. It now works with customers in automotive manufacturing, medical devices, aerospace and other engineering sectors.",
+      "The company says its turnover has doubled over the past five years. It has not supplied turnover figures in the press release, so the scale of that growth cannot be independently assessed.",
+      "The investment reflects Powdertech's efforts to increase its capacity to prepare aluminium components for manufacturers, including businesses developing electric vehicles."
+    ],
+    "sourceAttribution": {
+      "publisher": "Powdertech Surface Science — company press release",
+      "date": "6 November 2026",
+      "source": "https://powdertechsurfacescience.co.uk/"
+    }
+  },
+  {
     "id": "oxfordshire-illegal-cigarettes-million-seized-2026",
     "title": "More than 1.1 million illegal cigarettes seized across Oxfordshire",
     "category": "news",

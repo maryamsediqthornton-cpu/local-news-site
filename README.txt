@@ -1,2 +1,4 @@
-Witney Wire image-only patch for branch review-20261107-three-articles.
-Copy the assets folder into your repository on that branch, keeping the folder names. Commit and push in GitHub Desktop. data/articles.json has already been updated on the branch to use these filenames. Do not merge to main until reviewed.
+Witney Wire Powdertech article image patch
+Branch: feature-powdertech-bicester-robert-20261107
+Copy the assets folder into the repository root on this branch. Commit and Push origin. Do not merge to main until the preview is approved.
+Images supplied by Powdertech Surface Science. Confirm editorial reuse permission before publishing.
