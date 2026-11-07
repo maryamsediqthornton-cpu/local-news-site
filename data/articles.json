@@ -1,5 +1,62 @@
 [
   {
+    "id": "oxfordshire-illegal-cigarettes-million-seized-2026",
+    "title": "More than 1.1 million illegal cigarettes seized across Oxfordshire",
+    "category": "news",
+    "summary": "Oxfordshire County Council says its long-running Trading Standards enforcement project has seized more than 1.1 million illegal cigarettes since 2017.",
+    "body": [
+      "More than 1.1 million illegal cigarettes have been seized across Oxfordshire since a county council enforcement project began in 2017.",
+      "Oxfordshire County Council announced the milestone on 4 November, describing work by its Trading Standards team and partners, including Thames Valley Police.",
+      "The project began in August 2017, with its first seizure in Banbury that October. Officers have carried out intelligence-led investigations, test purchases and enforcement operations targeting illegal tobacco sales.",
+      "The council reports 92 seizures, including more than 96kg of hand-rolling tobacco and 183kg of waterpipe tobacco.",
+      "It also reports 42 successful prosecutions, comprising 41 guilty pleas and one conviction following a trial. Confiscation orders totalling £594,900 have been made, according to the council.",
+      "Enforcement has also led to five premises licence revocations and four suspensions. The council says further investigations and proceedings are ongoing.",
+      "These figures are cumulative since 2017, not seizures or prosecutions recorded this week.",
+      "Source: Oxfordshire County Council — https://news.oxfordshire.gov.uk/trading-standards-seizes-more-than-one-million-illegal-cigarettes/"
+    ],
+    "image": "assets/oxfordshire-illegal-tobacco-2026.svg",
+    "date": "2026-11-07T08:50:00Z",
+    "author": "Mary",
+    "excludeFromHomepage": false
+  },
+  {
+    "id": "churchill-hospital-fast-track-cancer-surgery-nov-2026",
+    "title": "Oxford hospital reports shorter waits for some major cancer operations",
+    "category": "news",
+    "summary": "Oxford University Hospitals says a fast-track pathway has reduced the time from diagnosis to surgery for some eligible pancreatic and bile duct cancer patients.",
+    "body": [
+      "A fast-track treatment pathway at Oxford's Churchill Hospital has reduced average waiting times for surgery for some patients with pancreatic and bile duct cancers, according to Oxford University Hospitals NHS Foundation Trust.",
+      "The trust says eligible patients are now waiting an average of 14 to 16 days between diagnosis and surgery, compared with approximately 40 to 60 days previously.",
+      "Around 80 patients have been treated through the pathway since it became established in March 2025.",
+      "The approach is designed for patients with pancreatic or lower bile duct cancers who develop jaundice because of a blocked bile duct and are medically suitable to proceed directly to surgery.",
+      "For some eligible patients, this avoids an additional procedure to insert a stent before surgery. The major operation involved is known as a Whipple procedure.",
+      "The trust says approximately 30% of patients undergoing a Whipple procedure across the Thames Valley Cancer Network are currently offered the fast-track option.",
+      "The pathway supports eligible patients across Oxfordshire, Berkshire and Buckinghamshire. It is not suitable for every patient, and the reported reduction in waiting time should not be taken as evidence of improved survival outcomes.",
+      "Source: Oxford University Hospitals NHS Foundation Trust — https://www.ouh.nhs.uk/news/articles/2501/"
+    ],
+    "image": "assets/oxford-cancer-surgery-2026.svg",
+    "date": "2026-11-07T08:55:00Z",
+    "author": "Mary",
+    "excludeFromHomepage": false
+  },
+  {
+    "id": "a4095-bladon-long-hanborough-40mph-nov-2026",
+    "title": "New 40mph speed limit introduced on A4095 near Long Hanborough",
+    "category": "traffic",
+    "summary": "A 40mph speed limit has replaced the previous 50mph restriction on a section of the A4095 between Bladon and Long Hanborough.",
+    "body": [
+      "Motorists using the A4095 between Bladon and Long Hanborough are being reminded of a new 40mph speed limit that took effect on Monday 2 November 2026.",
+      "Oxfordshire County Council's traffic regulation order replaces the previous 50mph limit on the affected section of Main Road.",
+      "The route is used by people travelling between Witney, Hanborough, Bladon and surrounding communities. The council consulted on the proposal earlier this year as part of its road safety programme.",
+      "The change is a permanent speed restriction rather than a road closure. Drivers should follow the speed limit signs along the affected stretch.",
+      "Source: Oxfordshire County Council — https://letstalk.oxfordshire.gov.uk/made_tro"
+    ],
+    "image": "assets/a4095-40mph-2026.svg",
+    "date": "2026-11-07T09:00:00Z",
+    "author": "Mary",
+    "excludeFromHomepage": false
+  },
+  {
     "id": "amazon-impersonation-fraud-warning-oct-2026",
     "title": "Amazon impersonation scam: £86,837 stolen in nine days",
     "category": "news",
